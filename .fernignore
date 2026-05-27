@@ -3,3 +3,4 @@
 .fern/replay.lock
 .fern/replay.yml
 .gitattributes
+RELEASING.md
