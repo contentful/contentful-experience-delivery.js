@@ -2,18 +2,18 @@
 
 This package uses **npm trusted publishing (OIDC)** via GitHub Actions. No npm tokens or secrets are required — npmjs.com trusts this repository to publish directly using short-lived, cryptographically signed tokens.
 
-Publishing is triggered by creating a GitHub Release.
+Publishing is triggered by pushing a tag (e.g., `v1.0.0`). The `ci.yml` publish job runs after compile and test pass.
 
 ## Prerequisites
 
 Before the first publish, an npm org admin must configure trusted publishing on npmjs.com:
 
-1. Navigate to the package settings on [npmjs.com](https://www.npmjs.com/package/@contentful/contentful-experiences.js/access)
+1. Navigate to the package settings on [npmjs.com](https://www.npmjs.com/package/@contentful/experience-delivery/access)
 2. Find the **Trusted Publisher** section and click **Add trusted publisher**
 3. Select **GitHub Actions** as the provider
 4. Fill in:
    - **Organization or user**: `contentful`
-   - **Repository**: `contentful-experiences.js`
+   - **Repository**: `contentful-experience-delivery.js`
    - **Workflow filename**: `ci.yml`
    - **Environment name**: _(leave blank)_
 
@@ -21,7 +21,7 @@ This only needs to be done once.
 
 ## Production Release
 
-1. Go to [Releases → New Release](https://github.com/contentful/contentful-experiences.js/releases/new)
+1. Go to [Releases → New Release](https://github.com/contentful/contentful-experience-delivery.js/releases/new)
 2. Click **Choose a tag** and type the version (e.g., `v1.0.0`) — select "Create new tag on publish"
 3. Set **Target** to `main`
 4. Write release notes (changelog, breaking changes, migration notes)
@@ -29,27 +29,33 @@ This only needs to be done once.
 6. Click **Publish release**
 
 GitHub Actions will:
-- Check out the tagged commit
-- Build the package
-- Run `npm publish --provenance --access public` using OIDC
-- The package appears on npmjs.com with a provenance badge
+- Run compile and test
+- Detect the tag push
+- Publish with `npm publish --access public` using OIDC
+- The package appears on npmjs.com
+
+If the version being published is older than the current `latest` on npm, the workflow automatically publishes with `--tag backport` to avoid overwriting the latest stable.
 
 ## Pre-release
 
-1. Go to [Releases → New Release](https://github.com/contentful/contentful-experiences.js/releases/new)
-2. Click **Choose a tag** and type the pre-release version (e.g., `v1.0.0-beta.1`) — select "Create new tag on publish"
+1. Go to [Releases → New Release](https://github.com/contentful/contentful-experience-delivery.js/releases/new)
+2. Click **Choose a tag** and type the pre-release version — the tag **must** contain `alpha` or `beta` in its name (e.g., `v1.0.0-beta.1`, `v2.0.0-alpha.3`)
 3. Set **Target** to the appropriate branch (e.g., `main` or a feature branch)
 4. Write release notes describing what's being tested
 5. Check **Set as a pre-release**
 6. Click **Publish release**
 
-npm automatically recognizes semver pre-release identifiers — a version like `1.0.0-beta.1` will **not** be assigned the `latest` dist-tag, so `npm install @contentful/contentful-experiences.js` won't resolve to it. Users install pre-releases by specifying the exact version:
+The publish workflow inspects the tag name to determine the dist-tag:
+- Tag contains `alpha` → publishes with `--tag alpha`
+- Tag contains `beta` → publishes with `--tag beta`
+
+This means `npm install @contentful/experience-delivery` won't resolve to a pre-release. Users opt in via:
 
 ```sh
-npm install @contentful/contentful-experiences.js@1.0.0-beta.1
+npm install @contentful/experience-delivery@beta
+# or
+npm install @contentful/experience-delivery@alpha
 ```
-
-> **Note**: If this is the very first version ever published for the package, npm assigns `latest` regardless of pre-release format. Publish a stable version first.
 
 ## Version Management
 
