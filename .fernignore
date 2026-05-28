@@ -4,3 +4,4 @@
 .fern/replay.yml
 .gitattributes
 RELEASING.md
+.github/workflows/publish.yml
