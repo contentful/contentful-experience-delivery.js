@@ -2,9 +2,7 @@
 
 This package uses **npm trusted publishing (OIDC)** via GitHub Actions. No npm tokens or secrets are required — npmjs.com trusts this repository to publish directly using short-lived, cryptographically signed tokens.
 
-Publishing is triggered by pushing a tag (e.g., `v1.0.0`). The `ci.yml` publish job runs after compile and test pass.
-
-> **Important**: Any tag push triggers publishing — whether from the GitHub Releases UI or from `git tag v1.0.0 && git push origin v1.0.0` locally. Do not push version tags unless you intend to publish.
+Publishing is triggered manually via the **Publish** workflow dispatch.
 
 ## Prerequisites
 
@@ -16,58 +14,53 @@ Before the first publish, an npm org admin must configure trusted publishing on 
 4. Fill in:
    - **Organization or user**: `contentful`
    - **Repository**: `contentful-experience-delivery.js`
-   - **Workflow filename**: `ci.yml`
+   - **Workflow filename**: `publish.yml`
    - **Environment name**: _(leave blank)_
 
 This only needs to be done once.
 
 ## Production Release
 
-1. Go to [Releases → New Release](https://github.com/contentful/contentful-experience-delivery.js/releases/new)
-2. Click **Choose a tag** and type the version (e.g., `v1.0.0`) — select "Create new tag on publish"
-3. Set **Target** to `main`
-4. Write release notes (changelog, breaking changes, migration notes)
-5. Leave "Set as latest release" checked
-6. Click **Publish release**
+1. Go to [Actions → Publish](https://github.com/contentful/contentful-experience-delivery.js/actions/workflows/publish.yml)
+2. Click **Run workflow**
+3. Enter the version (e.g., `1.0.0`)
+4. Click **Run workflow**
 
-GitHub Actions will:
-- Run compile and test
-- Detect the tag push
-- Publish with `npm publish --access public` using OIDC
-- The package appears on npmjs.com
-
-If the version being published is older than the current `latest` on npm, the workflow automatically publishes with `--tag backport` to avoid overwriting the latest stable.
+The workflow will:
+- Set the version in `package.json`
+- Build the package
+- Publish with `--tag latest` using OIDC
 
 ## Pre-release
 
-1. Go to [Releases → New Release](https://github.com/contentful/contentful-experience-delivery.js/releases/new)
-2. Click **Choose a tag** and type the pre-release version — the tag **must** contain `alpha` or `beta` in its name (e.g., `v1.0.0-beta.1`, `v2.0.0-alpha.3`)
-3. Set **Target** to the appropriate branch (e.g., `main` or a feature branch)
-4. Write release notes describing what's being tested
-5. Check **Set as a pre-release**
-6. Click **Publish release**
+1. Go to [Actions → Publish](https://github.com/contentful/contentful-experience-delivery.js/actions/workflows/publish.yml)
+2. Click **Run workflow**
+3. Enter the pre-release version (e.g., `1.0.0-beta.1`, `2.0.0-alpha.3`, `1.0.0-rc.1`)
+4. Click **Run workflow**
 
-The publish workflow inspects the tag name to determine the dist-tag:
-- Tag contains `alpha` → publishes with `--tag alpha`
-- Tag contains `beta` → publishes with `--tag beta`
+The dist-tag is inferred from the pre-release identifier:
+- `1.0.0-beta.1` → publishes with `--tag beta`
+- `1.0.0-alpha.3` → publishes with `--tag alpha`
+- `1.0.0-rc.1` → publishes with `--tag rc`
+- `1.0.0-next.5` → publishes with `--tag next`
 
-This means `npm install @contentful/experience-delivery` won't resolve to a pre-release. Users opt in via:
+Consumers opt in to pre-releases via:
 
 ```sh
 npm install @contentful/experience-delivery@beta
-# or
-npm install @contentful/experience-delivery@alpha
 ```
+
+A bare `npm install @contentful/experience-delivery` always resolves `latest` and will never pick up a pre-release.
 
 ## Version Management
 
-Versions are managed by Fern. When the SDK is regenerated, Fern sets the version in `package.json`. The GitHub Release tag must match the version in `package.json` at the tagged commit.
+Versions are managed by Fern during generation. However, the publish workflow sets the version at publish time via the input — this allows publishing any version from any commit.
 
 ## Troubleshooting
 
 | Symptom | Cause | Fix |
 |---------|-------|-----|
 | "Unable to authenticate" | Trusted publisher not configured on npmjs.com | Follow the prerequisites section above |
-| "Unable to authenticate" | Workflow filename mismatch | Trusted publisher config must reference `ci.yml` exactly |
+| "Unable to authenticate" | Workflow filename mismatch | Trusted publisher config must reference `publish.yml` exactly |
+| "Unable to authenticate" | npm version too old for OIDC | The workflow updates npm automatically; if self-hosting runners, ensure npm >= 11.5.1 |
 | Publish succeeds but no provenance badge | Private repo limitation | Provenance attestations are only generated for public repositories |
-| Tag doesn't match package.json version | Fern version and release tag out of sync | Ensure you're tagging the commit where Fern set the version |
