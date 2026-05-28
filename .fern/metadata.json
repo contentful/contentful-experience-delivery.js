@@ -10,7 +10,7 @@
         "writeUnitTests": false,
         "generateWireTests": false
     },
-    "originGitCommit": "95f0adcafc68a35bbedfe3f2cd47f0d1a665ddb7",
+    "originGitCommit": "67325f829171f66cbc6dd7df4e5e55e706b93c3f",
     "originGitCommitIsDirty": false,
     "invokedBy": "ci",
     "requestedVersion": "AUTO",
