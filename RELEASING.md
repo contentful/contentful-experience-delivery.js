@@ -43,11 +43,13 @@ GitHub Actions will:
 5. Check **Set as a pre-release**
 6. Click **Publish release**
 
-GitHub Actions will publish with a `beta` dist-tag (or equivalent based on the pre-release identifier), so `npm install @contentful/contentful-experiences.js` won't pick it up by default. Users opt in with:
+npm automatically recognizes semver pre-release identifiers — a version like `1.0.0-beta.1` will **not** be assigned the `latest` dist-tag, so `npm install @contentful/contentful-experiences.js` won't resolve to it. Users install pre-releases by specifying the exact version:
 
 ```sh
-npm install @contentful/contentful-experiences.js@beta
+npm install @contentful/contentful-experiences.js@1.0.0-beta.1
 ```
+
+> **Note**: If this is the very first version ever published for the package, npm assigns `latest` regardless of pre-release format. Publish a stable version first.
 
 ## Version Management
 
