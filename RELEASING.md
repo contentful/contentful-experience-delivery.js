@@ -4,6 +4,8 @@ This package uses **npm trusted publishing (OIDC)** via GitHub Actions. No npm t
 
 Publishing is triggered by pushing a tag (e.g., `v1.0.0`). The `ci.yml` publish job runs after compile and test pass.
 
+> **Important**: Any tag push triggers publishing — whether from the GitHub Releases UI or from `git tag v1.0.0 && git push origin v1.0.0` locally. Do not push version tags unless you intend to publish.
+
 ## Prerequisites
 
 Before the first publish, an npm org admin must configure trusted publishing on npmjs.com:
