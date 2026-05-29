@@ -4,4 +4,5 @@ import type * as ContentfulViewDelivery from "../../../index.js";
 
 export interface GetExperienceWithOverridesViewResponseExtensions {
     personalization?: ContentfulViewDelivery.GetExperienceWithOverridesViewResponseExtensionsPersonalization;
+    sourceMap?: ContentfulViewDelivery.GetExperienceWithOverridesViewResponseExtensionsSourceMap;
 }

@@ -17,9 +17,7 @@ export const GetExperienceWithOverridesViewResponse: core.serialization.ObjectSc
     viewports: core.serialization.list(GetExperienceWithOverridesViewResponseViewportsItem),
     dimensionKeyMap: GetExperienceWithOverridesViewResponseDimensionKeyMap,
     nodes: core.serialization.list(
-        core.serialization.lazyObject(
-            () => serializers.PostSpacesSpaceIdEnvironmentsEnvironmentIdExperiencesId1200Schema0,
-        ),
+        core.serialization.lazy(() => serializers.PostSpacesSpaceIdEnvironmentsEnvironmentIdExperiencesId1200Schema0),
     ),
     errors: core.serialization.list(GetExperienceWithOverridesViewResponseErrorsItem),
     extensions: GetExperienceWithOverridesViewResponseExtensions.optional(),

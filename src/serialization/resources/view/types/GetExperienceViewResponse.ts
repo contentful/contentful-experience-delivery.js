@@ -17,9 +17,7 @@ export const GetExperienceViewResponse: core.serialization.ObjectSchema<
     viewports: core.serialization.list(GetExperienceViewResponseViewportsItem),
     dimensionKeyMap: GetExperienceViewResponseDimensionKeyMap,
     nodes: core.serialization.list(
-        core.serialization.lazyObject(
-            () => serializers.GetSpacesSpaceIdEnvironmentsEnvironmentIdExperiencesId0200Schema0,
-        ),
+        core.serialization.lazy(() => serializers.GetSpacesSpaceIdEnvironmentsEnvironmentIdExperiencesId0200Schema0),
     ),
     errors: core.serialization.list(GetExperienceViewResponseErrorsItem),
     extensions: GetExperienceViewResponseExtensions.optional(),

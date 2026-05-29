@@ -17,9 +17,7 @@ export const GetFragmentFragmentResponse: core.serialization.ObjectSchema<
     viewports: core.serialization.list(GetFragmentFragmentResponseViewportsItem),
     dimensionKeyMap: GetFragmentFragmentResponseDimensionKeyMap,
     nodes: core.serialization.list(
-        core.serialization.lazyObject(
-            () => serializers.GetSpacesSpaceIdEnvironmentsEnvironmentIdFragmentsId2200Schema0,
-        ),
+        core.serialization.lazy(() => serializers.GetSpacesSpaceIdEnvironmentsEnvironmentIdFragmentsId2200Schema0),
     ),
     errors: core.serialization.list(GetFragmentFragmentResponseErrorsItem),
     extensions: GetFragmentFragmentResponseExtensions.optional(),

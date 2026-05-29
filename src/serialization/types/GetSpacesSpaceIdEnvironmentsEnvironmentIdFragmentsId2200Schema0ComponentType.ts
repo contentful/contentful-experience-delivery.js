@@ -2,18 +2,47 @@
 
 import type * as ContentfulViewDelivery from "../../api/index.js";
 import * as core from "../../core/index.js";
-import type * as serializers from "../index.js";
-import { GetSpacesSpaceIdEnvironmentsEnvironmentIdFragmentsId2200Schema0ComponentTypeSys } from "./GetSpacesSpaceIdEnvironmentsEnvironmentIdFragmentsId2200Schema0ComponentTypeSys.js";
+import * as serializers from "../index.js";
+import { GetSpacesSpaceIdEnvironmentsEnvironmentIdFragmentsId2200Schema0ComponentTypeComponentType } from "./GetSpacesSpaceIdEnvironmentsEnvironmentIdFragmentsId2200Schema0ComponentTypeComponentType.js";
+import { GetSpacesSpaceIdEnvironmentsEnvironmentIdFragmentsId2200Schema0ComponentTypeDesignPropertiesValue } from "./GetSpacesSpaceIdEnvironmentsEnvironmentIdFragmentsId2200Schema0ComponentTypeDesignPropertiesValue.js";
 
 export const GetSpacesSpaceIdEnvironmentsEnvironmentIdFragmentsId2200Schema0ComponentType: core.serialization.ObjectSchema<
     serializers.GetSpacesSpaceIdEnvironmentsEnvironmentIdFragmentsId2200Schema0ComponentType.Raw,
     ContentfulViewDelivery.GetSpacesSpaceIdEnvironmentsEnvironmentIdFragmentsId2200Schema0ComponentType
 > = core.serialization.object({
-    sys: GetSpacesSpaceIdEnvironmentsEnvironmentIdFragmentsId2200Schema0ComponentTypeSys,
+    componentType: GetSpacesSpaceIdEnvironmentsEnvironmentIdFragmentsId2200Schema0ComponentTypeComponentType,
+    id: core.serialization.string().optional(),
+    contentProperties: core.serialization.record(core.serialization.string(), core.serialization.unknown()),
+    designProperties: core.serialization.record(
+        core.serialization.string(),
+        GetSpacesSpaceIdEnvironmentsEnvironmentIdFragmentsId2200Schema0ComponentTypeDesignPropertiesValue,
+    ),
+    slots: core.serialization
+        .record(
+            core.serialization.string(),
+            core.serialization.list(
+                core.serialization.lazy(
+                    () => serializers.GetSpacesSpaceIdEnvironmentsEnvironmentIdFragmentsId2200Schema0,
+                ),
+            ),
+        )
+        .optional(),
+    contentBindings: core.serialization.string().optional(),
 });
 
 export declare namespace GetSpacesSpaceIdEnvironmentsEnvironmentIdFragmentsId2200Schema0ComponentType {
     export interface Raw {
-        sys: GetSpacesSpaceIdEnvironmentsEnvironmentIdFragmentsId2200Schema0ComponentTypeSys.Raw;
+        componentType: GetSpacesSpaceIdEnvironmentsEnvironmentIdFragmentsId2200Schema0ComponentTypeComponentType.Raw;
+        id?: string | null;
+        contentProperties: Record<string, unknown>;
+        designProperties: Record<
+            string,
+            GetSpacesSpaceIdEnvironmentsEnvironmentIdFragmentsId2200Schema0ComponentTypeDesignPropertiesValue.Raw
+        >;
+        slots?: Record<
+            string,
+            serializers.GetSpacesSpaceIdEnvironmentsEnvironmentIdFragmentsId2200Schema0.Raw[]
+        > | null;
+        contentBindings?: string | null;
     }
 }
