@@ -15,8 +15,21 @@ jobs:
     permissions:
       contents: read
       id-token: write
+      actions: read
 
     steps:
+      - name: Retrieve Secrets from Vault
+        id: vault
+        uses: hashicorp/vault-action@v3.4.0
+        with:
+          url: ${{ secrets.VAULT_URL }}
+          role: ${{ github.event.repository.name }}-github-action
+          method: jwt
+          path: github-actions
+          exportEnv: false
+          secrets: |
+            secret/data/github/github_packages_write GITHUB_PACKAGES_WRITE_TOKEN | GITHUB_PACKAGES_WRITE_TOKEN;
+
       - name: Checkout
         uses: actions/checkout@v6
 
@@ -24,10 +37,6 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: '20'
-          registry-url: 'https://registry.npmjs.org'
-
-      - name: Update npm
-        run: npm install -g npm@latest
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
@@ -41,6 +50,11 @@ jobs:
       - name: Build
         run: pnpm build
 
+      - name: Setup npmrc for GitHub Packages
+        run: |
+          echo "//npm.pkg.github.com/:_authToken=${{ steps.vault.outputs.GITHUB_PACKAGES_WRITE_TOKEN }}" > ~/.npmrc
+          echo "@contentful:registry=https://npm.pkg.github.com" >> ~/.npmrc
+
       - name: Determine dist-tag
         id: dist-tag
         run: |
@@ -52,5 +66,5 @@ jobs:
             echo "tag=latest" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Publish
-        run: npm publish --access public --tag ${{ steps.dist-tag.outputs.tag }}
+      - name: Publish to GitHub Packages
+        run: npm publish --tag ${{ steps.dist-tag.outputs.tag }}
