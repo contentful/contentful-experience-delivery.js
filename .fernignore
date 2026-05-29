@@ -1,4 +1,5 @@
 # Specify files that shouldn't be modified by Fern
+.contentful/vault-secrets.yaml
 .fern/replay.lock
 .fern/replay.yml
 .gitattributes
