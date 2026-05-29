@@ -1,7 +1,7 @@
 # Contentful Experiences Delivery and Preview Client TypeScript Library
 
-[![fern shield](https://img.shields.io/badge/%F0%9F%8C%BF-Built%20with%20Fern-brightgreen)](https://buildwithfern.com?utm_source=github&utm_medium=github&utm_campaign=readme&utm_source=https%3A%2F%2Fgithub.com%2Fcontentful%2Fcontentful-experiences.js)
-[![npm shield](https://img.shields.io/npm/v/@contentful/contentful-experiences.js)](https://www.npmjs.com/package/@contentful/contentful-experiences.js)
+[![fern shield](https://img.shields.io/badge/%F0%9F%8C%BF-Built%20with%20Fern-brightgreen)](https://buildwithfern.com?utm_source=github&utm_medium=github&utm_campaign=readme&utm_source=https%3A%2F%2Fgithub.com%2Fcontentful%2Fcontentful-experience-delivery.js)
+[![npm shield](https://img.shields.io/npm/v/@contentful/experience-delivery)](https://www.npmjs.com/package/@contentful/experience-delivery)
 
 A TypeScript client for delivering and previewing Contentful Experiences. Fetch fully resolved Views, Fragments, and personalized Experiences with rich, typed responses and first-class IntelliSense.
 
@@ -30,12 +30,12 @@ A TypeScript client for delivering and previewing Contentful Experiences. Fetch 
 ## Installation
 
 ```sh
-npm i -s @contentful/contentful-experiences.js
+npm i -s @contentful/experience-delivery
 ```
 
 ## Reference
 
-A full reference for this library is available [here](https://github.com/contentful/contentful-experiences.js/blob/HEAD/./reference.md).
+A full reference for this library is available [here](https://github.com/contentful/contentful-experience-delivery.js/blob/HEAD/./reference.md).
 
 ## Authentication
 
@@ -47,7 +47,7 @@ You can mint tokens from the **Settings → API keys** page of any Contentful sp
 For published content, use a Content Delivery API (CDA) token:
 
 ```typescript
-import { ContentfulViewDeliveryClient } from "@contentful/contentful-experiences.js";
+import { ContentfulViewDeliveryClient } from "@contentful/experience-delivery";
 
 const client = new ContentfulViewDeliveryClient({
     token: process.env.CONTENTFUL_CDA_TOKEN!,
@@ -60,7 +60,7 @@ For draft/unpublished content, create a separate client with a Content Preview A
 token and the preview base URL:
 
 ```typescript
-import { ContentfulViewDeliveryClient } from "@contentful/contentful-experiences.js";
+import { ContentfulViewDeliveryClient } from "@contentful/experience-delivery";
 
 const previewClient = new ContentfulViewDeliveryClient({
     token: process.env.CONTENTFUL_CPA_TOKEN!,
@@ -91,7 +91,7 @@ await client.view.getExperience(spaceId, envId, experienceId, {
 Instantiate and use the client with the following:
 
 ```typescript
-import { ContentfulViewDeliveryClient } from "@contentful/contentful-experiences.js";
+import { ContentfulViewDeliveryClient } from "@contentful/experience-delivery";
 
 const client = new ContentfulViewDeliveryClient({ token: "YOUR_TOKEN" });
 await client.view.getExperienceWithOverrides("spaceId", "environmentId", "id", {
@@ -108,7 +108,7 @@ await client.view.getExperienceWithOverrides("spaceId", "environmentId", "id", {
 This SDK allows you to configure different environments for API requests.
 
 ```typescript
-import { ContentfulViewDeliveryClient, ContentfulViewDeliveryEnvironment } from "@contentful/contentful-experiences.js";
+import { ContentfulViewDeliveryClient, ContentfulViewDeliveryEnvironment } from "@contentful/experience-delivery";
 
 const client = new ContentfulViewDeliveryClient({
     environment: ContentfulViewDeliveryEnvironment.Default,
@@ -121,7 +121,7 @@ The SDK exports all request and response types as TypeScript interfaces. Simply 
 following namespace:
 
 ```typescript
-import { ContentfulViewDelivery } from "@contentful/contentful-experiences.js";
+import { ContentfulViewDelivery } from "@contentful/experience-delivery";
 
 const request: ContentfulViewDelivery.GetExperienceViewRequest = {
     ...
@@ -134,7 +134,7 @@ When the API returns a non-success status code (4xx or 5xx response), a subclass
 will be thrown.
 
 ```typescript
-import { ContentfulViewDeliveryError } from "@contentful/contentful-experiences.js";
+import { ContentfulViewDeliveryError } from "@contentful/experience-delivery";
 
 try {
     await client.view.getExperienceWithOverrides(...);
@@ -155,7 +155,7 @@ try {
 This SDK supports direct imports of subpackage clients, which allows JavaScript bundlers to tree-shake and include only the imported subpackage code. This results in much smaller bundle sizes.
 
 ```typescript
-import { ViewClient } from '@contentful/contentful-experiences.js/view';
+import { ViewClient } from '@contentful/experience-delivery/view';
 
 const client = new ViewClient({...});
 ```
@@ -165,7 +165,7 @@ const client = new ViewClient({...});
 If you would like to send additional headers as part of the request, use the `headers` request option.
 
 ```typescript
-import { ContentfulViewDeliveryClient } from "@contentful/contentful-experiences.js";
+import { ContentfulViewDeliveryClient } from "@contentful/experience-delivery";
 
 const client = new ContentfulViewDeliveryClient({
     ...
@@ -260,7 +260,7 @@ console.log(rawResponse.headers['X-My-Header']);
 The SDK supports logging. You can configure the logger by passing in a `logging` object to the client options.
 
 ```typescript
-import { ContentfulViewDeliveryClient, logging } from "@contentful/contentful-experiences.js";
+import { ContentfulViewDeliveryClient, logging } from "@contentful/experience-delivery";
 
 const client = new ContentfulViewDeliveryClient({
     ...
