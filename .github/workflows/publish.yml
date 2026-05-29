@@ -1,12 +1,9 @@
 name: Publish
 
 on:
-  workflow_dispatch:
-    inputs:
-      version:
-        description: "Version to publish (e.g., 1.0.0, 1.0.0-beta.1)"
-        required: true
-        type: string
+  push:
+    tags:
+      - 'v*'
 
 jobs:
   publish:
@@ -44,8 +41,14 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Extract version from tag
+        id: version
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
       - name: Set version
-        run: npm version ${{ inputs.version }} --no-git-tag-version
+        run: npm version ${{ steps.version.outputs.version }} --no-git-tag-version
 
       - name: Build
         run: pnpm build
@@ -58,7 +61,7 @@ jobs:
       - name: Determine dist-tag
         id: dist-tag
         run: |
-          VERSION="${{ inputs.version }}"
+          VERSION="${{ steps.version.outputs.version }}"
           if [[ "$VERSION" == *-* ]]; then
             TAG=$(echo "$VERSION" | sed 's/.*-\([a-zA-Z]*\).*/\1/')
             echo "tag=$TAG" >> "$GITHUB_OUTPUT"

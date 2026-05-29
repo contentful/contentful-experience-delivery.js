@@ -5,4 +5,3 @@
 .gitattributes
 RELEASING.md
 .github/workflows/publish.yml
-.contentful/vault-secrets.yaml
