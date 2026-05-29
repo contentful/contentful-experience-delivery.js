@@ -3,5 +3,13 @@
 import type * as ContentfulViewDelivery from "../index.js";
 
 export interface PostSpacesSpaceIdEnvironmentsEnvironmentIdExperiencesId1200Schema0ComponentType {
-    sys: ContentfulViewDelivery.PostSpacesSpaceIdEnvironmentsEnvironmentIdExperiencesId1200Schema0ComponentTypeSys;
+    componentType: ContentfulViewDelivery.PostSpacesSpaceIdEnvironmentsEnvironmentIdExperiencesId1200Schema0ComponentTypeComponentType;
+    id?: string;
+    contentProperties: Record<string, unknown>;
+    designProperties: Record<
+        string,
+        ContentfulViewDelivery.PostSpacesSpaceIdEnvironmentsEnvironmentIdExperiencesId1200Schema0ComponentTypeDesignPropertiesValue
+    >;
+    slots?: Record<string, ContentfulViewDelivery.PostSpacesSpaceIdEnvironmentsEnvironmentIdExperiencesId1200Schema0[]>;
+    contentBindings?: string;
 }

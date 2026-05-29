@@ -1,6 +1,6 @@
 {
     "name": "@contentful/experience-delivery",
-    "version": "0.0.0-fern-placeholder.0",
+    "version": "0.0.0-fern-placeholder.1",
     "private": false,
     "repository": {
         "type": "git",
@@ -96,5 +96,6 @@
     "engines": {
         "node": ">=18.0.0"
     },
-    "sideEffects": false
+    "sideEffects": false,
+    "description": "TypeScript client for Contentful's Experience Delivery and Preview API"
 }

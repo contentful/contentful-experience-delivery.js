@@ -3,44 +3,21 @@
 import type * as ContentfulViewDelivery from "../../api/index.js";
 import * as core from "../../core/index.js";
 import * as serializers from "../index.js";
-import { PostSpacesSpaceIdEnvironmentsEnvironmentIdExperiencesId1200Schema0ComponentType } from "./PostSpacesSpaceIdEnvironmentsEnvironmentIdExperiencesId1200Schema0ComponentType.js";
-import { PostSpacesSpaceIdEnvironmentsEnvironmentIdExperiencesId1200Schema0DesignPropertiesValue } from "./PostSpacesSpaceIdEnvironmentsEnvironmentIdExperiencesId1200Schema0DesignPropertiesValue.js";
 
-export const PostSpacesSpaceIdEnvironmentsEnvironmentIdExperiencesId1200Schema0: core.serialization.ObjectSchema<
+export const PostSpacesSpaceIdEnvironmentsEnvironmentIdExperiencesId1200Schema0: core.serialization.Schema<
     serializers.PostSpacesSpaceIdEnvironmentsEnvironmentIdExperiencesId1200Schema0.Raw,
     ContentfulViewDelivery.PostSpacesSpaceIdEnvironmentsEnvironmentIdExperiencesId1200Schema0
-> = core.serialization.object({
-    componentType: PostSpacesSpaceIdEnvironmentsEnvironmentIdExperiencesId1200Schema0ComponentType,
-    contentProperties: core.serialization.record(core.serialization.string(), core.serialization.unknown()),
-    designProperties: core.serialization.record(
-        core.serialization.string(),
-        PostSpacesSpaceIdEnvironmentsEnvironmentIdExperiencesId1200Schema0DesignPropertiesValue,
+> = core.serialization.undiscriminatedUnion([
+    core.serialization.lazyObject(
+        () => serializers.PostSpacesSpaceIdEnvironmentsEnvironmentIdExperiencesId1200Schema0ComponentType,
     ),
-    slots: core.serialization
-        .record(
-            core.serialization.string(),
-            core.serialization.list(
-                core.serialization.lazyObject(
-                    () => serializers.PostSpacesSpaceIdEnvironmentsEnvironmentIdExperiencesId1200Schema0,
-                ),
-            ),
-        )
-        .optional(),
-    contentBindings: core.serialization.string().optional(),
-});
+    core.serialization.lazyObject(
+        () => serializers.PostSpacesSpaceIdEnvironmentsEnvironmentIdExperiencesId1200Schema0Template,
+    ),
+]);
 
 export declare namespace PostSpacesSpaceIdEnvironmentsEnvironmentIdExperiencesId1200Schema0 {
-    export interface Raw {
-        componentType: PostSpacesSpaceIdEnvironmentsEnvironmentIdExperiencesId1200Schema0ComponentType.Raw;
-        contentProperties: Record<string, unknown>;
-        designProperties: Record<
-            string,
-            PostSpacesSpaceIdEnvironmentsEnvironmentIdExperiencesId1200Schema0DesignPropertiesValue.Raw
-        >;
-        slots?: Record<
-            string,
-            serializers.PostSpacesSpaceIdEnvironmentsEnvironmentIdExperiencesId1200Schema0.Raw[]
-        > | null;
-        contentBindings?: string | null;
-    }
+    export type Raw =
+        | serializers.PostSpacesSpaceIdEnvironmentsEnvironmentIdExperiencesId1200Schema0ComponentType.Raw
+        | serializers.PostSpacesSpaceIdEnvironmentsEnvironmentIdExperiencesId1200Schema0Template.Raw;
 }

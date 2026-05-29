@@ -3,44 +3,21 @@
 import type * as ContentfulViewDelivery from "../../api/index.js";
 import * as core from "../../core/index.js";
 import * as serializers from "../index.js";
-import { GetSpacesSpaceIdEnvironmentsEnvironmentIdFragmentsId2200Schema0ComponentType } from "./GetSpacesSpaceIdEnvironmentsEnvironmentIdFragmentsId2200Schema0ComponentType.js";
-import { GetSpacesSpaceIdEnvironmentsEnvironmentIdFragmentsId2200Schema0DesignPropertiesValue } from "./GetSpacesSpaceIdEnvironmentsEnvironmentIdFragmentsId2200Schema0DesignPropertiesValue.js";
 
-export const GetSpacesSpaceIdEnvironmentsEnvironmentIdFragmentsId2200Schema0: core.serialization.ObjectSchema<
+export const GetSpacesSpaceIdEnvironmentsEnvironmentIdFragmentsId2200Schema0: core.serialization.Schema<
     serializers.GetSpacesSpaceIdEnvironmentsEnvironmentIdFragmentsId2200Schema0.Raw,
     ContentfulViewDelivery.GetSpacesSpaceIdEnvironmentsEnvironmentIdFragmentsId2200Schema0
-> = core.serialization.object({
-    componentType: GetSpacesSpaceIdEnvironmentsEnvironmentIdFragmentsId2200Schema0ComponentType,
-    contentProperties: core.serialization.record(core.serialization.string(), core.serialization.unknown()),
-    designProperties: core.serialization.record(
-        core.serialization.string(),
-        GetSpacesSpaceIdEnvironmentsEnvironmentIdFragmentsId2200Schema0DesignPropertiesValue,
+> = core.serialization.undiscriminatedUnion([
+    core.serialization.lazyObject(
+        () => serializers.GetSpacesSpaceIdEnvironmentsEnvironmentIdFragmentsId2200Schema0ComponentType,
     ),
-    slots: core.serialization
-        .record(
-            core.serialization.string(),
-            core.serialization.list(
-                core.serialization.lazyObject(
-                    () => serializers.GetSpacesSpaceIdEnvironmentsEnvironmentIdFragmentsId2200Schema0,
-                ),
-            ),
-        )
-        .optional(),
-    contentBindings: core.serialization.string().optional(),
-});
+    core.serialization.lazyObject(
+        () => serializers.GetSpacesSpaceIdEnvironmentsEnvironmentIdFragmentsId2200Schema0Template,
+    ),
+]);
 
 export declare namespace GetSpacesSpaceIdEnvironmentsEnvironmentIdFragmentsId2200Schema0 {
-    export interface Raw {
-        componentType: GetSpacesSpaceIdEnvironmentsEnvironmentIdFragmentsId2200Schema0ComponentType.Raw;
-        contentProperties: Record<string, unknown>;
-        designProperties: Record<
-            string,
-            GetSpacesSpaceIdEnvironmentsEnvironmentIdFragmentsId2200Schema0DesignPropertiesValue.Raw
-        >;
-        slots?: Record<
-            string,
-            serializers.GetSpacesSpaceIdEnvironmentsEnvironmentIdFragmentsId2200Schema0.Raw[]
-        > | null;
-        contentBindings?: string | null;
-    }
+    export type Raw =
+        | serializers.GetSpacesSpaceIdEnvironmentsEnvironmentIdFragmentsId2200Schema0ComponentType.Raw
+        | serializers.GetSpacesSpaceIdEnvironmentsEnvironmentIdFragmentsId2200Schema0Template.Raw;
 }

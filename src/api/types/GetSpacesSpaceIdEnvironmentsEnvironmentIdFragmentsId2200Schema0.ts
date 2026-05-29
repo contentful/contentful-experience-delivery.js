@@ -2,13 +2,6 @@
 
 import type * as ContentfulViewDelivery from "../index.js";
 
-export interface GetSpacesSpaceIdEnvironmentsEnvironmentIdFragmentsId2200Schema0 {
-    componentType: ContentfulViewDelivery.GetSpacesSpaceIdEnvironmentsEnvironmentIdFragmentsId2200Schema0ComponentType;
-    contentProperties: Record<string, unknown>;
-    designProperties: Record<
-        string,
-        ContentfulViewDelivery.GetSpacesSpaceIdEnvironmentsEnvironmentIdFragmentsId2200Schema0DesignPropertiesValue
-    >;
-    slots?: Record<string, ContentfulViewDelivery.GetSpacesSpaceIdEnvironmentsEnvironmentIdFragmentsId2200Schema0[]>;
-    contentBindings?: string;
-}
+export type GetSpacesSpaceIdEnvironmentsEnvironmentIdFragmentsId2200Schema0 =
+    | ContentfulViewDelivery.GetSpacesSpaceIdEnvironmentsEnvironmentIdFragmentsId2200Schema0ComponentType
+    | ContentfulViewDelivery.GetSpacesSpaceIdEnvironmentsEnvironmentIdFragmentsId2200Schema0Template;

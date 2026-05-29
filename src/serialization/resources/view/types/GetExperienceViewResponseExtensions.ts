@@ -4,16 +4,19 @@ import type * as ContentfulViewDelivery from "../../../../api/index.js";
 import * as core from "../../../../core/index.js";
 import type * as serializers from "../../../index.js";
 import { GetExperienceViewResponseExtensionsPersonalization } from "./GetExperienceViewResponseExtensionsPersonalization.js";
+import { GetExperienceViewResponseExtensionsSourceMap } from "./GetExperienceViewResponseExtensionsSourceMap.js";
 
 export const GetExperienceViewResponseExtensions: core.serialization.ObjectSchema<
     serializers.GetExperienceViewResponseExtensions.Raw,
     ContentfulViewDelivery.GetExperienceViewResponseExtensions
 > = core.serialization.object({
     personalization: GetExperienceViewResponseExtensionsPersonalization.optional(),
+    sourceMap: GetExperienceViewResponseExtensionsSourceMap.optional(),
 });
 
 export declare namespace GetExperienceViewResponseExtensions {
     export interface Raw {
         personalization?: GetExperienceViewResponseExtensionsPersonalization.Raw | null;
+        sourceMap?: GetExperienceViewResponseExtensionsSourceMap.Raw | null;
     }
 }

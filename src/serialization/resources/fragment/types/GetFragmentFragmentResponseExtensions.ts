@@ -4,16 +4,19 @@ import type * as ContentfulViewDelivery from "../../../../api/index.js";
 import * as core from "../../../../core/index.js";
 import type * as serializers from "../../../index.js";
 import { GetFragmentFragmentResponseExtensionsPersonalization } from "./GetFragmentFragmentResponseExtensionsPersonalization.js";
+import { GetFragmentFragmentResponseExtensionsSourceMap } from "./GetFragmentFragmentResponseExtensionsSourceMap.js";
 
 export const GetFragmentFragmentResponseExtensions: core.serialization.ObjectSchema<
     serializers.GetFragmentFragmentResponseExtensions.Raw,
     ContentfulViewDelivery.GetFragmentFragmentResponseExtensions
 > = core.serialization.object({
     personalization: GetFragmentFragmentResponseExtensionsPersonalization.optional(),
+    sourceMap: GetFragmentFragmentResponseExtensionsSourceMap.optional(),
 });
 
 export declare namespace GetFragmentFragmentResponseExtensions {
     export interface Raw {
         personalization?: GetFragmentFragmentResponseExtensionsPersonalization.Raw | null;
+        sourceMap?: GetFragmentFragmentResponseExtensionsSourceMap.Raw | null;
     }
 }

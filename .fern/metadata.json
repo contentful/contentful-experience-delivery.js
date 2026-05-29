@@ -3,6 +3,9 @@
     "generatorName": "fernapi/fern-typescript-node-sdk",
     "generatorVersion": "3.70.6",
     "generatorConfig": {
+        "packageJson": {
+            "description": "TypeScript client for Contentful's Experience Delivery and Preview API"
+        },
         "namespaceExport": "ContentfulViewDelivery",
         "noSerdeLayer": false,
         "skipResponseValidation": true,
@@ -10,10 +13,10 @@
         "writeUnitTests": false,
         "generateWireTests": false
     },
-    "originGitCommit": "67325f829171f66cbc6dd7df4e5e55e706b93c3f",
+    "originGitCommit": "839663943790ea3cd1a36157103215d629cee72a",
     "originGitCommitIsDirty": false,
     "invokedBy": "ci",
     "requestedVersion": "AUTO",
     "ciProvider": "github",
-    "sdkVersion": "0.0.0-fern-placeholder.0"
+    "sdkVersion": "0.0.0-fern-placeholder.1"
 }

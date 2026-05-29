@@ -4,4 +4,5 @@ import type * as ContentfulViewDelivery from "../../../index.js";
 
 export interface GetFragmentFragmentResponseExtensions {
     personalization?: ContentfulViewDelivery.GetFragmentFragmentResponseExtensionsPersonalization;
+    sourceMap?: ContentfulViewDelivery.GetFragmentFragmentResponseExtensionsSourceMap;
 }

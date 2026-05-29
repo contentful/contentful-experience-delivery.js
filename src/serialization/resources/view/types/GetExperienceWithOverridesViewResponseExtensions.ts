@@ -4,16 +4,19 @@ import type * as ContentfulViewDelivery from "../../../../api/index.js";
 import * as core from "../../../../core/index.js";
 import type * as serializers from "../../../index.js";
 import { GetExperienceWithOverridesViewResponseExtensionsPersonalization } from "./GetExperienceWithOverridesViewResponseExtensionsPersonalization.js";
+import { GetExperienceWithOverridesViewResponseExtensionsSourceMap } from "./GetExperienceWithOverridesViewResponseExtensionsSourceMap.js";
 
 export const GetExperienceWithOverridesViewResponseExtensions: core.serialization.ObjectSchema<
     serializers.GetExperienceWithOverridesViewResponseExtensions.Raw,
     ContentfulViewDelivery.GetExperienceWithOverridesViewResponseExtensions
 > = core.serialization.object({
     personalization: GetExperienceWithOverridesViewResponseExtensionsPersonalization.optional(),
+    sourceMap: GetExperienceWithOverridesViewResponseExtensionsSourceMap.optional(),
 });
 
 export declare namespace GetExperienceWithOverridesViewResponseExtensions {
     export interface Raw {
         personalization?: GetExperienceWithOverridesViewResponseExtensionsPersonalization.Raw | null;
+        sourceMap?: GetExperienceWithOverridesViewResponseExtensionsSourceMap.Raw | null;
     }
 }

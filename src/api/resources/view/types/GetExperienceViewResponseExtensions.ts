@@ -4,4 +4,5 @@ import type * as ContentfulViewDelivery from "../../../index.js";
 
 export interface GetExperienceViewResponseExtensions {
     personalization?: ContentfulViewDelivery.GetExperienceViewResponseExtensionsPersonalization;
+    sourceMap?: ContentfulViewDelivery.GetExperienceViewResponseExtensionsSourceMap;
 }
