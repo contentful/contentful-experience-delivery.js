@@ -5,7 +5,6 @@ import type * as ContentfulViewDelivery from "../../../index.js";
 export interface GetFragmentFragmentResponse {
     sys: ContentfulViewDelivery.GetFragmentFragmentResponseSys;
     viewports: ContentfulViewDelivery.GetFragmentFragmentResponseViewportsItem[];
-    dimensionKeyMap: ContentfulViewDelivery.GetFragmentFragmentResponseDimensionKeyMap;
     nodes: ContentfulViewDelivery.GetSpacesSpaceIdEnvironmentsEnvironmentIdFragmentsId2200Schema0[];
     errors: ContentfulViewDelivery.GetFragmentFragmentResponseErrorsItem[];
     extensions?: ContentfulViewDelivery.GetFragmentFragmentResponseExtensions;

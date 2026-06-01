@@ -3,7 +3,6 @@
 import type * as ContentfulViewDelivery from "../../../../api/index.js";
 import * as core from "../../../../core/index.js";
 import * as serializers from "../../../index.js";
-import { GetExperienceViewResponseDimensionKeyMap } from "./GetExperienceViewResponseDimensionKeyMap.js";
 import { GetExperienceViewResponseErrorsItem } from "./GetExperienceViewResponseErrorsItem.js";
 import { GetExperienceViewResponseExtensions } from "./GetExperienceViewResponseExtensions.js";
 import { GetExperienceViewResponseSys } from "./GetExperienceViewResponseSys.js";
@@ -15,7 +14,6 @@ export const GetExperienceViewResponse: core.serialization.ObjectSchema<
 > = core.serialization.object({
     sys: GetExperienceViewResponseSys,
     viewports: core.serialization.list(GetExperienceViewResponseViewportsItem),
-    dimensionKeyMap: GetExperienceViewResponseDimensionKeyMap,
     nodes: core.serialization.list(
         core.serialization.lazy(() => serializers.GetSpacesSpaceIdEnvironmentsEnvironmentIdExperiencesId0200Schema0),
     ),
@@ -27,7 +25,6 @@ export declare namespace GetExperienceViewResponse {
     export interface Raw {
         sys: GetExperienceViewResponseSys.Raw;
         viewports: GetExperienceViewResponseViewportsItem.Raw[];
-        dimensionKeyMap: GetExperienceViewResponseDimensionKeyMap.Raw;
         nodes: serializers.GetSpacesSpaceIdEnvironmentsEnvironmentIdExperiencesId0200Schema0.Raw[];
         errors: GetExperienceViewResponseErrorsItem.Raw[];
         extensions?: GetExperienceViewResponseExtensions.Raw | null;

@@ -3,7 +3,6 @@
 import type * as ContentfulViewDelivery from "../../../../api/index.js";
 import * as core from "../../../../core/index.js";
 import * as serializers from "../../../index.js";
-import { GetExperienceWithOverridesViewResponseDimensionKeyMap } from "./GetExperienceWithOverridesViewResponseDimensionKeyMap.js";
 import { GetExperienceWithOverridesViewResponseErrorsItem } from "./GetExperienceWithOverridesViewResponseErrorsItem.js";
 import { GetExperienceWithOverridesViewResponseExtensions } from "./GetExperienceWithOverridesViewResponseExtensions.js";
 import { GetExperienceWithOverridesViewResponseSys } from "./GetExperienceWithOverridesViewResponseSys.js";
@@ -15,7 +14,6 @@ export const GetExperienceWithOverridesViewResponse: core.serialization.ObjectSc
 > = core.serialization.object({
     sys: GetExperienceWithOverridesViewResponseSys,
     viewports: core.serialization.list(GetExperienceWithOverridesViewResponseViewportsItem),
-    dimensionKeyMap: GetExperienceWithOverridesViewResponseDimensionKeyMap,
     nodes: core.serialization.list(
         core.serialization.lazy(() => serializers.PostSpacesSpaceIdEnvironmentsEnvironmentIdExperiencesId1200Schema0),
     ),
@@ -27,7 +25,6 @@ export declare namespace GetExperienceWithOverridesViewResponse {
     export interface Raw {
         sys: GetExperienceWithOverridesViewResponseSys.Raw;
         viewports: GetExperienceWithOverridesViewResponseViewportsItem.Raw[];
-        dimensionKeyMap: GetExperienceWithOverridesViewResponseDimensionKeyMap.Raw;
         nodes: serializers.PostSpacesSpaceIdEnvironmentsEnvironmentIdExperiencesId1200Schema0.Raw[];
         errors: GetExperienceWithOverridesViewResponseErrorsItem.Raw[];
         extensions?: GetExperienceWithOverridesViewResponseExtensions.Raw | null;

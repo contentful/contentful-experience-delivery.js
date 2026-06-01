@@ -1,7 +1,5 @@
 export * from "./GetFragmentFragmentRequestPreview.js";
 export * from "./GetFragmentFragmentResponse.js";
-export * from "./GetFragmentFragmentResponseDimensionKeyMap.js";
-export * from "./GetFragmentFragmentResponseDimensionKeyMapDesignPropertiesValue.js";
 export * from "./GetFragmentFragmentResponseErrorsItem.js";
 export * from "./GetFragmentFragmentResponseExtensions.js";
 export * from "./GetFragmentFragmentResponseExtensionsPersonalization.js";

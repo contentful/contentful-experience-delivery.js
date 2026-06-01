@@ -13,10 +13,10 @@
         "writeUnitTests": false,
         "generateWireTests": false
     },
-    "originGitCommit": "9b6596d97a8addee7597c8d9bc4f392ab8d335c7",
+    "originGitCommit": "d59e4481a8dc0fbefa28ced5f8c0b6dfab66408a",
     "originGitCommitIsDirty": false,
     "invokedBy": "ci",
     "requestedVersion": "AUTO",
     "ciProvider": "github",
-    "sdkVersion": "0.0.0-fern-placeholder.2"
+    "sdkVersion": "0.0.0-fern-placeholder"
 }
