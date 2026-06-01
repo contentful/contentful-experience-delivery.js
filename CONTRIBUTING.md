@@ -35,7 +35,6 @@ pnpm test
 
 Run specific test types:
 - `pnpm test:unit` - Run unit tests
-- `pnpm test:wire` - Run wire/integration tests
 
 ### Linting and Formatting
 
