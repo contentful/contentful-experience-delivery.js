@@ -64,7 +64,7 @@ import { ContentfulViewDeliveryClient } from "@contentful/experience-delivery";
 
 const previewClient = new ContentfulViewDeliveryClient({
     token: process.env.CONTENTFUL_CPA_TOKEN!,
-    baseUrl: "https://preview.experience.contentful.com",
+    baseUrl: "https://preview.xdn.contentful.com",
 });
 
 const draft = await previewClient.view.getExperience(spaceId, envId, experienceId, {
