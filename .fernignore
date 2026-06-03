@@ -5,3 +5,4 @@
 .gitattributes
 RELEASING.md
 .github/workflows/publish.yml
+.github/CODEOWNERS
