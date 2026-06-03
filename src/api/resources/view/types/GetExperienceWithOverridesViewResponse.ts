@@ -5,7 +5,6 @@ import type * as ContentfulViewDelivery from "../../../index.js";
 export interface GetExperienceWithOverridesViewResponse {
     sys: ContentfulViewDelivery.GetExperienceWithOverridesViewResponseSys;
     viewports: ContentfulViewDelivery.GetExperienceWithOverridesViewResponseViewportsItem[];
-    dimensionKeyMap: ContentfulViewDelivery.GetExperienceWithOverridesViewResponseDimensionKeyMap;
     nodes: ContentfulViewDelivery.PostSpacesSpaceIdEnvironmentsEnvironmentIdExperiencesId1200Schema0[];
     errors: ContentfulViewDelivery.GetExperienceWithOverridesViewResponseErrorsItem[];
     extensions?: ContentfulViewDelivery.GetExperienceWithOverridesViewResponseExtensions;
