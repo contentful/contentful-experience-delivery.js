@@ -7,3 +7,8 @@ RELEASING.md
 .github/workflows/publish.yml
 CONTRIBUTING.md
 LICENSE
+NOTICE
+licenses
+AUTOMATION-FOR-LICENSES.md
+scripts/update-licenses.js
+catalog-info.yaml

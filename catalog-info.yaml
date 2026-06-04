@@ -1,0 +1,17 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: contentful-experience-delivery.js
+  description: |
+    TypeScript client for Contentful's Experience Delivery and Preview API.
+  annotations:
+    circleci.com/project-slug: github/contentful/contentful-experience-delivery.js
+    github.com/project-slug: contentful/contentful-experience-delivery.js
+    contentful.com/ci-alert-slack: prd-ecosystem-dx-bots
+    contentful.com/service-tier: "4"
+  tags:
+    - tier-4
+spec:
+  type: library
+  lifecycle: production
+  owner: group:team-developer-experience
