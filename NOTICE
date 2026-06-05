@@ -1,0 +1,37 @@
+This project includes the following third-party open-source software components. Each is provided under its respective license.
+
+Runtime Dependencies (Production)
+
+
+
+
+Development Dependencies
+
+@biomejs/biome
+    License: MIT OR Apache-2.0
+    https://www.npmjs.com/package/@biomejs/biome [npmjs.com]
+@types/node
+    License: MIT
+    https://www.npmjs.com/package/@types/node [npmjs.com]
+license-checker-rseidelsohn
+    License: BSD-3-Clause
+    https://www.npmjs.com/package/license-checker-rseidelsohn [npmjs.com]
+ts-loader
+    License: MIT
+    https://www.npmjs.com/package/ts-loader [npmjs.com]
+typescript
+    License: Apache-2.0
+    https://www.npmjs.com/package/typescript [npmjs.com]
+vitest
+    License: MIT
+    https://www.npmjs.com/package/vitest [npmjs.com]
+webpack
+    License: MIT
+    https://www.npmjs.com/package/webpack [npmjs.com]
+
+
+Each component is used in accordance with its open-source license. The
+applicable license texts are included in this repository under the
+licenses/ directory.
+
+For more details, please refer to the LICENSE file for this project.

@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for your interest in contributing to this SDK! This document provides guidelines for contributing to the project.
+Thanks for your interest in contributing to this SDK! Most of the code here is generated from an API definition, so contributions look a little different than a typical open-source project — this document explains how to engage effectively.
 
 ## Getting Started
 
@@ -35,7 +35,6 @@ pnpm test
 
 Run specific test types:
 - `pnpm test:unit` - Run unit tests
-- `pnpm test:wire` - Run wire/integration tests
 
 ### Linting and Formatting
 
@@ -72,35 +71,20 @@ The following directories contain generated code:
 
 ### How to Customize
 
-If you need to customize the SDK, you have two options:
+To customize the SDK, use `.fernignore` for custom code that should persist across SDK regenerations:
 
-#### Option 1: Use `.fernignore`
-
-For custom code that should persist across SDK regenerations:
-
-1. Create a `.fernignore` file in the project root
-2. Add file patterns for files you want to preserve (similar to `.gitignore` syntax)
-3. Add your custom code to those files
+1. Add file patterns to [`.fernignore`](./.fernignore) (similar to `.gitignore` syntax) — this repo's `.fernignore` already enumerates the non-generated files maintained by hand
+2. Add your custom code to those files
 
 Files listed in `.fernignore` will not be overwritten when the SDK is regenerated.
 
 For more information, see the [Fern documentation on custom code](https://buildwithfern.com/learn/sdks/overview/custom-code).
 
-#### Option 2: Contribute to the Generator
-
-If you want to change how code is generated for all users of this SDK:
-
-1. The TypeScript SDK generator lives in the [Fern repository](https://github.com/fern-api/fern)
-2. Generator code is located at `generators/typescript/sdk/`
-3. Follow the [Fern contributing guidelines](https://github.com/fern-api/fern/blob/main/CONTRIBUTING.md)
-4. Submit a pull request with your changes to the generator
-
-This approach is best for:
-- Bug fixes in generated code
-- New features that would benefit all users
-- Improvements to code generation patterns
+> **Note**: Direct code contributions to generated files will inevitably be overwritten by subsequent SDK generations. If you've found a bug or want to request a feature, please [open an issue](https://github.com/contentful/contentful-experience-delivery.js/issues) instead.
 
 ## Making Changes
+
+This workflow applies to Contentful maintainers and to changes against files listed in [`.fernignore`](./.fernignore). Edits to generated files will be overwritten on the next SDK regeneration.
 
 ### Workflow
 
@@ -110,23 +94,15 @@ This approach is best for:
 4. Run linting and formatting: `pnpm run check:fix`
 5. Build the project: `pnpm build`
 6. Commit your changes with a clear commit message
-7. Push your branch and create a pull request
-
-### Commit Messages
-
-Write clear, descriptive commit messages that explain what changed and why.
-
-### Code Style
-
-This project uses automated code formatting and linting. Run `pnpm run check:fix` before committing to ensure your code meets the project's style guidelines.
+7. Push your branch and open a pull request
 
 ## Questions or Issues?
 
 If you have questions or run into issues:
 
-1. Check the [Fern documentation](https://buildwithfern.com)
-2. Search existing [GitHub issues](https://github.com/fern-api/fern/issues)
-3. Open a new issue if your question hasn't been addressed
+1. Search existing [GitHub issues](https://github.com/contentful/contentful-experience-delivery.js/issues) on this repo
+2. [Open a new issue](https://github.com/contentful/contentful-experience-delivery.js/issues/new) for bugs or feature requests if your question hasn't been addressed
+3. For questions about the SDK generator itself, see the [Fern documentation](https://buildwithfern.com)
 
 ## License
 

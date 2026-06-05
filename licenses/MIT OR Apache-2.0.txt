@@ -1,0 +1,6 @@
+License: MIT OR Apache-2.0
+
+This is a dual license. The licensee may choose any of the following:
+
+- MIT.txt
+- Apache-2.0.txt
