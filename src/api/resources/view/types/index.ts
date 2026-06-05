@@ -1,7 +1,5 @@
 export * from "./GetExperienceViewRequestPreview.js";
 export * from "./GetExperienceViewResponse.js";
-export * from "./GetExperienceViewResponseDimensionKeyMap.js";
-export * from "./GetExperienceViewResponseDimensionKeyMapDesignPropertiesValue.js";
 export * from "./GetExperienceViewResponseErrorsItem.js";
 export * from "./GetExperienceViewResponseExtensions.js";
 export * from "./GetExperienceViewResponseExtensionsPersonalization.js";
@@ -109,8 +107,6 @@ export * from "./GetExperienceWithOverridesViewRequestExtensionsPersonalizationE
 export * from "./GetExperienceWithOverridesViewRequestExtensionsSourceMap.js";
 export * from "./GetExperienceWithOverridesViewRequestPreview.js";
 export * from "./GetExperienceWithOverridesViewResponse.js";
-export * from "./GetExperienceWithOverridesViewResponseDimensionKeyMap.js";
-export * from "./GetExperienceWithOverridesViewResponseDimensionKeyMapDesignPropertiesValue.js";
 export * from "./GetExperienceWithOverridesViewResponseErrorsItem.js";
 export * from "./GetExperienceWithOverridesViewResponseExtensions.js";
 export * from "./GetExperienceWithOverridesViewResponseExtensionsPersonalization.js";

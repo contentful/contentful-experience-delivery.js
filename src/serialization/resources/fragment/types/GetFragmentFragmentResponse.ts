@@ -3,7 +3,6 @@
 import type * as ContentfulViewDelivery from "../../../../api/index.js";
 import * as core from "../../../../core/index.js";
 import * as serializers from "../../../index.js";
-import { GetFragmentFragmentResponseDimensionKeyMap } from "./GetFragmentFragmentResponseDimensionKeyMap.js";
 import { GetFragmentFragmentResponseErrorsItem } from "./GetFragmentFragmentResponseErrorsItem.js";
 import { GetFragmentFragmentResponseExtensions } from "./GetFragmentFragmentResponseExtensions.js";
 import { GetFragmentFragmentResponseSys } from "./GetFragmentFragmentResponseSys.js";
@@ -15,7 +14,6 @@ export const GetFragmentFragmentResponse: core.serialization.ObjectSchema<
 > = core.serialization.object({
     sys: GetFragmentFragmentResponseSys,
     viewports: core.serialization.list(GetFragmentFragmentResponseViewportsItem),
-    dimensionKeyMap: GetFragmentFragmentResponseDimensionKeyMap,
     nodes: core.serialization.list(
         core.serialization.lazy(() => serializers.GetSpacesSpaceIdEnvironmentsEnvironmentIdFragmentsId2200Schema0),
     ),
@@ -27,7 +25,6 @@ export declare namespace GetFragmentFragmentResponse {
     export interface Raw {
         sys: GetFragmentFragmentResponseSys.Raw;
         viewports: GetFragmentFragmentResponseViewportsItem.Raw[];
-        dimensionKeyMap: GetFragmentFragmentResponseDimensionKeyMap.Raw;
         nodes: serializers.GetSpacesSpaceIdEnvironmentsEnvironmentIdFragmentsId2200Schema0.Raw[];
         errors: GetFragmentFragmentResponseErrorsItem.Raw[];
         extensions?: GetFragmentFragmentResponseExtensions.Raw | null;

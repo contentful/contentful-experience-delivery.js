@@ -12,3 +12,4 @@ licenses
 AUTOMATION-FOR-LICENSES.md
 scripts/update-licenses.js
 catalog-info.yaml
+.github/CODEOWNERS
