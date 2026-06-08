@@ -4,7 +4,14 @@
     "generatorVersion": "3.70.6",
     "generatorConfig": {
         "packageJson": {
-            "description": "TypeScript client for Contentful's Experience Delivery and Preview API"
+            "description": "TypeScript client for Contentful's Experience Delivery and Preview API",
+            "license": "MIT",
+            "devDependencies": {
+                "license-checker-rseidelsohn": "^4.4.2"
+            },
+            "scripts": {
+                "update-licenses": "node ./scripts/update-licenses.js"
+            }
         },
         "namespaceExport": "ContentfulViewDelivery",
         "noSerdeLayer": false,
@@ -13,10 +20,10 @@
         "writeUnitTests": false,
         "generateWireTests": false
     },
-    "originGitCommit": "d59e4481a8dc0fbefa28ced5f8c0b6dfab66408a",
+    "originGitCommit": "c4150cb46a7cc42b588a725550bf86b2a03bc994",
     "originGitCommitIsDirty": false,
     "invokedBy": "ci",
     "requestedVersion": "AUTO",
     "ciProvider": "github",
-    "sdkVersion": "0.0.0-fern-placeholder.3"
+    "sdkVersion": "0.0.0-fern-placeholder"
 }

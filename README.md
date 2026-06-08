@@ -10,8 +10,8 @@ A TypeScript client for delivering and previewing Contentful Experiences. Fetch 
 
 - [Installation](#installation)
 - [Reference](#reference)
-- [Authentication](#authentication)
 - [Usage](#usage)
+- [Authentication](#authentication)
 - [Environments](#environments)
 - [Request and Response Types](#request-and-response-types)
 - [Exception Handling](#exception-handling)
@@ -36,6 +36,30 @@ npm i -s @contentful/experience-delivery
 ## Reference
 
 A full reference for this library is available [here](https://github.com/contentful/contentful-experience-delivery.js/blob/HEAD/./reference.md).
+
+## Usage
+
+Instantiate the client with a Content Delivery API token and fetch a published
+Experience:
+
+```typescript
+import { ContentfulViewDeliveryClient } from "@contentful/experience-delivery";
+
+const client = new ContentfulViewDeliveryClient({
+    token: process.env.CONTENTFUL_CDA_TOKEN!,
+});
+
+const experience = await client.view.getExperience(
+    "spaceId",
+    "environmentId",
+    "experienceId",
+    { locale: "en-US" },
+);
+```
+
+See [Authentication](#authentication) for preview tokens and the
+`access_token` query-parameter alternative.
+
 
 ## Authentication
 
@@ -85,23 +109,6 @@ await client.view.getExperience(spaceId, envId, experienceId, {
 });
 ```
 
-
-## Usage
-
-Instantiate and use the client with the following:
-
-```typescript
-import { ContentfulViewDeliveryClient } from "@contentful/experience-delivery";
-
-const client = new ContentfulViewDeliveryClient({ token: "YOUR_TOKEN" });
-await client.view.getExperienceWithOverrides("spaceId", "environmentId", "id", {
-    preview: "true",
-    accessToken: "access_token",
-    optimizationProfileId: "optimization-profile-id",
-    locale: "locale",
-    variant: "variant"
-});
-```
 
 ## Environments
 
