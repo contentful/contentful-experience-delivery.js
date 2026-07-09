@@ -356,7 +356,7 @@ The SDK works in the following runtimes:
 
 
 
-- Node.js 18+
+- Node.js 22+
 - Vercel
 - Cloudflare Workers
 - Deno v1.25+

@@ -9,13 +9,10 @@ local build directly. This guide walks through that process end to end.
 
 ## Prerequisites
 
-- **Node.js 20 or higher** — Node 18 reached end-of-life in April 2025 and the test
-  suite's tooling requires a newer `node:util` API than Node 18 provides, so builds
-  on Node 18 are not supported even though `package.json` still declares
-  `>=18.0.0`.
+- **Node.js 22 or higher**
 - **pnpm** — the repo pins `packageManager: pnpm@10.33.0` in `package.json`. If you
   don't already have pnpm installed, enable it via [Corepack](https://nodejs.org/api/corepack.html)
-  (bundled with Node 20+):
+  (bundled with Node.js):
 
   ```bash
   corepack enable

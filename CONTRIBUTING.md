@@ -10,7 +10,7 @@ Thanks for your interest in contributing to this SDK! Most of the code here is g
 
 ### Prerequisites
 
-- Node.js 20 or higher
+- Node.js 22 or higher
 - pnpm package manager
 
 ### Installation
