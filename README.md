@@ -33,6 +33,10 @@ A TypeScript client for delivering and previewing Contentful Experiences. Fetch 
 npm i -s @contentful/experience-delivery
 ```
 
+> **Note**: This package is not yet published as a stable release on the public npm
+> registry. Until then, see [BUILDING.md](./BUILDING.md) for how to build and
+> consume it from source.
+
 ## Reference
 
 A full reference for this library is available [here](https://github.com/contentful/contentful-experience-delivery.js/blob/HEAD/./reference.md).

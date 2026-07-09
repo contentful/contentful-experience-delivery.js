@@ -2,6 +2,10 @@
 
 Thanks for your interest in contributing to this SDK! Most of the code here is generated from an API definition, so contributions look a little different than a typical open-source project — this document explains how to engage effectively.
 
+> If you just want to **use** this package in your own project rather than contribute
+> to it, see [BUILDING.md](./BUILDING.md) — the package isn't yet published as a
+> stable release, so building from source is currently the supported path.
+
 ## Getting Started
 
 ### Prerequisites
