@@ -12,7 +12,13 @@ generations:
     cli_version: unknown
     generator_versions:
       fernapi/fern-typescript-node-sdk: 3.70.6
-current_generation: 23a8d8c4d8c4b86a9d7541cd57787e6e7aa3bc1b
+  - commit_sha: dcbad541e278f70377c29dfe82c643d913b071c5
+    tree_hash: 79f8e9e81642b061c5c740d7ded1d69574bf5fe1
+    timestamp: 2026-08-03T22:17:14.987Z
+    cli_version: unknown
+    generator_versions:
+      fernapi/fern-typescript-node-sdk: 3.70.6
+current_generation: dcbad541e278f70377c29dfe82c643d913b071c5
 patches:
   - id: patch-b7675864
     content_hash: sha256:fd99db33125f1a44c996d757739dc327bc86428b2edb7d2bd85388edfd7b2b74
@@ -31,8 +37,8 @@ patches:
       @@ -1,6 +1,6 @@
        {
            "name": "@contentful/experience-delivery",
-      -    "version": "0.0.0-fern-placeholder.5",
-      +    "version": "0.0.0-fern-placeholder.5.4",
+      -    "version": "0.0.0-fern-placeholder",
+      +    "version": "0.0.0-fern-placeholder.4",
            "private": false,
            "repository": {
                "type": "git",
@@ -40,7 +46,7 @@ patches:
       package.json: |
         {
             "name": "@contentful/experience-delivery",
-            "version": "0.0.0-fern-placeholder.5.4",
+            "version": "0.0.0-fern-placeholder.4",
             "private": false,
             "repository": {
                 "type": "git",
@@ -2198,3 +2204,620 @@ patches:
               ansi-styles: 6.2.3
               string-width: 5.1.2
               strip-ansi: 7.2.0
+    status: unresolved
+  - id: patch-e3d78ca2
+    content_hash: sha256:6b9897b02e158df132ceaf0ea465ce4c3c0a639ffed79718f5f3aa6367183a21
+    original_commit: e3d78ca2eb3de216b0ab8f755b8f4398ea53f131
+    original_message: "chore: set up Renovate for dependency updates [MEC-3447] (#13)"
+    original_author: contentful-renovate-rollout[bot] <299147280+contentful-renovate-rollout[bot]@users.noreply.github.com>
+    base_generation: dcbad541e278f70377c29dfe82c643d913b071c5
+    files:
+      - renovate.json
+    patch_content: |
+      diff --git a/renovate.json b/renovate.json
+      new file mode 100644
+      index 0000000..8087215
+      --- /dev/null
+      +++ b/renovate.json
+      @@ -0,0 +1,4 @@
+      +{
+      +  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+      +  "extends": ["local>contentful/renovate-config"]
+      +}
+    theirs_snapshot:
+      renovate.json: |
+        {
+          "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+          "extends": ["local>contentful/renovate-config"]
+        }
+    user_owned: true
+  - id: patch-d795327b
+    content_hash: sha256:b5ef7534ddba7278cd6604f7003c51054b3d606b991659ed0de18d6015f3c40a
+    original_commit: d795327b959a2d948d4f8d2da585e34307f116b8
+    original_message: "feat: add build-from-source guide and raise minimum Node.js to 22 [] (#14)"
+    original_author: Tyler Collins <104802020+t-col@users.noreply.github.com>
+    base_generation: dcbad541e278f70377c29dfe82c643d913b071c5
+    files:
+      - README.md
+      - package.json
+    patch_content: |
+      diff --git a/README.md b/README.md
+      index 8af22cb..0054a2d 100644
+      --- a/README.md
+      +++ b/README.md
+      @@ -37,6 +37,10 @@ and first-class IntelliSense.
+       npm i -s @contentful/experience-delivery
+       ```
+       
+      +> **Note**: This package is not yet published as a stable release on the public npm
+      +> registry. Until then, see [BUILDING.md](./BUILDING.md) for how to build and
+      +> consume it from source.
+      +
+       ## Reference
+       
+       A full reference for this library is available [here](https://github.com/contentful/contentful-experience-delivery.js/blob/HEAD/./reference.md).
+      @@ -356,7 +360,7 @@ The SDK works in the following runtimes:
+       
+       
+       
+      -- Node.js 18+
+      +- Node.js 22+
+       - Vercel
+       - Cloudflare Workers
+       - Deno v1.25+
+      diff --git a/package.json b/package.json
+      index dfd44c1..abe1403 100644
+      --- a/package.json
+      +++ b/package.json
+      @@ -162,7 +162,7 @@
+           },
+           "packageManager": "pnpm@10.33.0",
+           "engines": {
+      -        "node": ">=18.0.0"
+      +        "node": ">=22.0.0"
+           },
+           "sideEffects": false,
+           "description": "TypeScript client for Contentful's Experience Delivery and Preview API",
+    theirs_snapshot:
+      README.md: |+
+        # Contentful Experiences Delivery and Preview Client TypeScript Library
+
+        [![fern shield](https://img.shields.io/badge/%F0%9F%8C%BF-Built%20with%20Fern-brightgreen)](https://buildwithfern.com?utm_source=github&utm_medium=github&utm_campaign=readme&utm_source=https%3A%2F%2Fgithub.com%2Fcontentful%2Fcontentful-experience-delivery.js)
+        [![npm shield](https://img.shields.io/npm/v/@contentful/experience-delivery)](https://www.npmjs.com/package/@contentful/experience-delivery)
+
+        > ⚠️ **Dev build.** Published to npm as a pre-release (`dev` tag). APIs are unstable and will change.
+
+        A TypeScript client for delivering and previewing Contentful Experiences.
+        Fetch fully resolved Views and personalized Experiences with rich, typed responses
+        and first-class IntelliSense.
+
+
+        ## Table of Contents
+
+        - [Installation](#installation)
+        - [Reference](#reference)
+        - [Usage](#usage)
+        - [Authentication](#authentication)
+        - [Environments](#environments)
+        - [Request and Response Types](#request-and-response-types)
+        - [Exception Handling](#exception-handling)
+        - [Advanced](#advanced)
+          - [Subpackage Exports](#subpackage-exports)
+          - [Additional Headers](#additional-headers)
+          - [Additional Query String Parameters](#additional-query-string-parameters)
+          - [Retries](#retries)
+          - [Timeouts](#timeouts)
+          - [Aborting Requests](#aborting-requests)
+          - [Access Raw Response Data](#access-raw-response-data)
+          - [Logging](#logging)
+          - [Custom Fetch](#custom-fetch)
+          - [Runtime Compatibility](#runtime-compatibility)
+
+        ## Installation
+
+        ```sh
+        npm i -s @contentful/experience-delivery
+        ```
+
+        > **Note**: This package is not yet published as a stable release on the public npm
+        > registry. Until then, see [BUILDING.md](./BUILDING.md) for how to build and
+        > consume it from source.
+
+        ## Reference
+
+        A full reference for this library is available [here](https://github.com/contentful/contentful-experience-delivery.js/blob/HEAD/./reference.md).
+
+        ## Usage
+
+        Instantiate the client with a Content Delivery API token and fetch a published
+        Experience:
+
+        ```typescript
+        import { ContentfulViewDeliveryClient } from "@contentful/experience-delivery";
+
+        const client = new ContentfulViewDeliveryClient({
+            token: process.env.CONTENTFUL_CDA_TOKEN!,
+        });
+
+        const experience = await client.experience.get(
+            "spaceId",
+            "environmentId",
+            "experienceId",
+            { locale: "en-US" },
+        );
+        ```
+
+        See [Authentication](#authentication) for preview tokens and the
+        `access_token` query-parameter alternative.
+
+
+        ## Authentication
+
+        The API supports two authentication modes — both backed by a Contentful access token.
+        You can mint tokens from the **Settings → API keys** page of any Contentful space.
+
+        ### Delivery client
+
+        For published content, use a Content Delivery API (CDA) token:
+
+        ```typescript
+        import { ContentfulViewDeliveryClient } from "@contentful/experience-delivery";
+
+        const client = new ContentfulViewDeliveryClient({
+            token: process.env.CONTENTFUL_CDA_TOKEN!,
+        });
+        ```
+
+        ### Preview client
+
+        For draft/unpublished content, create a separate client with a Content Preview API (CPA)
+        token and the preview base URL:
+
+        ```typescript
+        import { ContentfulViewDeliveryClient } from "@contentful/experience-delivery";
+
+        const previewClient = new ContentfulViewDeliveryClient({
+            token: process.env.CONTENTFUL_CPA_TOKEN!,
+            baseUrl: "https://preview.xdn.contentful.com",
+        });
+
+        const draft = await previewClient.experience.get(spaceId, envId, experienceId, {
+            preview: "true",
+            locale: "en-US",
+        });
+        ```
+
+        ### `access_token` query parameter
+
+        For environments where you can't send the `Authorization` header (e.g. some browser/CDN
+        scenarios), the API also accepts an `access_token` query parameter:
+
+        ```typescript
+        await client.experience.get(spaceId, envId, experienceId, {
+            locale: "en-US",
+            accessToken: process.env.CONTENTFUL_CDA_TOKEN!,
+        });
+        ```
+
+
+        ## Environments
+
+        This SDK allows you to configure different environments for API requests.
+
+        ```typescript
+        import { ContentfulViewDeliveryClient, ContentfulViewDeliveryEnvironment } from "@contentful/experience-delivery";
+
+        const client = new ContentfulViewDeliveryClient({
+            environment: ContentfulViewDeliveryEnvironment.Default,
+        });
+        ```
+
+        ## Request and Response Types
+
+        The SDK exports all request and response types as TypeScript interfaces. Simply import them with the
+        following namespace:
+
+        ```typescript
+        import { ContentfulViewDelivery } from "@contentful/experience-delivery";
+
+        const request: ContentfulViewDelivery.GetExperienceRequest = {
+            ...
+        };
+        ```
+
+        ## Exception Handling
+
+        When the API returns a non-success status code (4xx or 5xx response), a subclass of the following error
+        will be thrown.
+
+        ```typescript
+        import { ContentfulViewDeliveryError } from "@contentful/experience-delivery";
+
+        try {
+            await client.experience.getWithOverrides(...);
+        } catch (err) {
+            if (err instanceof ContentfulViewDeliveryError) {
+                console.log(err.statusCode);
+                console.log(err.message);
+                console.log(err.body);
+                console.log(err.rawResponse);
+            }
+        }
+        ```
+
+        ## Advanced
+
+        ### Subpackage Exports
+
+        This SDK supports direct imports of subpackage clients, which allows JavaScript bundlers to tree-shake and include only the imported subpackage code. This results in much smaller bundle sizes.
+
+        ```typescript
+        import { ExperienceClient } from '@contentful/experience-delivery/experience';
+
+        const client = new ExperienceClient({...});
+        ```
+
+        ### Additional Headers
+
+        If you would like to send additional headers as part of the request, use the `headers` request option.
+
+        ```typescript
+        import { ContentfulViewDeliveryClient } from "@contentful/experience-delivery";
+
+        const client = new ContentfulViewDeliveryClient({
+            ...
+            headers: {
+                'X-Custom-Header': 'custom value'
+            }
+        });
+
+        const response = await client.experience.getWithOverrides(..., {
+            headers: {
+                'X-Custom-Header': 'custom value'
+            }
+        });
+        ```
+
+        ### Additional Query String Parameters
+
+        If you would like to send additional query string parameters as part of the request, use the `queryParams` request option.
+
+        ```typescript
+        const response = await client.experience.getWithOverrides(..., {
+            queryParams: {
+                'customQueryParamKey': 'custom query param value'
+            }
+        });
+        ```
+
+        ### Retries
+
+        The SDK is instrumented with automatic retries with exponential backoff. A request will be retried as long
+        as the request is deemed retryable and the number of retry attempts has not grown larger than the configured
+        retry limit (default: 2).
+
+        Which status codes are retried depends on the `retryStatusCodes` generator configuration:
+
+        **`legacy`** (current default): retries on
+        - [408](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/408) (Timeout)
+        - [429](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429) (Too Many Requests)
+        - [5XX](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status#server_error_responses) (All server errors, including 500)
+
+        **`recommended`**: retries on
+        - [408](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/408) (Timeout)
+        - [429](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429) (Too Many Requests)
+        - [502](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/502) (Bad Gateway)
+        - [503](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503) (Service Unavailable)
+        - [504](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/504) (Gateway Timeout)
+
+        Use the `maxRetries` request option to configure this behavior.
+
+        ```typescript
+        const response = await client.experience.getWithOverrides(..., {
+            maxRetries: 0 // override maxRetries at the request level
+        });
+        ```
+
+        ### Timeouts
+
+        The SDK defaults to a 60 second timeout. Use the `timeoutInSeconds` option to configure this behavior.
+
+        ```typescript
+        const response = await client.experience.getWithOverrides(..., {
+            timeoutInSeconds: 30 // override timeout to 30s
+        });
+        ```
+
+        ### Aborting Requests
+
+        The SDK allows users to abort requests at any point by passing in an abort signal.
+
+        ```typescript
+        const controller = new AbortController();
+        const response = await client.experience.getWithOverrides(..., {
+            abortSignal: controller.signal
+        });
+        controller.abort(); // aborts the request
+        ```
+
+        ### Access Raw Response Data
+
+        The SDK provides access to raw response data, including headers, through the `.withRawResponse()` method.
+        The `.withRawResponse()` method returns a promise that results to an object with a `data` and a `rawResponse` property.
+
+        ```typescript
+        const { data, rawResponse } = await client.experience.getWithOverrides(...).withRawResponse();
+
+        console.log(data);
+        console.log(rawResponse.headers['X-My-Header']);
+        ```
+
+        ### Logging
+
+        The SDK supports logging. You can configure the logger by passing in a `logging` object to the client options.
+
+        ```typescript
+        import { ContentfulViewDeliveryClient, logging } from "@contentful/experience-delivery";
+
+        const client = new ContentfulViewDeliveryClient({
+            ...
+            logging: {
+                level: logging.LogLevel.Debug, // defaults to logging.LogLevel.Info
+                logger: new logging.ConsoleLogger(), // defaults to ConsoleLogger
+                silent: false, // defaults to true, set to false to enable logging
+            }
+        });
+        ```
+        The `logging` object can have the following properties:
+        - `level`: The log level to use. Defaults to `logging.LogLevel.Info`.
+        - `logger`: The logger to use. Defaults to a `logging.ConsoleLogger`.
+        - `silent`: Whether to silence the logger. Defaults to `true`.
+
+        The `level` property can be one of the following values:
+        - `logging.LogLevel.Debug`
+        - `logging.LogLevel.Info`
+        - `logging.LogLevel.Warn`
+        - `logging.LogLevel.Error`
+
+        To provide a custom logger, you can pass in an object that implements the `logging.ILogger` interface.
+
+        <details>
+        <summary>Custom logger examples</summary>
+
+        Here's an example using the popular `winston` logging library.
+        ```ts
+        import winston from 'winston';
+
+        const winstonLogger = winston.createLogger({...});
+
+        const logger: logging.ILogger = {
+            debug: (msg, ...args) => winstonLogger.debug(msg, ...args),
+            info: (msg, ...args) => winstonLogger.info(msg, ...args),
+            warn: (msg, ...args) => winstonLogger.warn(msg, ...args),
+            error: (msg, ...args) => winstonLogger.error(msg, ...args),
+        };
+        ```
+
+        Here's an example using the popular `pino` logging library.
+
+        ```ts
+        import pino from 'pino';
+
+        const pinoLogger = pino({...});
+
+        const logger: logging.ILogger = {
+          debug: (msg, ...args) => pinoLogger.debug(args, msg),
+          info: (msg, ...args) => pinoLogger.info(args, msg),
+          warn: (msg, ...args) => pinoLogger.warn(args, msg),
+          error: (msg, ...args) => pinoLogger.error(args, msg),
+        };
+        ```
+        </details>
+
+
+        ### Custom Fetch
+
+        The SDK provides a low-level `fetch` method for making custom HTTP requests while still
+        benefiting from SDK-level configuration like authentication, retries, timeouts, and logging.
+        This is useful for calling API endpoints not yet supported in the SDK.
+
+        ```typescript
+        const response = await client.fetch("/v1/custom/endpoint", {
+            method: "GET",
+        }, {
+            timeoutInSeconds: 30,
+            maxRetries: 3,
+            headers: {
+                "X-Custom-Header": "custom-value",
+            },
+        });
+
+        const data = await response.json();
+        ```
+
+        ### Runtime Compatibility
+
+
+        The SDK works in the following runtimes:
+
+
+
+        - Node.js 22+
+        - Vercel
+        - Cloudflare Workers
+        - Deno v1.25+
+        - Bun 1.0+
+        - React Native
+
+
+      package.json: |
+        {
+            "name": "@contentful/experience-delivery",
+            "version": "0.0.0-fern-placeholder",
+            "private": false,
+            "repository": {
+                "type": "git",
+                "url": "git+https://github.com/contentful/contentful-experience-delivery.js.git"
+            },
+            "type": "commonjs",
+            "main": "./dist/cjs/index.js",
+            "module": "./dist/esm/index.mjs",
+            "types": "./dist/cjs/index.d.ts",
+            "exports": {
+                ".": {
+                    "import": {
+                        "types": "./dist/esm/index.d.mts",
+                        "default": "./dist/esm/index.mjs"
+                    },
+                    "require": {
+                        "types": "./dist/cjs/index.d.ts",
+                        "default": "./dist/cjs/index.js"
+                    },
+                    "default": "./dist/cjs/index.js"
+                },
+                "./serialization": {
+                    "import": {
+                        "types": "./dist/esm/serialization/index.d.mts",
+                        "default": "./dist/esm/serialization/index.mjs"
+                    },
+                    "require": {
+                        "types": "./dist/cjs/serialization/index.d.ts",
+                        "default": "./dist/cjs/serialization/index.js"
+                    },
+                    "default": "./dist/cjs/serialization/index.js"
+                },
+                "./experience": {
+                    "import": {
+                        "types": "./dist/esm/api/resources/experience/exports.d.mts",
+                        "default": "./dist/esm/api/resources/experience/exports.mjs"
+                    },
+                    "require": {
+                        "types": "./dist/cjs/api/resources/experience/exports.d.ts",
+                        "default": "./dist/cjs/api/resources/experience/exports.js"
+                    },
+                    "default": "./dist/cjs/api/resources/experience/exports.js"
+                },
+                "./template": {
+                    "import": {
+                        "types": "./dist/esm/api/resources/template/exports.d.mts",
+                        "default": "./dist/esm/api/resources/template/exports.mjs"
+                    },
+                    "require": {
+                        "types": "./dist/cjs/api/resources/template/exports.d.ts",
+                        "default": "./dist/cjs/api/resources/template/exports.js"
+                    },
+                    "default": "./dist/cjs/api/resources/template/exports.js"
+                },
+                "./component": {
+                    "import": {
+                        "types": "./dist/esm/api/resources/component/exports.d.mts",
+                        "default": "./dist/esm/api/resources/component/exports.mjs"
+                    },
+                    "require": {
+                        "types": "./dist/cjs/api/resources/component/exports.d.ts",
+                        "default": "./dist/cjs/api/resources/component/exports.js"
+                    },
+                    "default": "./dist/cjs/api/resources/component/exports.js"
+                },
+                "./fragment": {
+                    "import": {
+                        "types": "./dist/esm/api/resources/fragment/exports.d.mts",
+                        "default": "./dist/esm/api/resources/fragment/exports.mjs"
+                    },
+                    "require": {
+                        "types": "./dist/cjs/api/resources/fragment/exports.d.ts",
+                        "default": "./dist/cjs/api/resources/fragment/exports.js"
+                    },
+                    "default": "./dist/cjs/api/resources/fragment/exports.js"
+                },
+                "./experienceFragment": {
+                    "import": {
+                        "types": "./dist/esm/api/resources/experienceFragment/exports.d.mts",
+                        "default": "./dist/esm/api/resources/experienceFragment/exports.mjs"
+                    },
+                    "require": {
+                        "types": "./dist/cjs/api/resources/experienceFragment/exports.d.ts",
+                        "default": "./dist/cjs/api/resources/experienceFragment/exports.js"
+                    },
+                    "default": "./dist/cjs/api/resources/experienceFragment/exports.js"
+                },
+                "./release": {
+                    "import": {
+                        "types": "./dist/esm/api/resources/release/exports.d.mts",
+                        "default": "./dist/esm/api/resources/release/exports.mjs"
+                    },
+                    "require": {
+                        "types": "./dist/cjs/api/resources/release/exports.d.ts",
+                        "default": "./dist/cjs/api/resources/release/exports.js"
+                    },
+                    "default": "./dist/cjs/api/resources/release/exports.js"
+                },
+                "./release/experience": {
+                    "import": {
+                        "types": "./dist/esm/api/resources/release/resources/experience/exports.d.mts",
+                        "default": "./dist/esm/api/resources/release/resources/experience/exports.mjs"
+                    },
+                    "require": {
+                        "types": "./dist/cjs/api/resources/release/resources/experience/exports.d.ts",
+                        "default": "./dist/cjs/api/resources/release/resources/experience/exports.js"
+                    },
+                    "default": "./dist/cjs/api/resources/release/resources/experience/exports.js"
+                },
+                "./release/fragment": {
+                    "import": {
+                        "types": "./dist/esm/api/resources/release/resources/fragment/exports.d.mts",
+                        "default": "./dist/esm/api/resources/release/resources/fragment/exports.mjs"
+                    },
+                    "require": {
+                        "types": "./dist/cjs/api/resources/release/resources/fragment/exports.d.ts",
+                        "default": "./dist/cjs/api/resources/release/resources/fragment/exports.js"
+                    },
+                    "default": "./dist/cjs/api/resources/release/resources/fragment/exports.js"
+                },
+                "./package.json": "./package.json"
+            },
+            "files": [
+                "dist",
+                "reference.md",
+                "README.md",
+                "LICENSE"
+            ],
+            "scripts": {
+                "format": "biome format --write --skip-parse-errors --no-errors-on-unmatched --max-diagnostics=none",
+                "format:check": "biome format --skip-parse-errors --no-errors-on-unmatched --max-diagnostics=none",
+                "lint": "biome lint --skip-parse-errors --no-errors-on-unmatched --max-diagnostics=none",
+                "lint:fix": "biome lint --fix --unsafe --skip-parse-errors --no-errors-on-unmatched --max-diagnostics=none",
+                "check": "biome check --skip-parse-errors --no-errors-on-unmatched --max-diagnostics=none",
+                "check:fix": "biome check --fix --unsafe --skip-parse-errors --no-errors-on-unmatched --max-diagnostics=none",
+                "build": "pnpm build:cjs && pnpm build:esm",
+                "build:cjs": "tsc --project ./tsconfig.cjs.json",
+                "build:esm": "tsc --project ./tsconfig.esm.json && node scripts/rename-to-esm-files.js dist/esm",
+                "test": "vitest",
+                "test:unit": "vitest --project unit",
+                "update-licenses": "node ./scripts/update-licenses.js"
+            },
+            "dependencies": {},
+            "devDependencies": {
+                "webpack": "^5.105.4",
+                "ts-loader": "^9.5.4",
+                "vitest": "^4.1.1",
+                "@types/node": "^20.0.0",
+                "typescript": "~5.9.3",
+                "@biomejs/biome": "2.4.10",
+                "license-checker-rseidelsohn": "^4.4.2"
+            },
+            "browser": {
+                "fs": false,
+                "os": false,
+                "path": false,
+                "stream": false,
+                "crypto": false
+            },
+            "packageManager": "pnpm@10.33.0",
+            "engines": {
+                "node": ">=22.0.0"
+            },
+            "sideEffects": false,
+            "description": "TypeScript client for Contentful's Experience Delivery and Preview API",
+            "license": "MIT"
+        }
