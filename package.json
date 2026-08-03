@@ -1,6 +1,6 @@
 {
     "name": "@contentful/experience-delivery",
-    "version": "0.0.0-fern-placeholder.4",
+    "version": "0.0.0-fern-placeholder",
     "private": false,
     "repository": {
         "type": "git",
@@ -33,16 +33,38 @@
             },
             "default": "./dist/cjs/serialization/index.js"
         },
-        "./view": {
+        "./experience": {
             "import": {
-                "types": "./dist/esm/api/resources/view/exports.d.mts",
-                "default": "./dist/esm/api/resources/view/exports.mjs"
+                "types": "./dist/esm/api/resources/experience/exports.d.mts",
+                "default": "./dist/esm/api/resources/experience/exports.mjs"
             },
             "require": {
-                "types": "./dist/cjs/api/resources/view/exports.d.ts",
-                "default": "./dist/cjs/api/resources/view/exports.js"
+                "types": "./dist/cjs/api/resources/experience/exports.d.ts",
+                "default": "./dist/cjs/api/resources/experience/exports.js"
             },
-            "default": "./dist/cjs/api/resources/view/exports.js"
+            "default": "./dist/cjs/api/resources/experience/exports.js"
+        },
+        "./template": {
+            "import": {
+                "types": "./dist/esm/api/resources/template/exports.d.mts",
+                "default": "./dist/esm/api/resources/template/exports.mjs"
+            },
+            "require": {
+                "types": "./dist/cjs/api/resources/template/exports.d.ts",
+                "default": "./dist/cjs/api/resources/template/exports.js"
+            },
+            "default": "./dist/cjs/api/resources/template/exports.js"
+        },
+        "./component": {
+            "import": {
+                "types": "./dist/esm/api/resources/component/exports.d.mts",
+                "default": "./dist/esm/api/resources/component/exports.mjs"
+            },
+            "require": {
+                "types": "./dist/cjs/api/resources/component/exports.d.ts",
+                "default": "./dist/cjs/api/resources/component/exports.js"
+            },
+            "default": "./dist/cjs/api/resources/component/exports.js"
         },
         "./fragment": {
             "import": {
@@ -54,6 +76,50 @@
                 "default": "./dist/cjs/api/resources/fragment/exports.js"
             },
             "default": "./dist/cjs/api/resources/fragment/exports.js"
+        },
+        "./experienceFragment": {
+            "import": {
+                "types": "./dist/esm/api/resources/experienceFragment/exports.d.mts",
+                "default": "./dist/esm/api/resources/experienceFragment/exports.mjs"
+            },
+            "require": {
+                "types": "./dist/cjs/api/resources/experienceFragment/exports.d.ts",
+                "default": "./dist/cjs/api/resources/experienceFragment/exports.js"
+            },
+            "default": "./dist/cjs/api/resources/experienceFragment/exports.js"
+        },
+        "./release": {
+            "import": {
+                "types": "./dist/esm/api/resources/release/exports.d.mts",
+                "default": "./dist/esm/api/resources/release/exports.mjs"
+            },
+            "require": {
+                "types": "./dist/cjs/api/resources/release/exports.d.ts",
+                "default": "./dist/cjs/api/resources/release/exports.js"
+            },
+            "default": "./dist/cjs/api/resources/release/exports.js"
+        },
+        "./release/experience": {
+            "import": {
+                "types": "./dist/esm/api/resources/release/resources/experience/exports.d.mts",
+                "default": "./dist/esm/api/resources/release/resources/experience/exports.mjs"
+            },
+            "require": {
+                "types": "./dist/cjs/api/resources/release/resources/experience/exports.d.ts",
+                "default": "./dist/cjs/api/resources/release/resources/experience/exports.js"
+            },
+            "default": "./dist/cjs/api/resources/release/resources/experience/exports.js"
+        },
+        "./release/fragment": {
+            "import": {
+                "types": "./dist/esm/api/resources/release/resources/fragment/exports.d.mts",
+                "default": "./dist/esm/api/resources/release/resources/fragment/exports.mjs"
+            },
+            "require": {
+                "types": "./dist/cjs/api/resources/release/resources/fragment/exports.d.ts",
+                "default": "./dist/cjs/api/resources/release/resources/fragment/exports.js"
+            },
+            "default": "./dist/cjs/api/resources/release/resources/fragment/exports.js"
         },
         "./package.json": "./package.json"
     },
@@ -96,7 +162,7 @@
     },
     "packageManager": "pnpm@10.33.0",
     "engines": {
-        "node": ">=22.0.0"
+        "node": ">=18.0.0"
     },
     "sideEffects": false,
     "description": "TypeScript client for Contentful's Experience Delivery and Preview API",

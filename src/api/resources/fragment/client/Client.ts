@@ -16,9 +16,6 @@ export declare namespace FragmentClient {
     export interface RequestOptions extends BaseRequestOptions {}
 }
 
-/**
- * Endpoints that return hydrated Fragments. Preview environments only.
- */
 export class FragmentClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<FragmentClient.Options>;
 
@@ -27,10 +24,14 @@ export class FragmentClient {
     }
 
     /**
+     * @deprecated
+     *
+     * Superseded by `getExperienceFragment` (`GET /experience_fragments/{id}`), which returns the renamed ExO entity shape.
+     *
      * @param {string} spaceId
      * @param {string} environmentId
      * @param {string} id
-     * @param {ContentfulViewDelivery.GetFragmentFragmentRequest} request
+     * @param {ContentfulViewDelivery.GetFragmentRequest} request
      * @param {FragmentClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link ContentfulViewDelivery.BadRequestError}
@@ -42,7 +43,7 @@ export class FragmentClient {
      * @throws {@link ContentfulViewDelivery.InternalServerError}
      *
      * @example
-     *     await client.fragment.getFragment("spaceId", "environmentId", "id", {
+     *     await client.fragment.get("spaceId", "environmentId", "id", {
      *         preview: "true",
      *         accessToken: "access_token",
      *         optimizationProfileId: "optimization-profile-id",
@@ -50,25 +51,23 @@ export class FragmentClient {
      *         variant: "variant"
      *     })
      */
-    public getFragment(
+    public get(
         spaceId: string,
         environmentId: string,
         id: string,
-        request: ContentfulViewDelivery.GetFragmentFragmentRequest = {},
+        request: ContentfulViewDelivery.GetFragmentRequest = {},
         requestOptions?: FragmentClient.RequestOptions,
-    ): core.HttpResponsePromise<ContentfulViewDelivery.GetFragmentFragmentResponse> {
-        return core.HttpResponsePromise.fromPromise(
-            this.__getFragment(spaceId, environmentId, id, request, requestOptions),
-        );
+    ): core.HttpResponsePromise<ContentfulViewDelivery.HydratedFragmentView> {
+        return core.HttpResponsePromise.fromPromise(this.__get(spaceId, environmentId, id, request, requestOptions));
     }
 
-    private async __getFragment(
+    private async __get(
         spaceId: string,
         environmentId: string,
         id: string,
-        request: ContentfulViewDelivery.GetFragmentFragmentRequest = {},
+        request: ContentfulViewDelivery.GetFragmentRequest = {},
         requestOptions?: FragmentClient.RequestOptions,
-    ): Promise<core.WithRawResponse<ContentfulViewDelivery.GetFragmentFragmentResponse>> {
+    ): Promise<core.WithRawResponse<ContentfulViewDelivery.HydratedFragmentView>> {
         const { preview, accessToken, optimizationProfileId, locale, variant } = request;
         const _queryParams: Record<string, unknown> = {
             preview,
@@ -105,7 +104,7 @@ export class FragmentClient {
         });
         if (_response.ok) {
             return {
-                data: serializers.GetFragmentFragmentResponse.parseOrThrow(_response.body, {
+                data: serializers.HydratedFragmentView.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,

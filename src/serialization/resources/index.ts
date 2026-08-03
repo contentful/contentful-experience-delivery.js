@@ -1,5 +1,11 @@
+export * as component from "./component/index.js";
+export * from "./component/types/index.js";
+export * from "./experience/client/requests/index.js";
+export * as experience from "./experience/index.js";
+export * from "./experience/types/index.js";
+export * as experienceFragment from "./experienceFragment/index.js";
+export * from "./experienceFragment/types/index.js";
 export * as fragment from "./fragment/index.js";
 export * from "./fragment/types/index.js";
-export * from "./view/client/requests/index.js";
-export * as view from "./view/index.js";
-export * from "./view/types/index.js";
+export * as template from "./template/index.js";
+export * from "./template/types/index.js";
