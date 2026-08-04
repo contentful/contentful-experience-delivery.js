@@ -2204,7 +2204,7 @@ patches:
               ansi-styles: 6.2.3
               string-width: 5.1.2
               strip-ansi: 7.2.0
-    status: unresolved
+    status: resolving
   - id: patch-e3d78ca2
     content_hash: sha256:6b9897b02e158df132ceaf0ea465ce4c3c0a639ffed79718f5f3aa6367183a21
     original_commit: e3d78ca2eb3de216b0ab8f755b8f4398ea53f131
