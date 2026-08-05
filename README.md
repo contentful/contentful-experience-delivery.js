@@ -3,7 +3,11 @@
 [![fern shield](https://img.shields.io/badge/%F0%9F%8C%BF-Built%20with%20Fern-brightgreen)](https://buildwithfern.com?utm_source=github&utm_medium=github&utm_campaign=readme&utm_source=https%3A%2F%2Fgithub.com%2Fcontentful%2Fcontentful-experience-delivery.js)
 [![npm shield](https://img.shields.io/npm/v/@contentful/experience-delivery)](https://www.npmjs.com/package/@contentful/experience-delivery)
 
-A TypeScript client for delivering and previewing Contentful Experiences. Fetch fully resolved Views, Fragments, and personalized Experiences with rich, typed responses and first-class IntelliSense.
+> ⚠️ **Dev build.** Published to npm as a pre-release (`dev` tag). APIs are unstable and will change.
+
+A TypeScript client for delivering and previewing Contentful Experiences.
+Fetch fully resolved Views and personalized Experiences with rich, typed responses
+and first-class IntelliSense.
 
 
 ## Table of Contents
@@ -53,7 +57,7 @@ const client = new ContentfulViewDeliveryClient({
     token: process.env.CONTENTFUL_CDA_TOKEN!,
 });
 
-const experience = await client.view.getExperience(
+const experience = await client.experience.get(
     "spaceId",
     "environmentId",
     "experienceId",
@@ -95,7 +99,7 @@ const previewClient = new ContentfulViewDeliveryClient({
     baseUrl: "https://preview.xdn.contentful.com",
 });
 
-const draft = await previewClient.view.getExperience(spaceId, envId, experienceId, {
+const draft = await previewClient.experience.get(spaceId, envId, experienceId, {
     preview: "true",
     locale: "en-US",
 });
@@ -107,7 +111,7 @@ For environments where you can't send the `Authorization` header (e.g. some brow
 scenarios), the API also accepts an `access_token` query parameter:
 
 ```typescript
-await client.view.getExperience(spaceId, envId, experienceId, {
+await client.experience.get(spaceId, envId, experienceId, {
     locale: "en-US",
     accessToken: process.env.CONTENTFUL_CDA_TOKEN!,
 });
@@ -134,7 +138,7 @@ following namespace:
 ```typescript
 import { ContentfulViewDelivery } from "@contentful/experience-delivery";
 
-const request: ContentfulViewDelivery.GetExperienceViewRequest = {
+const request: ContentfulViewDelivery.GetExperienceRequest = {
     ...
 };
 ```
@@ -148,7 +152,7 @@ will be thrown.
 import { ContentfulViewDeliveryError } from "@contentful/experience-delivery";
 
 try {
-    await client.view.getExperienceWithOverrides(...);
+    await client.experience.getWithOverrides(...);
 } catch (err) {
     if (err instanceof ContentfulViewDeliveryError) {
         console.log(err.statusCode);
@@ -166,9 +170,9 @@ try {
 This SDK supports direct imports of subpackage clients, which allows JavaScript bundlers to tree-shake and include only the imported subpackage code. This results in much smaller bundle sizes.
 
 ```typescript
-import { ViewClient } from '@contentful/experience-delivery/view';
+import { ExperienceClient } from '@contentful/experience-delivery/experience';
 
-const client = new ViewClient({...});
+const client = new ExperienceClient({...});
 ```
 
 ### Additional Headers
@@ -185,7 +189,7 @@ const client = new ContentfulViewDeliveryClient({
     }
 });
 
-const response = await client.view.getExperienceWithOverrides(..., {
+const response = await client.experience.getWithOverrides(..., {
     headers: {
         'X-Custom-Header': 'custom value'
     }
@@ -197,7 +201,7 @@ const response = await client.view.getExperienceWithOverrides(..., {
 If you would like to send additional query string parameters as part of the request, use the `queryParams` request option.
 
 ```typescript
-const response = await client.view.getExperienceWithOverrides(..., {
+const response = await client.experience.getWithOverrides(..., {
     queryParams: {
         'customQueryParamKey': 'custom query param value'
     }
@@ -227,7 +231,7 @@ Which status codes are retried depends on the `retryStatusCodes` generator confi
 Use the `maxRetries` request option to configure this behavior.
 
 ```typescript
-const response = await client.view.getExperienceWithOverrides(..., {
+const response = await client.experience.getWithOverrides(..., {
     maxRetries: 0 // override maxRetries at the request level
 });
 ```
@@ -237,7 +241,7 @@ const response = await client.view.getExperienceWithOverrides(..., {
 The SDK defaults to a 60 second timeout. Use the `timeoutInSeconds` option to configure this behavior.
 
 ```typescript
-const response = await client.view.getExperienceWithOverrides(..., {
+const response = await client.experience.getWithOverrides(..., {
     timeoutInSeconds: 30 // override timeout to 30s
 });
 ```
@@ -248,7 +252,7 @@ The SDK allows users to abort requests at any point by passing in an abort signa
 
 ```typescript
 const controller = new AbortController();
-const response = await client.view.getExperienceWithOverrides(..., {
+const response = await client.experience.getWithOverrides(..., {
     abortSignal: controller.signal
 });
 controller.abort(); // aborts the request
@@ -260,7 +264,7 @@ The SDK provides access to raw response data, including headers, through the `.w
 The `.withRawResponse()` method returns a promise that results to an object with a `data` and a `rawResponse` property.
 
 ```typescript
-const { data, rawResponse } = await client.view.getExperienceWithOverrides(...).withRawResponse();
+const { data, rawResponse } = await client.experience.getWithOverrides(...).withRawResponse();
 
 console.log(data);
 console.log(rawResponse.headers['X-My-Header']);
