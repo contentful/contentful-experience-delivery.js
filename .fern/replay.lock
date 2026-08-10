@@ -18,7 +18,13 @@ generations:
     cli_version: unknown
     generator_versions:
       fernapi/fern-typescript-node-sdk: 3.70.6
-current_generation: dcbad541e278f70377c29dfe82c643d913b071c5
+  - commit_sha: f23b784c2ced634c19d976980fbaebfaccc831bb
+    tree_hash: 86e60a8b3352fa4fc2998d06400358656faf16ea
+    timestamp: 2026-08-10T20:09:50.571Z
+    cli_version: unknown
+    generator_versions:
+      fernapi/fern-typescript-node-sdk: 3.70.6
+current_generation: f23b784c2ced634c19d976980fbaebfaccc831bb
 patches:
   - id: patch-b7675864
     content_hash: sha256:fd99db33125f1a44c996d757739dc327bc86428b2edb7d2bd85388edfd7b2b74
@@ -37,8 +43,8 @@ patches:
       @@ -1,6 +1,6 @@
        {
            "name": "@contentful/experience-delivery",
-      -    "version": "0.0.0-fern-placeholder.6",
-      +    "version": "0.0.0-fern-placeholder.6.4",
+      -    "version": "0.0.0-fern-placeholder",
+      +    "version": "0.0.0-fern-placeholder.4",
            "private": false,
            "repository": {
                "type": "git",
@@ -46,7 +52,7 @@ patches:
       package.json: |
         {
             "name": "@contentful/experience-delivery",
-            "version": "0.0.0-fern-placeholder.6.4",
+            "version": "0.0.0-fern-placeholder.4",
             "private": false,
             "repository": {
                 "type": "git",
@@ -2204,13 +2210,13 @@ patches:
               ansi-styles: 6.2.3
               string-width: 5.1.2
               strip-ansi: 7.2.0
-    status: resolving
+    status: unresolved
   - id: patch-e3d78ca2
     content_hash: sha256:6b9897b02e158df132ceaf0ea465ce4c3c0a639ffed79718f5f3aa6367183a21
     original_commit: e3d78ca2eb3de216b0ab8f755b8f4398ea53f131
     original_message: "chore: set up Renovate for dependency updates [MEC-3447] (#13)"
     original_author: contentful-renovate-rollout[bot] <299147280+contentful-renovate-rollout[bot]@users.noreply.github.com>
-    base_generation: dcbad541e278f70377c29dfe82c643d913b071c5
+    base_generation: f23b784c2ced634c19d976980fbaebfaccc831bb
     files:
       - renovate.json
     patch_content: |
@@ -2232,11 +2238,11 @@ patches:
         }
     user_owned: true
   - id: patch-d795327b
-    content_hash: sha256:b5ef7534ddba7278cd6604f7003c51054b3d606b991659ed0de18d6015f3c40a
+    content_hash: sha256:467a89d4222479c5c25763746e775181cce1b80a6f52daf80f07e33ed123563d
     original_commit: d795327b959a2d948d4f8d2da585e34307f116b8
     original_message: "feat: add build-from-source guide and raise minimum Node.js to 22 [] (#14)"
     original_author: Tyler Collins <104802020+t-col@users.noreply.github.com>
-    base_generation: dcbad541e278f70377c29dfe82c643d913b071c5
+    base_generation: f23b784c2ced634c19d976980fbaebfaccc831bb
     files:
       - README.md
       - package.json
@@ -2266,9 +2272,17 @@ patches:
        - Cloudflare Workers
        - Deno v1.25+
       diff --git a/package.json b/package.json
-      index dfd44c1..abe1403 100644
+      index dfd44c1..39e5805 100644
       --- a/package.json
       +++ b/package.json
+      @@ -1,6 +1,6 @@
+       {
+           "name": "@contentful/experience-delivery",
+      -    "version": "0.0.0-fern-placeholder",
+      +    "version": "0.0.0-fern-placeholder.6",
+           "private": false,
+           "repository": {
+               "type": "git",
       @@ -162,7 +162,7 @@
            },
            "packageManager": "pnpm@10.33.0",
@@ -2821,3 +2835,4 @@ patches:
             "description": "TypeScript client for Contentful's Experience Delivery and Preview API",
             "license": "MIT"
         }
+    user_owned: true
