@@ -2,7 +2,7 @@
 
 import type { BaseClientOptions, BaseRequestOptions } from "../../../../BaseClient.js";
 import { type NormalizedClientOptionsWithAuth, normalizeClientOptionsWithAuth } from "../../../../BaseClient.js";
-import { mergeHeaders } from "../../../../core/headers.js";
+import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../core/headers.js";
 import * as core from "../../../../core/index.js";
 import * as environments from "../../../../environments.js";
 import { handleNonStatusCodeError } from "../../../../errors/handleNonStatusCodeError.js";
@@ -79,6 +79,10 @@ export class ExperienceClient {
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
             this._options?.headers,
+            mergeOnlyDefinedHeaders({
+                "x-contentful-enable-alpha-feature":
+                    requestOptions?.xContentfulEnableAlphaFeature ?? "new-exo-entity-types",
+            }),
             requestOptions?.headers,
         );
         const _response = await core.fetcher({
@@ -205,6 +209,10 @@ export class ExperienceClient {
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
             this._options?.headers,
+            mergeOnlyDefinedHeaders({
+                "x-contentful-enable-alpha-feature":
+                    requestOptions?.xContentfulEnableAlphaFeature ?? "new-exo-entity-types",
+            }),
             requestOptions?.headers,
         );
         const _response = await core.fetcher({
