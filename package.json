@@ -149,7 +149,7 @@
         "ts-loader": "^9.5.4",
         "vitest": "^4.1.1",
         "@types/node": "^20.0.0",
-        "typescript": "~5.9.3",
+        "typescript": "~7.0.0",
         "@biomejs/biome": "2.4.10",
         "license-checker-rseidelsohn": "^4.4.2"
     },
