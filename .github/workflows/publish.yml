@@ -28,7 +28,7 @@ jobs:
             secret/data/github/github_packages_write GITHUB_PACKAGES_WRITE_TOKEN | GITHUB_PACKAGES_WRITE_TOKEN;
 
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
       - name: Setup Node.js
         uses: actions/setup-node@v6
