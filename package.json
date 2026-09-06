@@ -147,7 +147,7 @@
     "devDependencies": {
         "webpack": "^5.105.4",
         "ts-loader": "^9.5.4",
-        "vitest": "^4.1.1",
+        "vitest": "^5.0.0",
         "@types/node": "^20.0.0",
         "typescript": "~5.9.3",
         "@biomejs/biome": "2.4.10",
