@@ -1,6 +1,6 @@
 {
     "name": "@contentful/experience-delivery",
-    "version": "0.0.0-fern-placeholder.6",
+    "version": "0.0.0-fern-placeholder.7",
     "private": false,
     "repository": {
         "type": "git",
@@ -87,6 +87,17 @@
                 "default": "./dist/cjs/api/resources/experienceFragment/exports.js"
             },
             "default": "./dist/cjs/api/resources/experienceFragment/exports.js"
+        },
+        "./destination": {
+            "import": {
+                "types": "./dist/esm/api/resources/destination/exports.d.mts",
+                "default": "./dist/esm/api/resources/destination/exports.mjs"
+            },
+            "require": {
+                "types": "./dist/cjs/api/resources/destination/exports.d.ts",
+                "default": "./dist/cjs/api/resources/destination/exports.js"
+            },
+            "default": "./dist/cjs/api/resources/destination/exports.js"
         },
         "./release": {
             "import": {
