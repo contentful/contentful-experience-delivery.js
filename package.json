@@ -1,6 +1,6 @@
 {
     "name": "@contentful/experience-delivery",
-    "version": "0.0.0-fern-placeholder.6",
+    "version": "0.0.0-fern-placeholder",
     "private": false,
     "repository": {
         "type": "git",
@@ -88,6 +88,17 @@
             },
             "default": "./dist/cjs/api/resources/experienceFragment/exports.js"
         },
+        "./destination": {
+            "import": {
+                "types": "./dist/esm/api/resources/destination/exports.d.mts",
+                "default": "./dist/esm/api/resources/destination/exports.mjs"
+            },
+            "require": {
+                "types": "./dist/cjs/api/resources/destination/exports.d.ts",
+                "default": "./dist/cjs/api/resources/destination/exports.js"
+            },
+            "default": "./dist/cjs/api/resources/destination/exports.js"
+        },
         "./release": {
             "import": {
                 "types": "./dist/esm/api/resources/release/exports.d.mts",
@@ -162,7 +173,7 @@
     },
     "packageManager": "pnpm@10.33.0",
     "engines": {
-        "node": ">=22.0.0"
+        "node": ">=18.0.0"
     },
     "sideEffects": false,
     "description": "TypeScript client for Contentful's Experience Delivery and Preview API",

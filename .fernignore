@@ -16,3 +16,6 @@ catalog-info.yaml
 .github/ISSUE_TEMPLATE
 .github/pull_request_template.md
 BUILDING.md
+AGENTS.md
+ARCHITECTURE.md
+docs

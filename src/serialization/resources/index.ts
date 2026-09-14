@@ -1,5 +1,7 @@
 export * as component from "./component/index.js";
 export * from "./component/types/index.js";
+export * from "./destination/client/requests/index.js";
+export * as destination from "./destination/index.js";
 export * from "./experience/client/requests/index.js";
 export * as experience from "./experience/index.js";
 export * from "./experience/types/index.js";
