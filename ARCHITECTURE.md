@@ -221,4 +221,4 @@ after a regeneration. See [AUTOMATION-FOR-LICENSES.md](./AUTOMATION-FOR-LICENSES
 `catalog-info.yaml` registers the repo in Backstage as a `library` component at
 service tier 4, owned by `group:team-developer-experience`, with CI alerts going
 to `prd-ecosystem-dx-bots`. `.github/CODEOWNERS` assigns
-`@contentful/group-ecosystem`.
+`@contentful/group-applied-ai-solutions`.
