@@ -125,4 +125,4 @@ the generator emits code in exactly that style.
   `chore: add CODEOWNERS file [DX-1197] (#10)`. Generated commits are authored
   by `fern-api[bot]` and titled `SDK regeneration`.
 - CODEOWNERS is `@contentful/group-applied-ai-solutions`; `catalog-info.yaml` records
-  `group:team-developer-experience` as the Backstage owner at service tier 4.
+  `group:group-applied-ai-solutions` as the Backstage owner at service tier 4.
