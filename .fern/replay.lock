@@ -24,7 +24,13 @@ generations:
     cli_version: unknown
     generator_versions:
       fernapi/fern-typescript-node-sdk: 3.70.6
-current_generation: f23b784c2ced634c19d976980fbaebfaccc831bb
+  - commit_sha: a6bd3b2caa11ae53bae5267ddd9a638ae4b776a8
+    tree_hash: e7e19a30312d7bf8cf7427ae8b8b96b3114e7a45
+    timestamp: 2026-09-14T14:58:47.438Z
+    cli_version: unknown
+    generator_versions:
+      fernapi/fern-typescript-node-sdk: 3.70.6
+current_generation: a6bd3b2caa11ae53bae5267ddd9a638ae4b776a8
 patches:
   - id: patch-b7675864
     content_hash: sha256:fd99db33125f1a44c996d757739dc327bc86428b2edb7d2bd85388edfd7b2b74
@@ -2216,7 +2222,7 @@ patches:
     original_commit: e3d78ca2eb3de216b0ab8f755b8f4398ea53f131
     original_message: "chore: set up Renovate for dependency updates [MEC-3447] (#13)"
     original_author: contentful-renovate-rollout[bot] <299147280+contentful-renovate-rollout[bot]@users.noreply.github.com>
-    base_generation: f23b784c2ced634c19d976980fbaebfaccc831bb
+    base_generation: a6bd3b2caa11ae53bae5267ddd9a638ae4b776a8
     files:
       - renovate.json
     patch_content: |
@@ -2238,11 +2244,11 @@ patches:
         }
     user_owned: true
   - id: patch-d795327b
-    content_hash: sha256:467a89d4222479c5c25763746e775181cce1b80a6f52daf80f07e33ed123563d
+    content_hash: sha256:c4578f28de0017beb618a017990317955052093bd0c2cc3b199bd8db4dfb2f62
     original_commit: d795327b959a2d948d4f8d2da585e34307f116b8
     original_message: "feat: add build-from-source guide and raise minimum Node.js to 22 [] (#14)"
     original_author: Tyler Collins <104802020+t-col@users.noreply.github.com>
-    base_generation: f23b784c2ced634c19d976980fbaebfaccc831bb
+    base_generation: a6bd3b2caa11ae53bae5267ddd9a638ae4b776a8
     files:
       - README.md
       - package.json
@@ -2272,18 +2278,18 @@ patches:
        - Cloudflare Workers
        - Deno v1.25+
       diff --git a/package.json b/package.json
-      index dfd44c1..39e5805 100644
+      index 8a66859..44c57e5 100644
       --- a/package.json
       +++ b/package.json
       @@ -1,6 +1,6 @@
        {
            "name": "@contentful/experience-delivery",
       -    "version": "0.0.0-fern-placeholder",
-      +    "version": "0.0.0-fern-placeholder.6",
+      +    "version": "0.0.0-fern-placeholder.7",
            "private": false,
            "repository": {
                "type": "git",
-      @@ -162,7 +162,7 @@
+      @@ -173,7 +173,7 @@
            },
            "packageManager": "pnpm@10.33.0",
            "engines": {
@@ -2667,7 +2673,7 @@ patches:
       package.json: |
         {
             "name": "@contentful/experience-delivery",
-            "version": "0.0.0-fern-placeholder.6",
+            "version": "0.0.0-fern-placeholder.7",
             "private": false,
             "repository": {
                 "type": "git",
@@ -2754,6 +2760,17 @@ patches:
                         "default": "./dist/cjs/api/resources/experienceFragment/exports.js"
                     },
                     "default": "./dist/cjs/api/resources/experienceFragment/exports.js"
+                },
+                "./destination": {
+                    "import": {
+                        "types": "./dist/esm/api/resources/destination/exports.d.mts",
+                        "default": "./dist/esm/api/resources/destination/exports.mjs"
+                    },
+                    "require": {
+                        "types": "./dist/cjs/api/resources/destination/exports.d.ts",
+                        "default": "./dist/cjs/api/resources/destination/exports.js"
+                    },
+                    "default": "./dist/cjs/api/resources/destination/exports.js"
                 },
                 "./release": {
                     "import": {

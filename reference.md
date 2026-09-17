@@ -492,6 +492,281 @@ await client.experienceFragment.get("spaceId", "environmentId", "id", {
 </dl>
 </details>
 
+## Destination
+<details><summary><code>client.destination.<a href="/src/api/resources/destination/client/Client.ts">sitemap</a>(spaceId, destinationId, { ...params }) -> ContentfulViewDelivery.DestinationSitemap</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.destination.sitemap("yadj1kx9rmg0", "4RqKkGJqLHpMiomHuILv5N", {
+    limit: 1,
+    pageNext: "pageNext",
+    pagePrev: "pagePrev"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**spaceId:** `string` — ID of the space.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**destinationId:** `string` — ID of the published Destination.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `ContentfulViewDelivery.SitemapDestinationRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `DestinationClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.destination.<a href="/src/api/resources/destination/client/Client.ts">resolveByNodeId</a>(spaceId, destinationId, nodeId) -> ContentfulViewDelivery.DestinationExperienceResolutionResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.destination.resolveByNodeId("yadj1kx9rmg0", "4RqKkGJqLHpMiomHuILv5N", "6BslKh9TdKGOK41VmLDjFZ");
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**spaceId:** `string` — ID of the space.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**destinationId:** `string` — ID of the published Destination.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**nodeId:** `string` — ID of the Destination Node to resolve.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `DestinationClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.destination.<a href="/src/api/resources/destination/client/Client.ts">resolveByNodeIdWithOverrides</a>(spaceId, destinationId, nodeId, { ...params }) -> ContentfulViewDelivery.DestinationExperienceResolutionResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.destination.resolveByNodeIdWithOverrides("yadj1kx9rmg0", "4RqKkGJqLHpMiomHuILv5N", "6BslKh9TdKGOK41VmLDjFZ");
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**spaceId:** `string` — ID of the space.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**destinationId:** `string` — ID of the published Destination.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**nodeId:** `string` — ID of the Destination Node to resolve.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `ContentfulViewDelivery.DestinationExperiencesByNodeRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `DestinationClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.destination.<a href="/src/api/resources/destination/client/Client.ts">resolveByPath</a>(spaceId, destinationId, { ...params }) -> ContentfulViewDelivery.DestinationExperienceResolutionResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.destination.resolveByPath("yadj1kx9rmg0", "4RqKkGJqLHpMiomHuILv5N", {
+    path: "/products"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**spaceId:** `string` — ID of the space.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**destinationId:** `string` — ID of the published Destination.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `ContentfulViewDelivery.DestinationExperiencesByPathRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `DestinationClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## Release Experience
 <details><summary><code>client.release.experience.<a href="/src/api/resources/release/resources/experience/client/Client.ts">get</a>(spaceId, environmentId, id, { ...params }) -> ContentfulViewDelivery.HydratedView</code></summary>
 <dl>
