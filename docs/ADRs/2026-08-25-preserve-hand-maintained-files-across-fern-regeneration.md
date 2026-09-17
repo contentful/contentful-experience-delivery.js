@@ -89,7 +89,7 @@ still `>=22.0.0`, and `renovate.json` is still present (`git log -- renovate.jso
 shows only its creation in `e3d78ca`).
 
 **`changelog.md` inherited that error and is currently wrong.** Its
-`0.0.0-fern-placeholder.7.6` entry records "Minimum Node.js version lowered from
+`0.0.0-fern-placeholder.7` entry records "Minimum Node.js version lowered from
 `>=22.0.0` to `>=18.0.0`", which contradicts `package.json`, the `setup-node`
 step in `publish.yml`, and the runtime-compatibility list in `README.md` — all
 of which say Node 22.
