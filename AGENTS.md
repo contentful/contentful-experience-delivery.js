@@ -102,7 +102,7 @@ the generator emits code in exactly that style.
 
 - **Do not commit `dist/`.** It is gitignored and produced by `pnpm build`.
 - **Do not hand-edit the version.** `package.json` stays at a Fern placeholder
-  (`0.0.0-fern-placeholder.7.6`); the publish workflow derives the real version
+  (`0.0.0-fern-placeholder.7`); the publish workflow derives the real version
   from the git tag at release time. `src/version.ts` and the `X-Fern-SDK-Version`
   header in `src/BaseClient.ts` are generated from the same placeholder.
 - **Do not push a `v*` tag.** Any tag matching `v*` triggers
