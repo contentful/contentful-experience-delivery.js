@@ -1,13 +1,11 @@
 # Changelog
 
-## [0.0.0-fern-placeholder.7] - 2026-09-14
-### Changed
-- **Minimum Node.js version** — broadened from `>=22.0.0` to `>=18.0.0`, enabling use in Node 18 and 20 environments.
+## [1.0.0-dev.9] - 2026-09-25
+### Breaking Changes
+- **`TreeNodeDesignProperty`** — this exported union type (`DesignPropertyValue | ValuesByViewport`) has been removed. Update any code referencing `TreeNodeDesignProperty` to use `DesignPropertyValue` directly.
+- **`ValuesByViewport`** — this exported interface has been removed. Per-viewport design property overrides are no longer part of the public API contract.
+- **`designProperties`** on `ComponentTreeNode`, `RenamedComponentTreeNode`, `TemplateTreeNode`, and `RenamedTemplateTreeNode` — the value type has changed from `TreeNodeDesignProperty` (which included `ValuesByViewport`) to `DesignPropertyValue`. Code that handles `ValuesByViewport` values in design properties will need to be updated.
 
-### Added
-- **`DestinationClient`** — new resource client accessible via `client.destination` on `ContentfulViewDeliveryClient`, providing `sitemap`, `resolveByNodeId`, `resolveByNodeIdWithOverrides`, and `resolveByPath` methods for Destination-scoped delivery operations.
-- **`DestinationExperienceResolutionResponse`**, **`DestinationExperiencesResponse`**, **`DestinationRedirectResponse`**, and **`ResolvedDestinationExperience`** — new types for resolving and representing experiences at a Destination path or node.
-- **`PersonalizationEvent`** union type and concrete event interfaces (`PersonalizationPageEvent`, `PersonalizationTrackEvent`, `PersonalizationIdentifyEvent`, `PersonalizationScreenEvent`, `PersonalizationComponentEvent`) — new types for tracking personalization analytics events, along with supporting enums `PersonalizationEventBaseChannel`, `PersonalizationEventBaseType`, and `PersonalizationEventBaseComponentType`.
-- **`DestinationSitemap`**, **`SitemapPath`**, and related paginated sitemap types** — new types for enumerating all routable paths in a published Destination, with cursor-based pagination via `SitemapDestinationRequest`.
-- **`Error_`**, **`ErrorSys`**, and **`ErrorI18NContext`** — new shared error types for structured API error responses; `./destination` subpath export also added for direct import of the destination resource client.
+### Changed
+- **Node.js engine requirement** — the minimum supported Node.js version has been lowered from `>=22.0.0` to `>=18.0.0`, broadening compatibility.
 

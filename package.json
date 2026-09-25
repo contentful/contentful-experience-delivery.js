@@ -1,6 +1,6 @@
 {
     "name": "@contentful/experience-delivery",
-    "version": "0.0.0-fern-placeholder.7",
+    "version": "1.0.0-dev.9",
     "private": false,
     "repository": {
         "type": "git",
