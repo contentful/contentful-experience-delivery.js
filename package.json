@@ -162,7 +162,7 @@
         "@types/node": "^20.0.0",
         "typescript": "~5.9.3",
         "@biomejs/biome": "2.5.14",
-        "license-checker-rseidelsohn": "^4.4.2"
+        "license-checker-rseidelsohn": "^5.0.0"
     },
     "browser": {
         "fs": false,
