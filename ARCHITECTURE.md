@@ -21,7 +21,7 @@ the exact provenance of the checked-in output:
 | `generatorVersion` | `3.70.6` |
 | `namespaceExport` | `ContentfulViewDelivery` |
 | `originGitCommit` | `4e878a3cc88c52d6d6165f6e4ad46bb26dafec60` (commit in the API-definition repo) |
-| `sdkVersion` | `0.0.0-fern-placeholder.7` |
+| `sdkVersion` | `1.0.0-dev.9.7` |
 
 Three generator settings shape the runtime behaviour more than anything else in
 this repo:
