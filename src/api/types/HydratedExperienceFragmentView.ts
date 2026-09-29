@@ -8,7 +8,7 @@ import type * as ContentfulViewDelivery from "../index.js";
 export interface HydratedExperienceFragmentView {
     /** Standard Contentful sys metadata block for an Experience Fragment: stable identifiers, timestamps, the resource type, and a `component` link. Renamed ExO entity shape (SPA-4822) -- preview only, see `DeliveryFragmentSys` for the legacy counterpart. */
     sys: ContentfulViewDelivery.DeliveryExperienceFragmentSys;
-    viewports: ContentfulViewDelivery.Viewport[];
+    viewports?: ContentfulViewDelivery.Viewport[];
     nodes: ContentfulViewDelivery.RenamedHydratedTreeNode[];
     errors: ContentfulViewDelivery.ResolutionError[];
     extensions?: ContentfulViewDelivery.HydratedExperienceFragmentViewExtensions;

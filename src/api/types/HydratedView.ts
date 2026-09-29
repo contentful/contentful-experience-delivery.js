@@ -8,7 +8,7 @@ import type * as ContentfulViewDelivery from "../index.js";
 export interface HydratedView {
     /** Standard Contentful sys metadata block: stable identifiers, timestamps, the resource type, and a `template` link. Legacy shape -- see `RenamedDeliveryExperienceSys` for the SPA-4822 renamed ExO entity counterpart. */
     sys: ContentfulViewDelivery.DeliveryExperienceSys;
-    viewports: ContentfulViewDelivery.Viewport[];
+    viewports?: ContentfulViewDelivery.Viewport[];
     nodes: ContentfulViewDelivery.HydratedTreeNode[];
     errors: ContentfulViewDelivery.ResolutionError[];
     extensions?: ContentfulViewDelivery.HydratedViewExtensions;
