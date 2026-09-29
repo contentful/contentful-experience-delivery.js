@@ -37,6 +37,10 @@ and first-class IntelliSense.
 npm i -s @contentful/experience-delivery
 ```
 
+> **Note**: This package is not yet published as a stable release on the public npm
+> registry. Until then, see [BUILDING.md](./BUILDING.md) for how to build and
+> consume it from source.
+
 ## Reference
 
 A full reference for this library is available [here](https://github.com/contentful/contentful-experience-delivery.js/blob/HEAD/./reference.md).
@@ -356,7 +360,7 @@ The SDK works in the following runtimes:
 
 
 
-- Node.js 18+
+- Node.js 22+
 - Vercel
 - Cloudflare Workers
 - Deno v1.25+
