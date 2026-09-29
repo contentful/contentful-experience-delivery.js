@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.0.0-dev.9] - 2026-09-29
+## [0.0.0-fern-placeholder.8] - 2026-09-29
 ### Breaking Changes
 - **`HydratedView.viewports`**, **`HydratedExperienceView.viewports`**, **`HydratedFragmentView.viewports`**, and **`HydratedExperienceFragmentView.viewports`** are now optional (`Viewport[] | undefined`) instead of required. Add a null/undefined guard before accessing this field: `if (view.viewports) { ... }`.
 
