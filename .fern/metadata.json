@@ -18,12 +18,13 @@
         "skipResponseValidation": true,
         "allowExtraFields": true,
         "writeUnitTests": false,
-        "generateWireTests": false
+        "generateWireTests": false,
+        "omitFernHeaders": true
     },
-    "originGitCommit": "05b6e5488421db817f7d7449a1220689ae68d633",
+    "originGitCommit": "8d94a212cae57362dec90f0181db2fbe599dc97b",
     "originGitCommitIsDirty": false,
     "invokedBy": "ci",
     "requestedVersion": "AUTO",
     "ciProvider": "github",
-    "sdkVersion": "0.0.0-fern-placeholder.7"
+    "sdkVersion": "1.0.0-dev.9"
 }
