@@ -13,7 +13,7 @@ export const HydratedView: core.serialization.ObjectSchema<
     ContentfulViewDelivery.HydratedView
 > = core.serialization.object({
     sys: DeliveryExperienceSys,
-    viewports: core.serialization.list(Viewport),
+    viewports: core.serialization.list(Viewport).optional(),
     nodes: core.serialization.list(core.serialization.lazy(() => serializers.HydratedTreeNode)),
     errors: core.serialization.list(ResolutionError),
     extensions: HydratedViewExtensions.optional(),
@@ -22,7 +22,7 @@ export const HydratedView: core.serialization.ObjectSchema<
 export declare namespace HydratedView {
     export interface Raw {
         sys: DeliveryExperienceSys.Raw;
-        viewports: Viewport.Raw[];
+        viewports?: Viewport.Raw[] | null;
         nodes: serializers.HydratedTreeNode.Raw[];
         errors: ResolutionError.Raw[];
         extensions?: HydratedViewExtensions.Raw | null;
