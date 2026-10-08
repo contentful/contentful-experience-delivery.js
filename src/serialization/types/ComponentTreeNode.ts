@@ -4,7 +4,7 @@ import type * as ContentfulViewDelivery from "../../api/index.js";
 import * as core from "../../core/index.js";
 import * as serializers from "../index.js";
 import { ComponentTypeLink } from "./ComponentTypeLink.js";
-import { TreeNodeDesignProperty } from "./TreeNodeDesignProperty.js";
+import { DesignPropertyValue } from "./DesignPropertyValue.js";
 
 export const ComponentTreeNode: core.serialization.ObjectSchema<
     serializers.ComponentTreeNode.Raw,
@@ -13,7 +13,7 @@ export const ComponentTreeNode: core.serialization.ObjectSchema<
     componentType: ComponentTypeLink,
     id: core.serialization.string().optional(),
     contentProperties: core.serialization.record(core.serialization.string(), core.serialization.unknown()),
-    designProperties: core.serialization.record(core.serialization.string(), TreeNodeDesignProperty),
+    designProperties: core.serialization.record(core.serialization.string(), DesignPropertyValue),
     slots: core.serialization
         .record(
             core.serialization.string(),
@@ -28,7 +28,7 @@ export declare namespace ComponentTreeNode {
         componentType: ComponentTypeLink.Raw;
         id?: string | null;
         contentProperties: Record<string, unknown>;
-        designProperties: Record<string, TreeNodeDesignProperty.Raw>;
+        designProperties: Record<string, DesignPropertyValue.Raw>;
         slots?: Record<string, serializers.HydratedTreeNode.Raw[]> | null;
         contentBindings?: string | null;
     }

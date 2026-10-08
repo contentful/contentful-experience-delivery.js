@@ -10,7 +10,7 @@ export interface ComponentTreeNode {
     componentType: ContentfulViewDelivery.ComponentTypeLink;
     id?: string;
     contentProperties: Record<string, unknown>;
-    designProperties: Record<string, ContentfulViewDelivery.TreeNodeDesignProperty>;
+    designProperties: Record<string, ContentfulViewDelivery.DesignPropertyValue>;
     slots?: Record<string, ContentfulViewDelivery.HydratedTreeNode[]>;
     contentBindings?: string;
 }

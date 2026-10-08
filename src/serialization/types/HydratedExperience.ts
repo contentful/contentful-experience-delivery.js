@@ -9,9 +9,6 @@ export const HydratedExperience: core.serialization.ObjectSchema<
     ContentfulViewDelivery.HydratedExperience
 > = core.serialization.object({
     sys: core.serialization.record(core.serialization.string(), core.serialization.unknown()),
-    viewports: core.serialization.list(
-        core.serialization.record(core.serialization.string(), core.serialization.unknown()),
-    ),
     nodes: core.serialization.list(
         core.serialization.record(core.serialization.string(), core.serialization.unknown()),
     ),
@@ -28,7 +25,6 @@ export const HydratedExperience: core.serialization.ObjectSchema<
 export declare namespace HydratedExperience {
     export interface Raw {
         sys: Record<string, unknown>;
-        viewports: Record<string, unknown>[];
         nodes: Record<string, unknown>[];
         errors: Record<string, unknown>[];
         extensions?: Record<string, unknown> | null;
