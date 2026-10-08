@@ -55,7 +55,7 @@ patches:
       @@ -1,6 +1,6 @@
        {
            "name": "@contentful/experience-delivery",
-      -    "version": "0.0.0-fern-placeholder",
+      -    "version": "1.0.0-dev.10",
       +    "version": "1.0.0-dev.9",
            "private": false,
            "repository": {
@@ -5371,7 +5371,7 @@ patches:
       @@ -1,6 +1,6 @@
        {
            "name": "@contentful/experience-delivery",
-      -    "version": "0.0.0-fern-placeholder",
+      -    "version": "1.0.0-dev.10",
       +    "version": "1.0.0-dev.9",
            "private": false,
            "repository": {
@@ -11046,7 +11046,7 @@ patches:
       package.json: |
         {
             "name": "@contentful/experience-delivery",
-            "version": "0.0.0-fern-placeholder",
+            "version": "1.0.0-dev.10",
             "private": false,
             "repository": {
                 "type": "git",
@@ -13671,7 +13671,7 @@ patches:
       package.json: |
         {
             "name": "@contentful/experience-delivery",
-            "version": "0.0.0-fern-placeholder",
+            "version": "1.0.0-dev.10",
             "private": false,
             "repository": {
                 "type": "git",
@@ -18365,7 +18365,7 @@ patches:
       package.json: |
         {
             "name": "@contentful/experience-delivery",
-            "version": "0.0.0-fern-placeholder.7",
+            "version": "1.0.0-dev.10.7",
             "private": false,
             "repository": {
                 "type": "git",
