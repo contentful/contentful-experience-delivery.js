@@ -5,7 +5,6 @@
  */
 export interface HydratedExperience {
     sys: Record<string, unknown>;
-    viewports: Record<string, unknown>[];
     nodes: Record<string, unknown>[];
     errors: Record<string, unknown>[];
     extensions?: Record<string, unknown>;

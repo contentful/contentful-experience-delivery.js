@@ -6,14 +6,12 @@ import * as serializers from "../index.js";
 import { DeliveryExperienceSys } from "./DeliveryExperienceSys.js";
 import { HydratedViewExtensions } from "./HydratedViewExtensions.js";
 import { ResolutionError } from "./ResolutionError.js";
-import { Viewport } from "./Viewport.js";
 
 export const HydratedView: core.serialization.ObjectSchema<
     serializers.HydratedView.Raw,
     ContentfulViewDelivery.HydratedView
 > = core.serialization.object({
     sys: DeliveryExperienceSys,
-    viewports: core.serialization.list(Viewport).optional(),
     nodes: core.serialization.list(core.serialization.lazy(() => serializers.HydratedTreeNode)),
     errors: core.serialization.list(ResolutionError),
     extensions: HydratedViewExtensions.optional(),
@@ -22,7 +20,6 @@ export const HydratedView: core.serialization.ObjectSchema<
 export declare namespace HydratedView {
     export interface Raw {
         sys: DeliveryExperienceSys.Raw;
-        viewports?: Viewport.Raw[] | null;
         nodes: serializers.HydratedTreeNode.Raw[];
         errors: ResolutionError.Raw[];
         extensions?: HydratedViewExtensions.Raw | null;

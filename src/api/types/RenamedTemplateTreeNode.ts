@@ -10,7 +10,7 @@ export interface RenamedTemplateTreeNode {
     experienceTemplate: ContentfulViewDelivery.ExperienceTemplateLink;
     id?: string;
     contentProperties: Record<string, unknown>;
-    designProperties: Record<string, ContentfulViewDelivery.TreeNodeDesignProperty>;
+    designProperties: Record<string, ContentfulViewDelivery.DesignPropertyValue>;
     slots?: Record<string, ContentfulViewDelivery.RenamedHydratedTreeNode[]>;
     contentBindings?: string;
 }
