@@ -22123,7 +22123,7 @@ patches:
         }
       src/version.ts: |
         export const SDK_VERSION = "0.0.0-fern-placeholder.8";
-    status: unresolved
+    status: resolving
   - id: patch-fcf0d7bd
     content_hash: sha256:6517d924a9069e853a3c9729ff111d16f92c0e19707c0d8457e7adda2477a9ea
     original_commit: fcf0d7bdde594215089a8e1c5bbed0c3ed0c6a6e
@@ -25308,7 +25308,7 @@ patches:
           yallist@4.0.0: {}
 
           yallist@5.0.0: {}
-    status: unresolved
+    status: resolving
   - id: patch-345371a6
     content_hash: sha256:fa08fe469d7ccc5e8eb4d88c7e622dd57f4fc65530dd1df60c26fe9a8cffce94
     original_commit: 345371a6db9ca1f7162989bb1d59488909461b00
