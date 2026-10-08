@@ -3,12 +3,11 @@
 import type * as ContentfulViewDelivery from "../index.js";
 
 /**
- * A fully hydrated Contentful Fragment (a.k.a. Component instance), including the tree nodes that should be rendered (`HydratedTreeNode`), viewport definitions, and any errors encountered during resolution. Preview only.
+ * A fully hydrated Contentful Fragment (a.k.a. Component instance), including the tree nodes that should be rendered (`HydratedTreeNode`) and any errors encountered during resolution. Preview only.
  */
 export interface HydratedFragmentView {
     /** Standard Contentful sys metadata block for a Fragment: stable identifiers, timestamps, the resource type, and a `componentType` link. Preview only -- see `DeliveryExperienceFragmentSys` for the SPA-4822 renamed ExO entity counterpart. */
     sys: ContentfulViewDelivery.DeliveryFragmentSys;
-    viewports?: ContentfulViewDelivery.Viewport[];
     nodes: ContentfulViewDelivery.HydratedTreeNode[];
     errors: ContentfulViewDelivery.ResolutionError[];
     extensions?: ContentfulViewDelivery.HydratedFragmentViewExtensions;

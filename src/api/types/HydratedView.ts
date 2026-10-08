@@ -3,12 +3,11 @@
 import type * as ContentfulViewDelivery from "../index.js";
 
 /**
- * A fully hydrated Contentful Studio View (a.k.a. Experience), including the tree nodes that should be rendered (`HydratedTreeNode`), viewport definitions, and any errors encountered during resolution. Legacy shape -- see `HydratedExperienceView` for the SPA-4822 renamed ExO entity counterpart.
+ * A fully hydrated Contentful Studio View (a.k.a. Experience), including the tree nodes that should be rendered (`HydratedTreeNode`) and any errors encountered during resolution. Legacy shape -- see `HydratedExperienceView` for the SPA-4822 renamed ExO entity counterpart.
  */
 export interface HydratedView {
     /** Standard Contentful sys metadata block: stable identifiers, timestamps, the resource type, and a `template` link. Legacy shape -- see `RenamedDeliveryExperienceSys` for the SPA-4822 renamed ExO entity counterpart. */
     sys: ContentfulViewDelivery.DeliveryExperienceSys;
-    viewports?: ContentfulViewDelivery.Viewport[];
     nodes: ContentfulViewDelivery.HydratedTreeNode[];
     errors: ContentfulViewDelivery.ResolutionError[];
     extensions?: ContentfulViewDelivery.HydratedViewExtensions;

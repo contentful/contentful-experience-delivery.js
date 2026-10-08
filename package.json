@@ -1,6 +1,6 @@
 {
     "name": "@contentful/experience-delivery",
-    "version": "0.0.0-fern-placeholder.8",
+    "version": "0.0.0-fern-placeholder",
     "private": false,
     "repository": {
         "type": "git",
@@ -158,11 +158,11 @@
     "devDependencies": {
         "webpack": "^5.105.4",
         "ts-loader": "^9.5.4",
-        "vitest": "^5.0.0",
+        "vitest": "^4.1.1",
         "@types/node": "^20.0.0",
         "typescript": "~5.9.3",
-        "@biomejs/biome": "2.5.15",
-        "license-checker-rseidelsohn": "^5.0.0"
+        "@biomejs/biome": "2.4.10",
+        "license-checker-rseidelsohn": "^4.4.2"
     },
     "browser": {
         "fs": false,
@@ -171,9 +171,9 @@
         "stream": false,
         "crypto": false
     },
-    "packageManager": "pnpm@12.9.1",
+    "packageManager": "pnpm@10.33.0",
     "engines": {
-        "node": ">=22.0.0"
+        "node": ">=18.0.0"
     },
     "sideEffects": false,
     "description": "TypeScript client for Contentful's Experience Delivery and Preview API",

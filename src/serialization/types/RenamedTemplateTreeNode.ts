@@ -3,8 +3,8 @@
 import type * as ContentfulViewDelivery from "../../api/index.js";
 import * as core from "../../core/index.js";
 import * as serializers from "../index.js";
+import { DesignPropertyValue } from "./DesignPropertyValue.js";
 import { ExperienceTemplateLink } from "./ExperienceTemplateLink.js";
-import { TreeNodeDesignProperty } from "./TreeNodeDesignProperty.js";
 
 export const RenamedTemplateTreeNode: core.serialization.ObjectSchema<
     serializers.RenamedTemplateTreeNode.Raw,
@@ -13,7 +13,7 @@ export const RenamedTemplateTreeNode: core.serialization.ObjectSchema<
     experienceTemplate: ExperienceTemplateLink,
     id: core.serialization.string().optional(),
     contentProperties: core.serialization.record(core.serialization.string(), core.serialization.unknown()),
-    designProperties: core.serialization.record(core.serialization.string(), TreeNodeDesignProperty),
+    designProperties: core.serialization.record(core.serialization.string(), DesignPropertyValue),
     slots: core.serialization
         .record(
             core.serialization.string(),
@@ -28,7 +28,7 @@ export declare namespace RenamedTemplateTreeNode {
         experienceTemplate: ExperienceTemplateLink.Raw;
         id?: string | null;
         contentProperties: Record<string, unknown>;
-        designProperties: Record<string, TreeNodeDesignProperty.Raw>;
+        designProperties: Record<string, DesignPropertyValue.Raw>;
         slots?: Record<string, serializers.RenamedHydratedTreeNode.Raw[]> | null;
         contentBindings?: string | null;
     }
