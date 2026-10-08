@@ -26,5 +26,5 @@
     "invokedBy": "ci",
     "requestedVersion": "AUTO",
     "ciProvider": "github",
-    "sdkVersion": "0.0.0-fern-placeholder.8"
+    "sdkVersion": "0.0.0-fern-placeholder.9"
 }

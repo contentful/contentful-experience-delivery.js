@@ -1,6 +1,6 @@
 # Changelog
 
-## [0.0.0-fern-placeholder.8] - 2026-10-08
+## [0.0.0-fern-placeholder.9] - 2026-10-08
 ### Breaking Changes
 - **`Viewport`** — exported type removed entirely; remove any references to this type from your code.
 - **`ValuesByViewport`** — exported type removed entirely; remove any references to this type from your code.
