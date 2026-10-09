@@ -177,10 +177,10 @@ importers:
         version: 5.0.1(supports-color@8.1.1)
       ts-loader:
         specifier: ^9.5.4
-        version: 9.6.2(typescript@5.9.3)(webpack@5.111.1(lightningcss@1.33.0)(postcss@8.5.29))
+        version: 9.6.2(typescript@6.0.3)(webpack@5.111.1(lightningcss@1.33.0)(postcss@8.5.29))
       typescript:
-        specifier: ~5.9.3
-        version: 5.9.3
+        specifier: ~6.0.0
+        version: 6.0.3
       vitest:
         specifier: ^5.0.0
         version: 5.0.3(@types/node@20.19.43)(vite@8.3.2(@types/node@20.19.43)(terser@5.51.2))
@@ -1251,8 +1251,8 @@ packages:
     resolution: {integrity: sha512-50QV99kCKH5P/Vs4E2Gzp7BopNV+KzTXqWeaxrfu5IQJBOULRsTIS9seSsOVT8ZnGXzCyx55nYWAi4qJzpZKEQ==}
     engines: {node: ^20.17.0 || >=22.9.0}
 
-  typescript@5.9.3:
-    resolution: {integrity: sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==}
+  typescript@6.0.3:
+    resolution: {integrity: sha512-y2TvuxSZPDyQakkFRPZHKFm+KKVqIisdg9/CZwm9ftvKXLP8NRWj38/ODjNbr43SsoXqNuAisEf1GdCxqWcdBw==}
     engines: {node: '>=14.17'}
     hasBin: true
 
@@ -2420,12 +2420,12 @@ snapshots:
 
   treeverse@3.0.0: {}
 
-  ts-loader@9.6.2(typescript@5.9.3)(webpack@5.111.1(lightningcss@1.33.0)(postcss@8.5.29)):
+  ts-loader@9.6.2(typescript@6.0.3)(webpack@5.111.1(lightningcss@1.33.0)(postcss@8.5.29)):
     dependencies:
       chalk: 4.1.2
       picomatch: 4.0.7
       source-map: 0.7.6
-      typescript: 5.9.3
+      typescript: 6.0.3
       webpack: 5.111.1(lightningcss@1.33.0)(postcss@8.5.29)
 
   tuf-js@4.1.0(supports-color@8.1.1):
@@ -2436,7 +2436,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  typescript@5.9.3: {}
+  typescript@6.0.3: {}
 
   undici-types@6.21.0: {}
 
