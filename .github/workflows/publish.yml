@@ -48,7 +48,7 @@ jobs:
           echo "version=$VERSION" >> "$GITHUB_OUTPUT"
 
       - name: Set version
-        run: npm version ${{ steps.version.outputs.version }} --no-git-tag-version
+        run: npm version ${{ steps.version.outputs.version }} --no-git-tag-version --allow-same-version
 
       - name: Build
         run: pnpm build
