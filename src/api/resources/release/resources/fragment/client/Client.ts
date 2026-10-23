@@ -7,7 +7,6 @@ import * as core from "../../../../../../core/index.js";
 import * as environments from "../../../../../../environments.js";
 import { handleNonStatusCodeError } from "../../../../../../errors/handleNonStatusCodeError.js";
 import * as errors from "../../../../../../errors/index.js";
-import * as serializers from "../../../../../../serialization/index.js";
 import * as ContentfulViewDelivery from "../../../../../index.js";
 
 export declare namespace FragmentClient {
@@ -40,9 +39,9 @@ export class FragmentClient {
      *
      * @example
      *     await client.release.fragment.get("spaceId", "environmentId", "id", {
-     *         accessToken: "access_token",
-     *         releaseLte: "release[lte]",
-     *         timestampLte: "timestamp[lte]",
+     *         access_token: "access_token",
+     *         "release[lte]": "release[lte]",
+     *         "timestamp[lte]": "timestamp[lte]",
      *         locale: "locale"
      *     })
      */
@@ -63,7 +62,12 @@ export class FragmentClient {
         request: ContentfulViewDelivery.release.GetFragmentRequest = {},
         requestOptions?: FragmentClient.RequestOptions,
     ): Promise<core.WithRawResponse<ContentfulViewDelivery.HydratedFragmentView>> {
-        const { accessToken, releaseLte, timestampLte, locale } = request;
+        const {
+            access_token: accessToken,
+            "release[lte]": releaseLte,
+            "timestamp[lte]": timestampLte,
+            locale,
+        } = request;
         const _queryParams: Record<string, unknown> = {
             access_token: accessToken,
             "release[lte]": releaseLte,
@@ -102,13 +106,7 @@ export class FragmentClient {
         });
         if (_response.ok) {
             return {
-                data: serializers.HydratedFragmentView.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    skipValidation: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: _response.body as ContentfulViewDelivery.HydratedFragmentView,
                 rawResponse: _response.rawResponse,
             };
         }
@@ -116,22 +114,40 @@ export class FragmentClient {
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
                 case 400:
-                    throw new ContentfulViewDelivery.BadRequestError(_response.error.body, _response.rawResponse);
+                    throw new ContentfulViewDelivery.BadRequestError(
+                        _response.error.body as unknown,
+                        _response.rawResponse,
+                    );
                 case 401:
-                    throw new ContentfulViewDelivery.UnauthorizedError(_response.error.body, _response.rawResponse);
+                    throw new ContentfulViewDelivery.UnauthorizedError(
+                        _response.error.body as unknown,
+                        _response.rawResponse,
+                    );
                 case 403:
-                    throw new ContentfulViewDelivery.ForbiddenError(_response.error.body, _response.rawResponse);
+                    throw new ContentfulViewDelivery.ForbiddenError(
+                        _response.error.body as unknown,
+                        _response.rawResponse,
+                    );
                 case 404:
-                    throw new ContentfulViewDelivery.NotFoundError(_response.error.body, _response.rawResponse);
+                    throw new ContentfulViewDelivery.NotFoundError(
+                        _response.error.body as unknown,
+                        _response.rawResponse,
+                    );
                 case 409:
-                    throw new ContentfulViewDelivery.ConflictError(_response.error.body, _response.rawResponse);
+                    throw new ContentfulViewDelivery.ConflictError(
+                        _response.error.body as unknown,
+                        _response.rawResponse,
+                    );
                 case 422:
                     throw new ContentfulViewDelivery.UnprocessableEntityError(
-                        _response.error.body,
+                        _response.error.body as unknown,
                         _response.rawResponse,
                     );
                 case 500:
-                    throw new ContentfulViewDelivery.InternalServerError(_response.error.body, _response.rawResponse);
+                    throw new ContentfulViewDelivery.InternalServerError(
+                        _response.error.body as unknown,
+                        _response.rawResponse,
+                    );
                 default:
                     throw new errors.ContentfulViewDeliveryError({
                         statusCode: _response.error.statusCode,

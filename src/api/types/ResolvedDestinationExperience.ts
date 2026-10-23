@@ -3,9 +3,7 @@
 import type * as ContentfulViewDelivery from "../index.js";
 
 export interface ResolvedDestinationExperience {
-    /** Resolved path for this Experience. */
     path: string;
     experience: ContentfulViewDelivery.HydratedExperience;
-    /** Child paths available for lazy loading at the next depth level. */
     children: ContentfulViewDelivery.ChildPath[];
 }

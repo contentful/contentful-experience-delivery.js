@@ -10,28 +10,467 @@ export type GetWithOverridesExperienceRequestExtensionsPersonalizationEventsItem
     | ContentfulViewDelivery.GetWithOverridesExperienceRequestExtensionsPersonalizationEventsItem.Component;
 
 export namespace GetWithOverridesExperienceRequestExtensionsPersonalizationEventsItem {
-    export interface Page
-        extends ContentfulViewDelivery.GetWithOverridesExperienceRequestExtensionsPersonalizationEventsItemPage {
+    export interface Page {
         type: "page";
+        channel: GetWithOverridesExperienceRequestExtensionsPersonalizationEventsItemPage.Channel;
+        context: GetWithOverridesExperienceRequestExtensionsPersonalizationEventsItemPage.Context;
+        messageId: string;
+        timestamp: string;
+        originalTimestamp?: string | undefined;
+        sentAt?: string | undefined;
+        userId?: string | undefined;
+        name?: string | undefined;
+        properties: GetWithOverridesExperienceRequestExtensionsPersonalizationEventsItemPage.Properties;
     }
 
-    export interface Track
-        extends ContentfulViewDelivery.GetWithOverridesExperienceRequestExtensionsPersonalizationEventsItemTrack {
+    export namespace GetWithOverridesExperienceRequestExtensionsPersonalizationEventsItemPage {
+        export const Channel = {
+            Web: "web",
+            Mobile: "mobile",
+            Server: "server",
+            Client: "client",
+        } as const;
+        export type Channel = (typeof Channel)[keyof typeof Channel];
+
+        export interface Context {
+            app?: Context.App | undefined;
+            campaign?: Context.Campaign | undefined;
+            library: Context.Library;
+            locale?: string | undefined;
+            location?: Context.Location | undefined;
+            page?: Context.Page | undefined;
+            userAgent?: string | undefined;
+        }
+
+        export namespace Context {
+            export interface App {
+                name: string;
+                version: string;
+            }
+
+            export interface Campaign {
+                name?: string | undefined;
+                source?: string | undefined;
+                medium?: string | undefined;
+                term?: string | undefined;
+                content?: string | undefined;
+            }
+
+            export interface Library {
+                name: string;
+                version: string;
+            }
+
+            export interface Location {
+                coordinates?: Location.Coordinates | undefined;
+                city?: string | undefined;
+                postalCode?: string | undefined;
+                region?: string | undefined;
+                regionCode?: string | undefined;
+                country?: string | undefined;
+                countryCode?: string | undefined;
+                continent?: string | undefined;
+                timezone?: string | undefined;
+            }
+
+            export namespace Location {
+                export interface Coordinates {
+                    latitude: number;
+                    longitude: number;
+                }
+            }
+
+            export interface Page {
+                path: string;
+                query: Record<string, Page.Query.Value>;
+                referrer: string;
+                search: string;
+                url: string;
+            }
+
+            export namespace Page {
+                export namespace Query {
+                    export type Value = string | string[];
+                }
+            }
+        }
+
+        export interface Properties {
+            path: string;
+            query: Record<string, Properties.Query.Value>;
+            referrer: string;
+            search: string;
+            url: string;
+            title?: string | undefined;
+            category?: string | undefined;
+            /** Accepts any additional properties */
+            [key: string]: any;
+        }
+
+        export namespace Properties {
+            export namespace Query {
+                export type Value = string | string[];
+            }
+        }
+    }
+
+    export interface Track {
         type: "track";
+        channel: GetWithOverridesExperienceRequestExtensionsPersonalizationEventsItemTrack.Channel;
+        context: GetWithOverridesExperienceRequestExtensionsPersonalizationEventsItemTrack.Context;
+        messageId: string;
+        timestamp: string;
+        originalTimestamp?: string | undefined;
+        sentAt?: string | undefined;
+        userId?: string | undefined;
+        event: string;
+        properties?: Record<string, unknown> | undefined;
     }
 
-    export interface Identify
-        extends ContentfulViewDelivery.GetWithOverridesExperienceRequestExtensionsPersonalizationEventsItemIdentify {
+    export namespace GetWithOverridesExperienceRequestExtensionsPersonalizationEventsItemTrack {
+        export const Channel = {
+            Web: "web",
+            Mobile: "mobile",
+            Server: "server",
+            Client: "client",
+        } as const;
+        export type Channel = (typeof Channel)[keyof typeof Channel];
+
+        export interface Context {
+            app?: Context.App | undefined;
+            campaign?: Context.Campaign | undefined;
+            library: Context.Library;
+            locale?: string | undefined;
+            location?: Context.Location | undefined;
+            page?: Context.Page | undefined;
+            userAgent?: string | undefined;
+        }
+
+        export namespace Context {
+            export interface App {
+                name: string;
+                version: string;
+            }
+
+            export interface Campaign {
+                name?: string | undefined;
+                source?: string | undefined;
+                medium?: string | undefined;
+                term?: string | undefined;
+                content?: string | undefined;
+            }
+
+            export interface Library {
+                name: string;
+                version: string;
+            }
+
+            export interface Location {
+                coordinates?: Location.Coordinates | undefined;
+                city?: string | undefined;
+                postalCode?: string | undefined;
+                region?: string | undefined;
+                regionCode?: string | undefined;
+                country?: string | undefined;
+                countryCode?: string | undefined;
+                continent?: string | undefined;
+                timezone?: string | undefined;
+            }
+
+            export namespace Location {
+                export interface Coordinates {
+                    latitude: number;
+                    longitude: number;
+                }
+            }
+
+            export interface Page {
+                path: string;
+                query: Record<string, Page.Query.Value>;
+                referrer: string;
+                search: string;
+                url: string;
+            }
+
+            export namespace Page {
+                export namespace Query {
+                    export type Value = string | string[];
+                }
+            }
+        }
+    }
+
+    export interface Identify {
         type: "identify";
+        channel: GetWithOverridesExperienceRequestExtensionsPersonalizationEventsItemIdentify.Channel;
+        context: GetWithOverridesExperienceRequestExtensionsPersonalizationEventsItemIdentify.Context;
+        messageId: string;
+        timestamp: string;
+        originalTimestamp?: string | undefined;
+        sentAt?: string | undefined;
+        userId: string;
+        traits: Record<string, unknown>;
     }
 
-    export interface Screen
-        extends ContentfulViewDelivery.GetWithOverridesExperienceRequestExtensionsPersonalizationEventsItemScreen {
+    export namespace GetWithOverridesExperienceRequestExtensionsPersonalizationEventsItemIdentify {
+        export const Channel = {
+            Web: "web",
+            Mobile: "mobile",
+            Server: "server",
+            Client: "client",
+        } as const;
+        export type Channel = (typeof Channel)[keyof typeof Channel];
+
+        export interface Context {
+            app?: Context.App | undefined;
+            campaign?: Context.Campaign | undefined;
+            library: Context.Library;
+            locale?: string | undefined;
+            location?: Context.Location | undefined;
+            page?: Context.Page | undefined;
+            userAgent?: string | undefined;
+        }
+
+        export namespace Context {
+            export interface App {
+                name: string;
+                version: string;
+            }
+
+            export interface Campaign {
+                name?: string | undefined;
+                source?: string | undefined;
+                medium?: string | undefined;
+                term?: string | undefined;
+                content?: string | undefined;
+            }
+
+            export interface Library {
+                name: string;
+                version: string;
+            }
+
+            export interface Location {
+                coordinates?: Location.Coordinates | undefined;
+                city?: string | undefined;
+                postalCode?: string | undefined;
+                region?: string | undefined;
+                regionCode?: string | undefined;
+                country?: string | undefined;
+                countryCode?: string | undefined;
+                continent?: string | undefined;
+                timezone?: string | undefined;
+            }
+
+            export namespace Location {
+                export interface Coordinates {
+                    latitude: number;
+                    longitude: number;
+                }
+            }
+
+            export interface Page {
+                path: string;
+                query: Record<string, Page.Query.Value>;
+                referrer: string;
+                search: string;
+                url: string;
+            }
+
+            export namespace Page {
+                export namespace Query {
+                    export type Value = string | string[];
+                }
+            }
+        }
+    }
+
+    export interface Screen {
         type: "screen";
+        channel: GetWithOverridesExperienceRequestExtensionsPersonalizationEventsItemScreen.Channel;
+        context: GetWithOverridesExperienceRequestExtensionsPersonalizationEventsItemScreen.Context;
+        messageId: string;
+        timestamp: string;
+        originalTimestamp?: string | undefined;
+        sentAt?: string | undefined;
+        userId?: string | undefined;
+        properties: GetWithOverridesExperienceRequestExtensionsPersonalizationEventsItemScreen.Properties;
     }
 
-    export interface Component
-        extends ContentfulViewDelivery.GetWithOverridesExperienceRequestExtensionsPersonalizationEventsItemComponent {
+    export namespace GetWithOverridesExperienceRequestExtensionsPersonalizationEventsItemScreen {
+        export const Channel = {
+            Web: "web",
+            Mobile: "mobile",
+            Server: "server",
+            Client: "client",
+        } as const;
+        export type Channel = (typeof Channel)[keyof typeof Channel];
+
+        export interface Context {
+            app?: Context.App | undefined;
+            campaign?: Context.Campaign | undefined;
+            library: Context.Library;
+            locale?: string | undefined;
+            location?: Context.Location | undefined;
+            page?: Context.Page | undefined;
+            userAgent?: string | undefined;
+        }
+
+        export namespace Context {
+            export interface App {
+                name: string;
+                version: string;
+            }
+
+            export interface Campaign {
+                name?: string | undefined;
+                source?: string | undefined;
+                medium?: string | undefined;
+                term?: string | undefined;
+                content?: string | undefined;
+            }
+
+            export interface Library {
+                name: string;
+                version: string;
+            }
+
+            export interface Location {
+                coordinates?: Location.Coordinates | undefined;
+                city?: string | undefined;
+                postalCode?: string | undefined;
+                region?: string | undefined;
+                regionCode?: string | undefined;
+                country?: string | undefined;
+                countryCode?: string | undefined;
+                continent?: string | undefined;
+                timezone?: string | undefined;
+            }
+
+            export namespace Location {
+                export interface Coordinates {
+                    latitude: number;
+                    longitude: number;
+                }
+            }
+
+            export interface Page {
+                path: string;
+                query: Record<string, Page.Query.Value>;
+                referrer: string;
+                search: string;
+                url: string;
+            }
+
+            export namespace Page {
+                export namespace Query {
+                    export type Value = string | string[];
+                }
+            }
+        }
+
+        export interface Properties {
+            name: string;
+            /** Accepts any additional properties */
+            [key: string]: any;
+        }
+    }
+
+    export interface Component {
         type: "component";
+        channel: GetWithOverridesExperienceRequestExtensionsPersonalizationEventsItemComponent.Channel;
+        context: GetWithOverridesExperienceRequestExtensionsPersonalizationEventsItemComponent.Context;
+        messageId: string;
+        timestamp: string;
+        originalTimestamp?: string | undefined;
+        sentAt?: string | undefined;
+        userId?: string | undefined;
+        componentId: string;
+        componentType?:
+            | GetWithOverridesExperienceRequestExtensionsPersonalizationEventsItemComponent.ComponentType
+            | undefined;
+        experienceId?: string | undefined;
+        variantIndex?: number | undefined;
+        viewDurationMs?: number | undefined;
+        viewId?: string | undefined;
+    }
+
+    export namespace GetWithOverridesExperienceRequestExtensionsPersonalizationEventsItemComponent {
+        export const Channel = {
+            Web: "web",
+            Mobile: "mobile",
+            Server: "server",
+            Client: "client",
+        } as const;
+        export type Channel = (typeof Channel)[keyof typeof Channel];
+
+        export interface Context {
+            app?: Context.App | undefined;
+            campaign?: Context.Campaign | undefined;
+            library: Context.Library;
+            locale?: string | undefined;
+            location?: Context.Location | undefined;
+            page?: Context.Page | undefined;
+            userAgent?: string | undefined;
+        }
+
+        export namespace Context {
+            export interface App {
+                name: string;
+                version: string;
+            }
+
+            export interface Campaign {
+                name?: string | undefined;
+                source?: string | undefined;
+                medium?: string | undefined;
+                term?: string | undefined;
+                content?: string | undefined;
+            }
+
+            export interface Library {
+                name: string;
+                version: string;
+            }
+
+            export interface Location {
+                coordinates?: Location.Coordinates | undefined;
+                city?: string | undefined;
+                postalCode?: string | undefined;
+                region?: string | undefined;
+                regionCode?: string | undefined;
+                country?: string | undefined;
+                countryCode?: string | undefined;
+                continent?: string | undefined;
+                timezone?: string | undefined;
+            }
+
+            export namespace Location {
+                export interface Coordinates {
+                    latitude: number;
+                    longitude: number;
+                }
+            }
+
+            export interface Page {
+                path: string;
+                query: Record<string, Page.Query.Value>;
+                referrer: string;
+                search: string;
+                url: string;
+            }
+
+            export namespace Page {
+                export namespace Query {
+                    export type Value = string | string[];
+                }
+            }
+        }
+
+        export const ComponentType = {
+            Entry: "Entry",
+            Variable: "Variable",
+        } as const;
+        export type ComponentType = (typeof ComponentType)[keyof typeof ComponentType];
     }
 }

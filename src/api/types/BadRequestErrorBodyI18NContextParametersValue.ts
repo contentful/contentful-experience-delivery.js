@@ -10,25 +10,28 @@ export type BadRequestErrorBodyI18NContextParametersValue =
     | ContentfulViewDelivery.BadRequestErrorBodyI18NContextParametersValue.ArrayNumber;
 
 export namespace BadRequestErrorBodyI18NContextParametersValue {
-    export interface String extends ContentfulViewDelivery.BadRequestErrorBodyI18NContextParametersValueString {
+    export interface String {
         type: "string";
+        value: string;
     }
 
-    export interface Number extends ContentfulViewDelivery.BadRequestErrorBodyI18NContextParametersValueNumber {
+    export interface Number {
         type: "number";
+        value: number;
     }
 
-    export interface Date extends ContentfulViewDelivery.BadRequestErrorBodyI18NContextParametersValueDate {
+    export interface Date {
         type: "date";
+        value: string;
     }
 
-    export interface ArrayString
-        extends ContentfulViewDelivery.BadRequestErrorBodyI18NContextParametersValueArrayString {
+    export interface ArrayString {
         type: "array.string";
+        value: string[];
     }
 
-    export interface ArrayNumber
-        extends ContentfulViewDelivery.BadRequestErrorBodyI18NContextParametersValueArrayNumber {
+    export interface ArrayNumber {
         type: "array.number";
+        value: number[];
     }
 }
