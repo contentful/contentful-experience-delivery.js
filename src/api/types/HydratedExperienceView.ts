@@ -7,8 +7,387 @@ import type * as ContentfulViewDelivery from "../index.js";
  */
 export interface HydratedExperienceView {
     /** Standard Contentful sys metadata block: stable identifiers, timestamps, the resource type, and an `experienceTemplate` link. Renamed ExO entity shape (SPA-4822) -- see `DeliveryExperienceSys` for the legacy counterpart. */
-    sys: ContentfulViewDelivery.RenamedDeliveryExperienceSys;
+    sys: HydratedExperienceView.Sys;
     nodes: ContentfulViewDelivery.RenamedHydratedTreeNode[];
-    errors: ContentfulViewDelivery.ResolutionError[];
-    extensions?: ContentfulViewDelivery.HydratedExperienceViewExtensions;
+    errors: HydratedExperienceView.Errors.Item[];
+    extensions?: HydratedExperienceView.Extensions | undefined;
+}
+
+export namespace HydratedExperienceView {
+    /**
+     * Standard Contentful sys metadata block: stable identifiers, timestamps, the resource type, and an `experienceTemplate` link. Renamed ExO entity shape (SPA-4822) -- see `DeliveryExperienceSys` for the legacy counterpart.
+     */
+    export interface Sys {
+        id: string;
+        type: "Experience";
+        /** Link to the Contentful Space that owns this resource. */
+        space: Sys.Space;
+        /** Link to the Contentful Environment that owns this resource. */
+        environment: Sys.Environment;
+        createdAt: string;
+        updatedAt: string;
+        archivedAt?: string | undefined;
+        /** Link to a Contentful User (or AppDefinition) responsible for the action. */
+        archivedBy?: Sys.ArchivedBy | undefined;
+        archivedVersion?: number | undefined;
+        /** Link to a Contentful User (or AppDefinition) responsible for the action. */
+        createdBy: Sys.CreatedBy;
+        /** Link to a Contentful User (or AppDefinition) responsible for the action. */
+        updatedBy: Sys.UpdatedBy;
+        variant?: string | undefined;
+        variantType?: string | undefined;
+        variantDimension?: string | undefined;
+        publishedAt?: string | undefined;
+        publishedVersion?: number | undefined;
+        publishedCounter?: number | undefined;
+        firstPublishedAt?: string | undefined;
+        /** Link to a Contentful User (or AppDefinition) responsible for the action. */
+        publishedBy?: Sys.PublishedBy | undefined;
+        localeStatus?: Record<string, Sys.LocaleStatus.Value> | undefined;
+        /** Link to the Experience Template this node embeds (renamed ExO entity shape, SPA-4822). */
+        experienceTemplate: Sys.ExperienceTemplate;
+        /** Accepts any additional properties */
+        [key: string]: any;
+    }
+
+    export namespace Sys {
+        /**
+         * Link to the Contentful Space that owns this resource.
+         */
+        export interface Space {
+            /** Sys metadata block for a SpaceLink. */
+            sys: Space.Sys;
+        }
+
+        export namespace Space {
+            /**
+             * Sys metadata block for a SpaceLink.
+             */
+            export interface Sys {
+                type: "Link";
+                linkType: "Space";
+                id: string;
+            }
+        }
+
+        /**
+         * Link to the Contentful Environment that owns this resource.
+         */
+        export interface Environment {
+            /** Sys metadata block for a EnvironmentLink. */
+            sys: Environment.Sys;
+        }
+
+        export namespace Environment {
+            /**
+             * Sys metadata block for a EnvironmentLink.
+             */
+            export interface Sys {
+                type: "Link";
+                linkType: "Environment";
+                id: string;
+            }
+        }
+
+        /**
+         * Link to a Contentful User (or AppDefinition) responsible for the action.
+         */
+        export interface ArchivedBy {
+            sys: ArchivedBy.Sys;
+        }
+
+        export namespace ArchivedBy {
+            export interface Sys {
+                type: "Link";
+                /** Link target type -- either a `User` or an `AppDefinition`. */
+                linkType: Sys.LinkType;
+                id: string;
+            }
+
+            export namespace Sys {
+                /** Link target type -- either a `User` or an `AppDefinition`. */
+                export const LinkType = {
+                    User: "User",
+                    AppDefinition: "AppDefinition",
+                } as const;
+                export type LinkType = (typeof LinkType)[keyof typeof LinkType];
+            }
+        }
+
+        /**
+         * Link to a Contentful User (or AppDefinition) responsible for the action.
+         */
+        export interface CreatedBy {
+            sys: CreatedBy.Sys;
+        }
+
+        export namespace CreatedBy {
+            export interface Sys {
+                type: "Link";
+                /** Link target type -- either a `User` or an `AppDefinition`. */
+                linkType: Sys.LinkType;
+                id: string;
+            }
+
+            export namespace Sys {
+                /** Link target type -- either a `User` or an `AppDefinition`. */
+                export const LinkType = {
+                    User: "User",
+                    AppDefinition: "AppDefinition",
+                } as const;
+                export type LinkType = (typeof LinkType)[keyof typeof LinkType];
+            }
+        }
+
+        /**
+         * Link to a Contentful User (or AppDefinition) responsible for the action.
+         */
+        export interface UpdatedBy {
+            sys: UpdatedBy.Sys;
+        }
+
+        export namespace UpdatedBy {
+            export interface Sys {
+                type: "Link";
+                /** Link target type -- either a `User` or an `AppDefinition`. */
+                linkType: Sys.LinkType;
+                id: string;
+            }
+
+            export namespace Sys {
+                /** Link target type -- either a `User` or an `AppDefinition`. */
+                export const LinkType = {
+                    User: "User",
+                    AppDefinition: "AppDefinition",
+                } as const;
+                export type LinkType = (typeof LinkType)[keyof typeof LinkType];
+            }
+        }
+
+        /**
+         * Link to a Contentful User (or AppDefinition) responsible for the action.
+         */
+        export interface PublishedBy {
+            sys: PublishedBy.Sys;
+        }
+
+        export namespace PublishedBy {
+            export interface Sys {
+                type: "Link";
+                /** Link target type -- either a `User` or an `AppDefinition`. */
+                linkType: Sys.LinkType;
+                id: string;
+            }
+
+            export namespace Sys {
+                /** Link target type -- either a `User` or an `AppDefinition`. */
+                export const LinkType = {
+                    User: "User",
+                    AppDefinition: "AppDefinition",
+                } as const;
+                export type LinkType = (typeof LinkType)[keyof typeof LinkType];
+            }
+        }
+
+        export namespace LocaleStatus {
+            /** Publication status of a locale (`draft`, `published`, or `changed`). */
+            export const Value = {
+                Draft: "draft",
+                Published: "published",
+                Changed: "changed",
+            } as const;
+            export type Value = (typeof Value)[keyof typeof Value];
+        }
+
+        /**
+         * Link to the Experience Template this node embeds (renamed ExO entity shape, SPA-4822).
+         */
+        export interface ExperienceTemplate {
+            /** Sys metadata block for a ExperienceTemplateLink. */
+            sys: ExperienceTemplate.Sys;
+        }
+
+        export namespace ExperienceTemplate {
+            /**
+             * Sys metadata block for a ExperienceTemplateLink.
+             */
+            export interface Sys {
+                type: "ResourceLink";
+                linkType: "Contentful:ExperienceTemplate";
+                urn: string;
+            }
+        }
+    }
+
+    export type Errors = Errors.Item[];
+
+    export namespace Errors {
+        /**
+         * An error encountered while resolving a single field of the View.
+         */
+        export interface Item {
+            fieldPath: string;
+            message: string;
+            originalError?: unknown | undefined;
+        }
+    }
+
+    export interface Extensions {
+        personalization?: Extensions.Personalization | undefined;
+        sourceMap?: Extensions.SourceMap | undefined;
+    }
+
+    export namespace Extensions {
+        export interface Personalization {
+            profile: Personalization.Profile;
+            experiences: Personalization.Experiences.Item[];
+            changes: ContentfulViewDelivery.HydratedExperienceViewExtensionsPersonalizationChangesItem[];
+        }
+
+        export namespace Personalization {
+            export interface Profile {
+                id: string;
+                stableId: string;
+                random: number;
+                audiences: string[];
+                traits: Record<string, unknown>;
+                location: Profile.Location;
+                session: Profile.Session;
+            }
+
+            export namespace Profile {
+                export interface Location {
+                    coordinates?: Location.Coordinates | undefined;
+                    city?: string | undefined;
+                    postalCode?: string | undefined;
+                    region?: string | undefined;
+                    regionCode?: string | undefined;
+                    country?: string | undefined;
+                    countryCode?: string | undefined;
+                    continent?: string | undefined;
+                    timezone?: string | undefined;
+                }
+
+                export namespace Location {
+                    export interface Coordinates {
+                        latitude: number;
+                        longitude: number;
+                    }
+                }
+
+                export interface Session {
+                    id?: string | undefined;
+                    isReturningVisitor: boolean;
+                    landingPage: Session.LandingPage;
+                    count: number;
+                    activeSessionLength: number;
+                    averageSessionLength: number;
+                }
+
+                export namespace Session {
+                    export interface LandingPage {
+                        path: string;
+                        query: Record<string, LandingPage.Query.Value>;
+                        referrer: string;
+                        search: string;
+                        url: string;
+                    }
+
+                    export namespace LandingPage {
+                        export namespace Query {
+                            export type Value = string | string[];
+                        }
+                    }
+                }
+            }
+
+            export type Experiences = Experiences.Item[];
+
+            export namespace Experiences {
+                export interface Item {
+                    experienceId: string;
+                    variantIndex: number;
+                    variants: Record<string, string>;
+                }
+            }
+        }
+
+        export interface SourceMap {
+            version: number;
+            variants: SourceMap.Variants.Item[];
+            spaces: string[];
+            environments: string[];
+            locales: string[];
+            entries: SourceMap.Entries.Item[];
+            assets: SourceMap.Assets.Item[];
+            layers: ContentfulViewDelivery.HydratedExperienceViewExtensionsSourceMapLayersItem[];
+            dataAssemblies: SourceMap.DataAssemblies.Item[];
+            nodes: Record<string, SourceMap.Nodes.Value>;
+        }
+
+        export namespace SourceMap {
+            export type Variants = Variants.Item[];
+
+            export namespace Variants {
+                export interface Item {
+                    type: "personalization";
+                    id: string;
+                    experienceId?: string | undefined;
+                    optimizationId?: string | undefined;
+                    variantId?: string | undefined;
+                    variantIndex?: number | undefined;
+                }
+            }
+
+            export type Entries = Entries.Item[];
+
+            export namespace Entries {
+                export interface Item {
+                    space: number;
+                    environment: number;
+                    id: string;
+                }
+            }
+
+            export type Assets = Assets.Item[];
+
+            export namespace Assets {
+                export interface Item {
+                    space: number;
+                    environment: number;
+                    id: string;
+                }
+            }
+
+            export type DataAssemblies = DataAssemblies.Item[];
+
+            export namespace DataAssemblies {
+                export interface Item {
+                    id: string;
+                    parameters: Record<string, unknown>;
+                    return: Record<string, unknown>;
+                }
+            }
+
+            export namespace Nodes {
+                export interface Value {
+                    layers: number[];
+                    scope: number;
+                    contentProperties: Value.ContentProperties.Item[];
+                }
+
+                export namespace Value {
+                    export type ContentProperties = ContentProperties.Item[];
+
+                    export namespace ContentProperties {
+                        export interface Item {
+                            type: "dataAssembly";
+                            dataAssembly: number;
+                            bindings: Record<string, ContentfulViewDelivery.BindingValue[]>;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

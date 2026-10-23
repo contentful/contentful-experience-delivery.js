@@ -7,7 +7,6 @@ import * as core from "../../../../core/index.js";
 import * as environments from "../../../../environments.js";
 import { handleNonStatusCodeError } from "../../../../errors/handleNonStatusCodeError.js";
 import * as errors from "../../../../errors/index.js";
-import * as serializers from "../../../../serialization/index.js";
 import * as ContentfulViewDelivery from "../../../index.js";
 
 export declare namespace DestinationClient {
@@ -24,8 +23,8 @@ export class DestinationClient {
     }
 
     /**
-     * @param {string} spaceId - ID of the space.
-     * @param {string} destinationId - ID of the published Destination.
+     * @param {string} spaceId
+     * @param {string} destinationId
      * @param {ContentfulViewDelivery.SitemapDestinationRequest} request
      * @param {DestinationClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -38,10 +37,11 @@ export class DestinationClient {
      * @throws {@link ContentfulViewDelivery.InternalServerError}
      *
      * @example
-     *     await client.destination.sitemap("yadj1kx9rmg0", "4RqKkGJqLHpMiomHuILv5N", {
-     *         limit: 1,
+     *     await client.destination.sitemap("spaceId", "destinationId", {
+     *         access_token: "access_token",
      *         pageNext: "pageNext",
-     *         pagePrev: "pagePrev"
+     *         pagePrev: "pagePrev",
+     *         limit: 1.1
      *     })
      */
     public sitemap(
@@ -59,11 +59,12 @@ export class DestinationClient {
         request: ContentfulViewDelivery.SitemapDestinationRequest = {},
         requestOptions?: DestinationClient.RequestOptions,
     ): Promise<core.WithRawResponse<ContentfulViewDelivery.DestinationSitemap>> {
-        const { limit, pageNext, pagePrev } = request;
+        const { access_token: accessToken, pageNext, pagePrev, limit } = request;
         const _queryParams: Record<string, unknown> = {
-            limit,
+            access_token: accessToken,
             pageNext,
             pagePrev,
+            limit,
         };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -97,13 +98,7 @@ export class DestinationClient {
         });
         if (_response.ok) {
             return {
-                data: serializers.DestinationSitemap.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    skipValidation: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: _response.body as ContentfulViewDelivery.DestinationSitemap,
                 rawResponse: _response.rawResponse,
             };
         }
@@ -111,22 +106,40 @@ export class DestinationClient {
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
                 case 400:
-                    throw new ContentfulViewDelivery.BadRequestError(_response.error.body, _response.rawResponse);
+                    throw new ContentfulViewDelivery.BadRequestError(
+                        _response.error.body as unknown,
+                        _response.rawResponse,
+                    );
                 case 401:
-                    throw new ContentfulViewDelivery.UnauthorizedError(_response.error.body, _response.rawResponse);
+                    throw new ContentfulViewDelivery.UnauthorizedError(
+                        _response.error.body as unknown,
+                        _response.rawResponse,
+                    );
                 case 403:
-                    throw new ContentfulViewDelivery.ForbiddenError(_response.error.body, _response.rawResponse);
+                    throw new ContentfulViewDelivery.ForbiddenError(
+                        _response.error.body as unknown,
+                        _response.rawResponse,
+                    );
                 case 404:
-                    throw new ContentfulViewDelivery.NotFoundError(_response.error.body, _response.rawResponse);
+                    throw new ContentfulViewDelivery.NotFoundError(
+                        _response.error.body as unknown,
+                        _response.rawResponse,
+                    );
                 case 409:
-                    throw new ContentfulViewDelivery.ConflictError(_response.error.body, _response.rawResponse);
+                    throw new ContentfulViewDelivery.ConflictError(
+                        _response.error.body as unknown,
+                        _response.rawResponse,
+                    );
                 case 422:
                     throw new ContentfulViewDelivery.UnprocessableEntityError(
-                        _response.error.body,
+                        _response.error.body as unknown,
                         _response.rawResponse,
                     );
                 case 500:
-                    throw new ContentfulViewDelivery.InternalServerError(_response.error.body, _response.rawResponse);
+                    throw new ContentfulViewDelivery.InternalServerError(
+                        _response.error.body as unknown,
+                        _response.rawResponse,
+                    );
                 default:
                     throw new errors.ContentfulViewDeliveryError({
                         statusCode: _response.error.statusCode,
@@ -145,9 +158,10 @@ export class DestinationClient {
     }
 
     /**
-     * @param {string} spaceId - ID of the space.
-     * @param {string} destinationId - ID of the published Destination.
-     * @param {string} nodeId - ID of the Destination Node to resolve.
+     * @param {string} spaceId
+     * @param {string} destinationId
+     * @param {string} nodeId
+     * @param {ContentfulViewDelivery.ResolveByNodeIdDestinationRequest} request
      * @param {DestinationClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link ContentfulViewDelivery.BadRequestError}
@@ -159,16 +173,20 @@ export class DestinationClient {
      * @throws {@link ContentfulViewDelivery.InternalServerError}
      *
      * @example
-     *     await client.destination.resolveByNodeId("yadj1kx9rmg0", "4RqKkGJqLHpMiomHuILv5N", "6BslKh9TdKGOK41VmLDjFZ")
+     *     await client.destination.resolveByNodeId("spaceId", "destinationId", "nodeId", {
+     *         access_token: "access_token",
+     *         locale: "locale"
+     *     })
      */
     public resolveByNodeId(
         spaceId: string,
         destinationId: string,
         nodeId: string,
+        request: ContentfulViewDelivery.ResolveByNodeIdDestinationRequest = {},
         requestOptions?: DestinationClient.RequestOptions,
     ): core.HttpResponsePromise<ContentfulViewDelivery.DestinationExperienceResolutionResponse> {
         return core.HttpResponsePromise.fromPromise(
-            this.__resolveByNodeId(spaceId, destinationId, nodeId, requestOptions),
+            this.__resolveByNodeId(spaceId, destinationId, nodeId, request, requestOptions),
         );
     }
 
@@ -176,8 +194,14 @@ export class DestinationClient {
         spaceId: string,
         destinationId: string,
         nodeId: string,
+        request: ContentfulViewDelivery.ResolveByNodeIdDestinationRequest = {},
         requestOptions?: DestinationClient.RequestOptions,
     ): Promise<core.WithRawResponse<ContentfulViewDelivery.DestinationExperienceResolutionResponse>> {
+        const { access_token: accessToken, locale } = request;
+        const _queryParams: Record<string, unknown> = {
+            access_token: accessToken,
+            locale,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -197,7 +221,11 @@ export class DestinationClient {
             ),
             method: "GET",
             headers: _headers,
-            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
+            queryString: core.url
+                .queryBuilder()
+                .addMany(_queryParams)
+                .mergeAdditional(requestOptions?.queryParams)
+                .build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -206,13 +234,7 @@ export class DestinationClient {
         });
         if (_response.ok) {
             return {
-                data: serializers.DestinationExperienceResolutionResponse.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    skipValidation: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: _response.body as ContentfulViewDelivery.DestinationExperienceResolutionResponse,
                 rawResponse: _response.rawResponse,
             };
         }
@@ -220,22 +242,40 @@ export class DestinationClient {
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
                 case 400:
-                    throw new ContentfulViewDelivery.BadRequestError(_response.error.body, _response.rawResponse);
+                    throw new ContentfulViewDelivery.BadRequestError(
+                        _response.error.body as unknown,
+                        _response.rawResponse,
+                    );
                 case 401:
-                    throw new ContentfulViewDelivery.UnauthorizedError(_response.error.body, _response.rawResponse);
+                    throw new ContentfulViewDelivery.UnauthorizedError(
+                        _response.error.body as unknown,
+                        _response.rawResponse,
+                    );
                 case 403:
-                    throw new ContentfulViewDelivery.ForbiddenError(_response.error.body, _response.rawResponse);
+                    throw new ContentfulViewDelivery.ForbiddenError(
+                        _response.error.body as unknown,
+                        _response.rawResponse,
+                    );
                 case 404:
-                    throw new ContentfulViewDelivery.NotFoundError(_response.error.body, _response.rawResponse);
+                    throw new ContentfulViewDelivery.NotFoundError(
+                        _response.error.body as unknown,
+                        _response.rawResponse,
+                    );
                 case 409:
-                    throw new ContentfulViewDelivery.ConflictError(_response.error.body, _response.rawResponse);
+                    throw new ContentfulViewDelivery.ConflictError(
+                        _response.error.body as unknown,
+                        _response.rawResponse,
+                    );
                 case 422:
                     throw new ContentfulViewDelivery.UnprocessableEntityError(
-                        _response.error.body,
+                        _response.error.body as unknown,
                         _response.rawResponse,
                     );
                 case 500:
-                    throw new ContentfulViewDelivery.InternalServerError(_response.error.body, _response.rawResponse);
+                    throw new ContentfulViewDelivery.InternalServerError(
+                        _response.error.body as unknown,
+                        _response.rawResponse,
+                    );
                 default:
                     throw new errors.ContentfulViewDeliveryError({
                         statusCode: _response.error.statusCode,
@@ -254,9 +294,9 @@ export class DestinationClient {
     }
 
     /**
-     * @param {string} spaceId - ID of the space.
-     * @param {string} destinationId - ID of the published Destination.
-     * @param {string} nodeId - ID of the Destination Node to resolve.
+     * @param {string} spaceId
+     * @param {string} destinationId
+     * @param {string} nodeId
      * @param {ContentfulViewDelivery.DestinationExperiencesByNodeRequest} request
      * @param {DestinationClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -269,7 +309,10 @@ export class DestinationClient {
      * @throws {@link ContentfulViewDelivery.InternalServerError}
      *
      * @example
-     *     await client.destination.resolveByNodeIdWithOverrides("yadj1kx9rmg0", "4RqKkGJqLHpMiomHuILv5N", "6BslKh9TdKGOK41VmLDjFZ")
+     *     await client.destination.resolveByNodeIdWithOverrides("spaceId", "destinationId", "nodeId", {
+     *         access_token: "access_token",
+     *         locale: "locale"
+     *     })
      */
     public resolveByNodeIdWithOverrides(
         spaceId: string,
@@ -290,6 +333,11 @@ export class DestinationClient {
         request: ContentfulViewDelivery.DestinationExperiencesByNodeRequest = {},
         requestOptions?: DestinationClient.RequestOptions,
     ): Promise<core.WithRawResponse<ContentfulViewDelivery.DestinationExperienceResolutionResponse>> {
+        const { access_token: accessToken, locale, ..._body } = request;
+        const _queryParams: Record<string, unknown> = {
+            access_token: accessToken,
+            locale,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -310,14 +358,13 @@ export class DestinationClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
+            queryString: core.url
+                .queryBuilder()
+                .addMany(_queryParams)
+                .mergeAdditional(requestOptions?.queryParams)
+                .build(),
             requestType: "json",
-            body: serializers.DestinationExperiencesByNodeRequest.jsonOrThrow(request, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                omitUndefined: true,
-            }),
+            body: _body,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -326,13 +373,7 @@ export class DestinationClient {
         });
         if (_response.ok) {
             return {
-                data: serializers.DestinationExperienceResolutionResponse.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    skipValidation: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: _response.body as ContentfulViewDelivery.DestinationExperienceResolutionResponse,
                 rawResponse: _response.rawResponse,
             };
         }
@@ -340,22 +381,40 @@ export class DestinationClient {
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
                 case 400:
-                    throw new ContentfulViewDelivery.BadRequestError(_response.error.body, _response.rawResponse);
+                    throw new ContentfulViewDelivery.BadRequestError(
+                        _response.error.body as unknown,
+                        _response.rawResponse,
+                    );
                 case 401:
-                    throw new ContentfulViewDelivery.UnauthorizedError(_response.error.body, _response.rawResponse);
+                    throw new ContentfulViewDelivery.UnauthorizedError(
+                        _response.error.body as unknown,
+                        _response.rawResponse,
+                    );
                 case 403:
-                    throw new ContentfulViewDelivery.ForbiddenError(_response.error.body, _response.rawResponse);
+                    throw new ContentfulViewDelivery.ForbiddenError(
+                        _response.error.body as unknown,
+                        _response.rawResponse,
+                    );
                 case 404:
-                    throw new ContentfulViewDelivery.NotFoundError(_response.error.body, _response.rawResponse);
+                    throw new ContentfulViewDelivery.NotFoundError(
+                        _response.error.body as unknown,
+                        _response.rawResponse,
+                    );
                 case 409:
-                    throw new ContentfulViewDelivery.ConflictError(_response.error.body, _response.rawResponse);
+                    throw new ContentfulViewDelivery.ConflictError(
+                        _response.error.body as unknown,
+                        _response.rawResponse,
+                    );
                 case 422:
                     throw new ContentfulViewDelivery.UnprocessableEntityError(
-                        _response.error.body,
+                        _response.error.body as unknown,
                         _response.rawResponse,
                     );
                 case 500:
-                    throw new ContentfulViewDelivery.InternalServerError(_response.error.body, _response.rawResponse);
+                    throw new ContentfulViewDelivery.InternalServerError(
+                        _response.error.body as unknown,
+                        _response.rawResponse,
+                    );
                 default:
                     throw new errors.ContentfulViewDeliveryError({
                         statusCode: _response.error.statusCode,
@@ -374,8 +433,8 @@ export class DestinationClient {
     }
 
     /**
-     * @param {string} spaceId - ID of the space.
-     * @param {string} destinationId - ID of the published Destination.
+     * @param {string} spaceId
+     * @param {string} destinationId
      * @param {ContentfulViewDelivery.DestinationExperiencesByPathRequest} request
      * @param {DestinationClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -388,8 +447,10 @@ export class DestinationClient {
      * @throws {@link ContentfulViewDelivery.InternalServerError}
      *
      * @example
-     *     await client.destination.resolveByPath("yadj1kx9rmg0", "4RqKkGJqLHpMiomHuILv5N", {
-     *         path: "/products"
+     *     await client.destination.resolveByPath("spaceId", "destinationId", {
+     *         access_token: "access_token",
+     *         locale: "locale",
+     *         path: "path"
      *     })
      */
     public resolveByPath(
@@ -409,6 +470,11 @@ export class DestinationClient {
         request: ContentfulViewDelivery.DestinationExperiencesByPathRequest,
         requestOptions?: DestinationClient.RequestOptions,
     ): Promise<core.WithRawResponse<ContentfulViewDelivery.DestinationExperienceResolutionResponse>> {
+        const { access_token: accessToken, locale, ..._body } = request;
+        const _queryParams: Record<string, unknown> = {
+            access_token: accessToken,
+            locale,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -429,14 +495,13 @@ export class DestinationClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
+            queryString: core.url
+                .queryBuilder()
+                .addMany(_queryParams)
+                .mergeAdditional(requestOptions?.queryParams)
+                .build(),
             requestType: "json",
-            body: serializers.DestinationExperiencesByPathRequest.jsonOrThrow(request, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                omitUndefined: true,
-            }),
+            body: _body,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -445,13 +510,7 @@ export class DestinationClient {
         });
         if (_response.ok) {
             return {
-                data: serializers.DestinationExperienceResolutionResponse.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    skipValidation: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: _response.body as ContentfulViewDelivery.DestinationExperienceResolutionResponse,
                 rawResponse: _response.rawResponse,
             };
         }
@@ -459,22 +518,40 @@ export class DestinationClient {
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
                 case 400:
-                    throw new ContentfulViewDelivery.BadRequestError(_response.error.body, _response.rawResponse);
+                    throw new ContentfulViewDelivery.BadRequestError(
+                        _response.error.body as unknown,
+                        _response.rawResponse,
+                    );
                 case 401:
-                    throw new ContentfulViewDelivery.UnauthorizedError(_response.error.body, _response.rawResponse);
+                    throw new ContentfulViewDelivery.UnauthorizedError(
+                        _response.error.body as unknown,
+                        _response.rawResponse,
+                    );
                 case 403:
-                    throw new ContentfulViewDelivery.ForbiddenError(_response.error.body, _response.rawResponse);
+                    throw new ContentfulViewDelivery.ForbiddenError(
+                        _response.error.body as unknown,
+                        _response.rawResponse,
+                    );
                 case 404:
-                    throw new ContentfulViewDelivery.NotFoundError(_response.error.body, _response.rawResponse);
+                    throw new ContentfulViewDelivery.NotFoundError(
+                        _response.error.body as unknown,
+                        _response.rawResponse,
+                    );
                 case 409:
-                    throw new ContentfulViewDelivery.ConflictError(_response.error.body, _response.rawResponse);
+                    throw new ContentfulViewDelivery.ConflictError(
+                        _response.error.body as unknown,
+                        _response.rawResponse,
+                    );
                 case 422:
                     throw new ContentfulViewDelivery.UnprocessableEntityError(
-                        _response.error.body,
+                        _response.error.body as unknown,
                         _response.rawResponse,
                     );
                 case 500:
-                    throw new ContentfulViewDelivery.InternalServerError(_response.error.body, _response.rawResponse);
+                    throw new ContentfulViewDelivery.InternalServerError(
+                        _response.error.body as unknown,
+                        _response.rawResponse,
+                    );
                 default:
                     throw new errors.ContentfulViewDeliveryError({
                         statusCode: _response.error.statusCode,

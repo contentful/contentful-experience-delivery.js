@@ -10,25 +10,28 @@ export type InternalServerErrorBodyI18NContextParametersValue =
     | ContentfulViewDelivery.InternalServerErrorBodyI18NContextParametersValue.ArrayNumber;
 
 export namespace InternalServerErrorBodyI18NContextParametersValue {
-    export interface String extends ContentfulViewDelivery.InternalServerErrorBodyI18NContextParametersValueString {
+    export interface String {
         type: "string";
+        value: string;
     }
 
-    export interface Number extends ContentfulViewDelivery.InternalServerErrorBodyI18NContextParametersValueNumber {
+    export interface Number {
         type: "number";
+        value: number;
     }
 
-    export interface Date extends ContentfulViewDelivery.InternalServerErrorBodyI18NContextParametersValueDate {
+    export interface Date {
         type: "date";
+        value: string;
     }
 
-    export interface ArrayString
-        extends ContentfulViewDelivery.InternalServerErrorBodyI18NContextParametersValueArrayString {
+    export interface ArrayString {
         type: "array.string";
+        value: string[];
     }
 
-    export interface ArrayNumber
-        extends ContentfulViewDelivery.InternalServerErrorBodyI18NContextParametersValueArrayNumber {
+    export interface ArrayNumber {
         type: "array.number";
+        value: number[];
     }
 }

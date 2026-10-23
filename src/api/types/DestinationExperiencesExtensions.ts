@@ -3,5 +3,12 @@
 import type * as ContentfulViewDelivery from "../index.js";
 
 export interface DestinationExperiencesExtensions {
-    personalization?: ContentfulViewDelivery.DestinationExperiencesExtensionsPersonalization;
+    personalization?: DestinationExperiencesExtensions.Personalization | undefined;
+}
+
+export namespace DestinationExperiencesExtensions {
+    export interface Personalization {
+        profileId?: string | undefined;
+        events?: ContentfulViewDelivery.PersonalizationEvent[] | undefined;
+    }
 }

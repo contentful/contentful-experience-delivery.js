@@ -3,16 +3,15 @@
 /**
  * @example
  *     {
- *         limit: 1,
+ *         access_token: "access_token",
  *         pageNext: "pageNext",
- *         pagePrev: "pagePrev"
+ *         pagePrev: "pagePrev",
+ *         limit: 1.1
  *     }
  */
 export interface SitemapDestinationRequest {
-    /** Maximum number of paths to return. Defaults to `100`, maximum `1000`. */
-    limit?: number;
-    /** Cursor returned as `paths.pages.next` by a previous request. Treat the value as opaque and do not combine it with `pagePrev`. */
+    access_token?: string;
     pageNext?: string;
-    /** Cursor returned as `paths.pages.prev` by a previous request. Treat the value as opaque and do not combine it with `pageNext`. */
     pagePrev?: string;
+    limit?: number;
 }

@@ -1,13 +1,17 @@
 # Changelog
 
-## [0.0.0-fern-placeholder.9] - 2026-10-08
+## [1.0.0-dev.11] - 2026-10-23
 ### Breaking Changes
-- **`Viewport`** — exported type removed entirely; remove any references to this type from your code.
-- **`ValuesByViewport`** — exported type removed entirely; remove any references to this type from your code.
-- **`TreeNodeDesignProperty`** — exported union type removed; the `designProperties` field on `ComponentTreeNode`, `RenamedComponentTreeNode`, `TemplateTreeNode`, and `RenamedTemplateTreeNode` now uses `DesignPropertyValue` directly instead of `DesignPropertyValue | ValuesByViewport`.
-- **`viewports` field** — removed from `HydratedExperience`, `HydratedView`, `HydratedExperienceView`, `HydratedFragmentView`, and `HydratedExperienceFragmentView`; remove any code that reads this field.
+- **`ContentfulViewDeliveryClient` resource getters** — the `component`, `template`, `fragment`, and `experienceFragment` getters (and their corresponding `ComponentClient`, `TemplateClient`, `FragmentClient`, `ExperienceFragmentClient`) have been removed; remove all calls to these getters and their associated `get(...)` methods.
+- **Removed resource types** — `ComponentLink`, `ComponentTreeNode`, `TemplateTreeNode`, `TemplateLink`, `DeliveryFragmentSys`, `DeliveryExperienceSys`, `HydratedView`, `HydratedExperienceView`, `HydratedFragmentView`, `HydratedExperienceFragmentView`, and all associated nested extension, source-map, and personalization sub-types have been removed; remove or replace all imports of these symbols.
+- **`serialization` namespace** — the `serialization` re-export and the entire internal schema-builder library (including `object`, `record`, primitive builders, and all serialization resource barrels) have been removed from the public API; remove all imports of `serialization.*` and use API types directly.
+- **`GetExperienceRequest` / `GetWithOverridesExperienceRequest`** — `accessToken` renamed to `access_token` and `optimizationProfileId` renamed to `"optimization-profile-id"`; the `extensions` field is replaced by `parameters`; update all call sites to use the new property names.
+- **`i18NContext` → `i18nContext` rename and inlined `Sys` / `I18NContext` namespaces** — error body types (`BadRequestErrorBody`, `ConflictErrorBody`, `ForbiddenErrorBody`, `InternalServerErrorBody`, `NotFoundErrorBody`, `UnauthorizedErrorBody`, `UnprocessableEntityErrorBody`) rename the `i18NContext` field to `i18nContext` and inline `Sys` and `I18NContext` as nested namespace types; update all property accesses and type references.
+- **`resolveByNodeId`** — a new required `request: ResolveByNodeIdDestinationRequest` parameter is inserted before `requestOptions`; existing callers must add the new argument (pass `{}` to preserve previous behaviour).
+- **Package subpath exports removed** — `./serialization`, `./template`, `./component`, `./fragment`, and `./experienceFragment` subpath exports have been removed from `package.json`; migrate all direct subpath imports to the main entry point.
+- See full changelog for all changes
 
-### Migration
-- Delivery and Preview responses no longer include `viewports`. Read design properties directly from `designProperties`.
-- Tree-node `designProperties` values are now always direct `DesignPropertyValue` entries; remove code that reads or sends values keyed by viewport ID.
-- API request validation for legacy `viewports` fields is tracked separately in the Phase 4 rollout. Its effective `422` cutoff must be published before that rollout is enabled.
+### Added
+- **`access_token` and `locale` fields** — added to `SitemapDestinationRequest`, `DestinationExperiencesByNodeRequest`, `DestinationExperiencesByPathRequest`, and the new `ResolveByNodeIdDestinationRequest` type to support token-based and locale-scoped requests.
+- **`UnprocessableEntityErrorBodyZeroI18NContextParametersValue`** — new discriminated union type for i18n context parameter values in unprocessable entity error bodies, with `string`, `number`, `date`, `array.string`, and `array.number` variants.
+

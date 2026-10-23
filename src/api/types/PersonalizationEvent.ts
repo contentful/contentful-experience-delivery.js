@@ -2,12 +2,31 @@
 
 import type * as ContentfulViewDelivery from "../index.js";
 
-/**
- * Personalization event supplied while resolving an Experience.
- */
 export type PersonalizationEvent =
-    | ContentfulViewDelivery.PersonalizationPageEvent
-    | ContentfulViewDelivery.PersonalizationTrackEvent
-    | ContentfulViewDelivery.PersonalizationIdentifyEvent
-    | ContentfulViewDelivery.PersonalizationScreenEvent
-    | ContentfulViewDelivery.PersonalizationComponentEvent;
+    | ContentfulViewDelivery.PersonalizationEvent.Page
+    | ContentfulViewDelivery.PersonalizationEvent.Track
+    | ContentfulViewDelivery.PersonalizationEvent.Identify
+    | ContentfulViewDelivery.PersonalizationEvent.Screen
+    | ContentfulViewDelivery.PersonalizationEvent.Component;
+
+export namespace PersonalizationEvent {
+    export interface Page extends ContentfulViewDelivery.PersonalizationPageEvent {
+        type: "page";
+    }
+
+    export interface Track extends ContentfulViewDelivery.PersonalizationTrackEvent {
+        type: "track";
+    }
+
+    export interface Identify extends ContentfulViewDelivery.PersonalizationIdentifyEvent {
+        type: "identify";
+    }
+
+    export interface Screen extends ContentfulViewDelivery.PersonalizationScreenEvent {
+        type: "screen";
+    }
+
+    export interface Component extends ContentfulViewDelivery.PersonalizationComponentEvent {
+        type: "component";
+    }
+}

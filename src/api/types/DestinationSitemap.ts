@@ -3,8 +3,36 @@
 import type * as ContentfulViewDelivery from "../index.js";
 
 export interface DestinationSitemap {
-    /** The Destination the sitemap belongs to. */
-    property: ContentfulViewDelivery.DestinationSitemapProperty;
-    /** Flattened, paginated list of every routable path in the Destination. */
-    paths: ContentfulViewDelivery.DestinationSitemapPaths;
+    property: DestinationSitemap.Property;
+    paths: DestinationSitemap.Paths;
+}
+
+export namespace DestinationSitemap {
+    export interface Property {
+        sys: Property.Sys;
+    }
+
+    export namespace Property {
+        export interface Sys {
+            type: "Destination";
+        }
+    }
+
+    export interface Paths {
+        sys: Paths.Sys;
+        limit: number;
+        items: ContentfulViewDelivery.SitemapPath[];
+        pages: Paths.Pages;
+    }
+
+    export namespace Paths {
+        export interface Sys {
+            type: "Array";
+        }
+
+        export interface Pages {
+            next?: string | undefined;
+            prev?: string | undefined;
+        }
+    }
 }

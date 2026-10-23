@@ -1,18 +1,6 @@
-export * from "./component/client/requests/index.js";
-export * as component from "./component/index.js";
-export * from "./component/types/index.js";
 export * from "./destination/client/requests/index.js";
 export * as destination from "./destination/index.js";
 export * from "./experience/client/requests/index.js";
 export * as experience from "./experience/index.js";
 export * from "./experience/types/index.js";
-export * from "./experienceFragment/client/requests/index.js";
-export * as experienceFragment from "./experienceFragment/index.js";
-export * from "./experienceFragment/types/index.js";
-export * from "./fragment/client/requests/index.js";
-export * as fragment from "./fragment/index.js";
-export * from "./fragment/types/index.js";
 export * as release from "./release/index.js";
-export * from "./template/client/requests/index.js";
-export * as template from "./template/index.js";
-export * from "./template/types/index.js";
