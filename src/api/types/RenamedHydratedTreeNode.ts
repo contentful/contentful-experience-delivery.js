@@ -8,7 +8,33 @@ import type * as ContentfulViewDelivery from "../index.js";
 export type RenamedHydratedTreeNode =
     /**
      * A `RenamedHydratedTreeNode` variant that renders a Component instance (renamed ExO entity shape, SPA-4822). */
-    | ContentfulViewDelivery.RenamedComponentTreeNode
+    | {
+          component: {
+              sys: {
+                  type: "ResourceLink";
+                  linkType: "Contentful:Component";
+                  urn: string;
+              };
+          };
+          id?: string | undefined;
+          contentProperties: Record<string, unknown>;
+          designProperties: Record<string, ContentfulViewDelivery.DesignPropertyValue>;
+          slots?: Record<string, ContentfulViewDelivery.RenamedHydratedTreeNode[]> | undefined;
+          contentBindings?: string | undefined;
+      }
     /**
      * A `RenamedHydratedTreeNode` variant that embeds an Experience Template (renamed ExO entity shape, SPA-4822). */
-    | ContentfulViewDelivery.RenamedTemplateTreeNode;
+    | {
+          experienceTemplate: {
+              sys: {
+                  type: "ResourceLink";
+                  linkType: "Contentful:ExperienceTemplate";
+                  urn: string;
+              };
+          };
+          id?: string | undefined;
+          contentProperties: Record<string, unknown>;
+          designProperties: Record<string, ContentfulViewDelivery.DesignPropertyValue>;
+          slots?: Record<string, ContentfulViewDelivery.RenamedHydratedTreeNode[]> | undefined;
+          contentBindings?: string | undefined;
+      };

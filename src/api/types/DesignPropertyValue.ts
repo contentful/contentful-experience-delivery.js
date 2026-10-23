@@ -14,11 +14,21 @@ export type DesignPropertyValue =
     | ContentfulViewDelivery.DesignPropertyValue.ManualDesignValue;
 
 export namespace DesignPropertyValue {
-    export interface DesignToken extends ContentfulViewDelivery.DesignToken {
+    export interface DesignToken {
         type: "DesignToken";
+        value: string;
     }
 
-    export interface ManualDesignValue extends ContentfulViewDelivery.ManualDesignValue {
+    export interface ManualDesignValue {
         type: "ManualDesignValue";
+        /** A primitive value (string, number, or boolean) used as the explicit design value. */
+        value: ManualDesignValue.Value;
+    }
+
+    export namespace ManualDesignValue {
+        /**
+         * A primitive value (string, number, or boolean) used as the explicit design value.
+         */
+        export type Value = string | number | boolean;
     }
 }

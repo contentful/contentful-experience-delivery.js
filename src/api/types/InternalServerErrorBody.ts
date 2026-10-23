@@ -3,9 +3,24 @@
 import type * as ContentfulViewDelivery from "../index.js";
 
 export interface InternalServerErrorBody {
-    sys: ContentfulViewDelivery.InternalServerErrorBodySys;
-    message?: string;
-    requestId?: string;
-    details?: unknown;
-    i18NContext?: ContentfulViewDelivery.InternalServerErrorBodyI18NContext;
+    sys: InternalServerErrorBody.Sys;
+    message?: string | undefined;
+    requestId?: string | undefined;
+    details?: unknown | undefined;
+    i18nContext?: InternalServerErrorBody.I18NContext | undefined;
+}
+
+export namespace InternalServerErrorBody {
+    export interface Sys {
+        id: string;
+        type: "Error";
+    }
+
+    export interface I18NContext {
+        code: string;
+        pluralCount?: number | undefined;
+        parameters?:
+            | Record<string, ContentfulViewDelivery.InternalServerErrorBodyI18NContextParametersValue>
+            | undefined;
+    }
 }

@@ -10,25 +10,28 @@ export type ForbiddenErrorBodyI18NContextParametersValue =
     | ContentfulViewDelivery.ForbiddenErrorBodyI18NContextParametersValue.ArrayNumber;
 
 export namespace ForbiddenErrorBodyI18NContextParametersValue {
-    export interface String extends ContentfulViewDelivery.ForbiddenErrorBodyI18NContextParametersValueString {
+    export interface String {
         type: "string";
+        value: string;
     }
 
-    export interface Number extends ContentfulViewDelivery.ForbiddenErrorBodyI18NContextParametersValueNumber {
+    export interface Number {
         type: "number";
+        value: number;
     }
 
-    export interface Date extends ContentfulViewDelivery.ForbiddenErrorBodyI18NContextParametersValueDate {
+    export interface Date {
         type: "date";
+        value: string;
     }
 
-    export interface ArrayString
-        extends ContentfulViewDelivery.ForbiddenErrorBodyI18NContextParametersValueArrayString {
+    export interface ArrayString {
         type: "array.string";
+        value: string[];
     }
 
-    export interface ArrayNumber
-        extends ContentfulViewDelivery.ForbiddenErrorBodyI18NContextParametersValueArrayNumber {
+    export interface ArrayNumber {
         type: "array.number";
+        value: number[];
     }
 }

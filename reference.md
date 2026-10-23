@@ -15,8 +15,8 @@
 ```typescript
 await client.experience.get("spaceId", "environmentId", "id", {
     preview: "true",
-    accessToken: "access_token",
-    optimizationProfileId: "optimization-profile-id",
+    access_token: "access_token",
+    "optimization-profile-id": "optimization-profile-id",
     locale: "locale",
     variant: "variant"
 });
@@ -94,8 +94,8 @@ await client.experience.get("spaceId", "environmentId", "id", {
 ```typescript
 await client.experience.getWithOverrides("spaceId", "environmentId", "id", {
     preview: "true",
-    accessToken: "access_token",
-    optimizationProfileId: "optimization-profile-id",
+    access_token: "access_token",
+    "optimization-profile-id": "optimization-profile-id",
     locale: "locale",
     variant: "variant"
 });
@@ -158,340 +158,6 @@ await client.experience.getWithOverrides("spaceId", "environmentId", "id", {
 </dl>
 </details>
 
-## Template
-<details><summary><code>client.template.<a href="/src/api/resources/template/client/Client.ts">get</a>(spaceId, environmentId, id, { ...params }) -> ContentfulViewDelivery.HydratedView</code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.template.get("spaceId", "environmentId", "id", {
-    preview: "true",
-    accessToken: "access_token",
-    optimizationProfileId: "optimization-profile-id",
-    locale: "locale",
-    variant: "variant"
-});
-
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**spaceId:** `string` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**environmentId:** `string` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**id:** `string` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**request:** `ContentfulViewDelivery.GetTemplateRequest` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `TemplateClient.RequestOptions` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-## Component
-<details><summary><code>client.component.<a href="/src/api/resources/component/client/Client.ts">get</a>(spaceId, environmentId, id, { ...params }) -> ContentfulViewDelivery.HydratedFragmentView</code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.component.get("spaceId", "environmentId", "id", {
-    preview: "true",
-    accessToken: "access_token",
-    optimizationProfileId: "optimization-profile-id",
-    locale: "locale",
-    variant: "variant"
-});
-
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**spaceId:** `string` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**environmentId:** `string` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**id:** `string` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**request:** `ContentfulViewDelivery.GetComponentRequest` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `ComponentClient.RequestOptions` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-## Fragment
-<details><summary><code>client.fragment.<a href="/src/api/resources/fragment/client/Client.ts">get</a>(spaceId, environmentId, id, { ...params }) -> ContentfulViewDelivery.HydratedFragmentView</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Superseded by `getExperienceFragment` (`GET /experience_fragments/{id}`), which returns the renamed ExO entity shape.
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.fragment.get("spaceId", "environmentId", "id", {
-    preview: "true",
-    accessToken: "access_token",
-    optimizationProfileId: "optimization-profile-id",
-    locale: "locale",
-    variant: "variant"
-});
-
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**spaceId:** `string` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**environmentId:** `string` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**id:** `string` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**request:** `ContentfulViewDelivery.GetFragmentRequest` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `FragmentClient.RequestOptions` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-## ExperienceFragment
-<details><summary><code>client.experienceFragment.<a href="/src/api/resources/experienceFragment/client/Client.ts">get</a>(spaceId, environmentId, id, { ...params }) -> ContentfulViewDelivery.HydratedExperienceFragmentView</code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.experienceFragment.get("spaceId", "environmentId", "id", {
-    preview: "true",
-    accessToken: "access_token",
-    optimizationProfileId: "optimization-profile-id",
-    locale: "locale",
-    variant: "variant"
-});
-
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**spaceId:** `string` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**environmentId:** `string` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**id:** `string` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**request:** `ContentfulViewDelivery.GetExperienceFragmentRequest` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `ExperienceFragmentClient.RequestOptions` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
 ## Destination
 <details><summary><code>client.destination.<a href="/src/api/resources/destination/client/Client.ts">sitemap</a>(spaceId, destinationId, { ...params }) -> ContentfulViewDelivery.DestinationSitemap</code></summary>
 <dl>
@@ -506,10 +172,11 @@ await client.experienceFragment.get("spaceId", "environmentId", "id", {
 <dd>
 
 ```typescript
-await client.destination.sitemap("yadj1kx9rmg0", "4RqKkGJqLHpMiomHuILv5N", {
-    limit: 1,
+await client.destination.sitemap("spaceId", "destinationId", {
+    access_token: "access_token",
     pageNext: "pageNext",
-    pagePrev: "pagePrev"
+    pagePrev: "pagePrev",
+    limit: 1.1
 });
 
 ```
@@ -526,7 +193,7 @@ await client.destination.sitemap("yadj1kx9rmg0", "4RqKkGJqLHpMiomHuILv5N", {
 <dl>
 <dd>
 
-**spaceId:** `string` — ID of the space.
+**spaceId:** `string` 
     
 </dd>
 </dl>
@@ -534,7 +201,7 @@ await client.destination.sitemap("yadj1kx9rmg0", "4RqKkGJqLHpMiomHuILv5N", {
 <dl>
 <dd>
 
-**destinationId:** `string` — ID of the published Destination.
+**destinationId:** `string` 
     
 </dd>
 </dl>
@@ -562,7 +229,7 @@ await client.destination.sitemap("yadj1kx9rmg0", "4RqKkGJqLHpMiomHuILv5N", {
 </dl>
 </details>
 
-<details><summary><code>client.destination.<a href="/src/api/resources/destination/client/Client.ts">resolveByNodeId</a>(spaceId, destinationId, nodeId) -> ContentfulViewDelivery.DestinationExperienceResolutionResponse</code></summary>
+<details><summary><code>client.destination.<a href="/src/api/resources/destination/client/Client.ts">resolveByNodeId</a>(spaceId, destinationId, nodeId, { ...params }) -> ContentfulViewDelivery.DestinationExperienceResolutionResponse</code></summary>
 <dl>
 <dd>
 
@@ -575,7 +242,10 @@ await client.destination.sitemap("yadj1kx9rmg0", "4RqKkGJqLHpMiomHuILv5N", {
 <dd>
 
 ```typescript
-await client.destination.resolveByNodeId("yadj1kx9rmg0", "4RqKkGJqLHpMiomHuILv5N", "6BslKh9TdKGOK41VmLDjFZ");
+await client.destination.resolveByNodeId("spaceId", "destinationId", "nodeId", {
+    access_token: "access_token",
+    locale: "locale"
+});
 
 ```
 </dd>
@@ -591,7 +261,7 @@ await client.destination.resolveByNodeId("yadj1kx9rmg0", "4RqKkGJqLHpMiomHuILv5N
 <dl>
 <dd>
 
-**spaceId:** `string` — ID of the space.
+**spaceId:** `string` 
     
 </dd>
 </dl>
@@ -599,7 +269,7 @@ await client.destination.resolveByNodeId("yadj1kx9rmg0", "4RqKkGJqLHpMiomHuILv5N
 <dl>
 <dd>
 
-**destinationId:** `string` — ID of the published Destination.
+**destinationId:** `string` 
     
 </dd>
 </dl>
@@ -607,7 +277,15 @@ await client.destination.resolveByNodeId("yadj1kx9rmg0", "4RqKkGJqLHpMiomHuILv5N
 <dl>
 <dd>
 
-**nodeId:** `string` — ID of the Destination Node to resolve.
+**nodeId:** `string` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `ContentfulViewDelivery.ResolveByNodeIdDestinationRequest` 
     
 </dd>
 </dl>
@@ -640,7 +318,10 @@ await client.destination.resolveByNodeId("yadj1kx9rmg0", "4RqKkGJqLHpMiomHuILv5N
 <dd>
 
 ```typescript
-await client.destination.resolveByNodeIdWithOverrides("yadj1kx9rmg0", "4RqKkGJqLHpMiomHuILv5N", "6BslKh9TdKGOK41VmLDjFZ");
+await client.destination.resolveByNodeIdWithOverrides("spaceId", "destinationId", "nodeId", {
+    access_token: "access_token",
+    locale: "locale"
+});
 
 ```
 </dd>
@@ -656,7 +337,7 @@ await client.destination.resolveByNodeIdWithOverrides("yadj1kx9rmg0", "4RqKkGJqL
 <dl>
 <dd>
 
-**spaceId:** `string` — ID of the space.
+**spaceId:** `string` 
     
 </dd>
 </dl>
@@ -664,7 +345,7 @@ await client.destination.resolveByNodeIdWithOverrides("yadj1kx9rmg0", "4RqKkGJqL
 <dl>
 <dd>
 
-**destinationId:** `string` — ID of the published Destination.
+**destinationId:** `string` 
     
 </dd>
 </dl>
@@ -672,7 +353,7 @@ await client.destination.resolveByNodeIdWithOverrides("yadj1kx9rmg0", "4RqKkGJqL
 <dl>
 <dd>
 
-**nodeId:** `string` — ID of the Destination Node to resolve.
+**nodeId:** `string` 
     
 </dd>
 </dl>
@@ -713,8 +394,10 @@ await client.destination.resolveByNodeIdWithOverrides("yadj1kx9rmg0", "4RqKkGJqL
 <dd>
 
 ```typescript
-await client.destination.resolveByPath("yadj1kx9rmg0", "4RqKkGJqLHpMiomHuILv5N", {
-    path: "/products"
+await client.destination.resolveByPath("spaceId", "destinationId", {
+    access_token: "access_token",
+    locale: "locale",
+    path: "path"
 });
 
 ```
@@ -731,7 +414,7 @@ await client.destination.resolveByPath("yadj1kx9rmg0", "4RqKkGJqLHpMiomHuILv5N",
 <dl>
 <dd>
 
-**spaceId:** `string` — ID of the space.
+**spaceId:** `string` 
     
 </dd>
 </dl>
@@ -739,7 +422,7 @@ await client.destination.resolveByPath("yadj1kx9rmg0", "4RqKkGJqLHpMiomHuILv5N",
 <dl>
 <dd>
 
-**destinationId:** `string` — ID of the published Destination.
+**destinationId:** `string` 
     
 </dd>
 </dl>
@@ -782,9 +465,9 @@ await client.destination.resolveByPath("yadj1kx9rmg0", "4RqKkGJqLHpMiomHuILv5N",
 
 ```typescript
 await client.release.experience.get("spaceId", "environmentId", "id", {
-    accessToken: "access_token",
-    releaseLte: "release[lte]",
-    timestampLte: "timestamp[lte]",
+    access_token: "access_token",
+    "release[lte]": "release[lte]",
+    "timestamp[lte]": "timestamp[lte]",
     locale: "locale"
 });
 
@@ -861,9 +544,9 @@ await client.release.experience.get("spaceId", "environmentId", "id", {
 
 ```typescript
 await client.release.fragment.get("spaceId", "environmentId", "id", {
-    accessToken: "access_token",
-    releaseLte: "release[lte]",
-    timestampLte: "timestamp[lte]",
+    access_token: "access_token",
+    "release[lte]": "release[lte]",
+    "timestamp[lte]": "timestamp[lte]",
     locale: "locale"
 });
 

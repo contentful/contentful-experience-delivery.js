@@ -4,8 +4,13 @@ import type * as ContentfulViewDelivery from "../../../../index.js";
 
 /**
  * @example
- *     {}
+ *     {
+ *         access_token: "access_token",
+ *         locale: "locale"
+ *     }
  */
 export interface DestinationExperiencesByNodeRequest {
+    access_token?: string;
+    locale?: string;
     extensions?: ContentfulViewDelivery.DestinationExperiencesExtensions;
 }
