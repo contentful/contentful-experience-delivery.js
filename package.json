@@ -162,7 +162,7 @@
         "vitest": "^5.0.0",
         "@types/node": "^20.0.0",
         "typescript": "~5.9.3",
-        "@biomejs/biome": "2.5.15",
+        "@biomejs/biome": "2.6.2",
         "license-checker-rseidelsohn": "^5.0.0"
     },
     "browser": {
@@ -172,7 +172,7 @@
         "stream": false,
         "crypto": false
     },
-    "packageManager": "pnpm@12.14.0",
+    "packageManager": "pnpm@12.15.0",
     "engines": {
         "node": ">=22.0.0"
     },

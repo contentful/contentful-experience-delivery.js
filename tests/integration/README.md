@@ -20,15 +20,15 @@ ES6 without Node types and cannot check these files.
 
 ## Environment
 
-| Variable | Required | Default | Notes |
-| --- | --- | --- | --- |
-| `CONTENTFUL_SPACE_ID` | yes | | A space with ExO enabled (the `exoM1` entitlement) |
-| `CONTENTFUL_CDA_TOKEN` | yes | | Delivery token |
-| `CONTENTFUL_CPA_TOKEN` | yes | | Preview token |
-| `CONTENTFUL_CMA_TOKEN` | yes | | Personal access token that can create and delete ExO entities |
-| `CONTENTFUL_ENV_ID` | no | `master` | |
-| `CONTENTFUL_DESTINATION_CHANNEL_ID` | no | `web` | Must be a **published** organization channel. The tests only read it |
-| `CONTENTFUL_API_TARGET` | no | `prod` | `prod` or `staging`. Picks the delivery, preview and management hosts together |
+| Variable                            | Required | Default  | Notes                                                                          |
+| ----------------------------------- | -------- | -------- | ------------------------------------------------------------------------------ |
+| `CONTENTFUL_SPACE_ID`               | yes      |          | A space with ExO enabled (the `exoM1` entitlement)                             |
+| `CONTENTFUL_CDA_TOKEN`              | yes      |          | Delivery token                                                                 |
+| `CONTENTFUL_CPA_TOKEN`              | yes      |          | Preview token                                                                  |
+| `CONTENTFUL_CMA_TOKEN`              | yes      |          | Personal access token that can create and delete ExO entities                  |
+| `CONTENTFUL_ENV_ID`                 | no       | `master` |                                                                                |
+| `CONTENTFUL_DESTINATION_CHANNEL_ID` | no       | `web`    | Must be a **published** organization channel. The tests only read it           |
+| `CONTENTFUL_API_TARGET`             | no       | `prod`   | `prod` or `staging`. Picks the delivery, preview and management hosts together |
 
 Variables already exported in your shell win over `.env`. Use `env -u CONTENTFUL_SPACE_ID ...` if a stale value is
 getting in the way.
