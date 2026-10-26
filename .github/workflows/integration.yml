@@ -1,0 +1,80 @@
+name: integration
+
+# Live checks against the Delivery, Preview and Management APIs (tests/integration). Runs on Fern-generated PRs and on
+# demand. It is deliberately not a required check (see the repo ruleset), so a failure is a signal for the reviewer.
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# Queue rather than cancel: a cancelled run gets only seconds to clean up and could leave test entities behind.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: false
+
+jobs:
+  credentials:
+    # Fern PRs come from branches in this repo, so they can read secrets. Forks and other PRs are skipped.
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (startsWith(github.head_ref, 'fern-bot/') && github.event.pull_request.head.repo.full_name == github.repository)
+    runs-on: ubuntu-latest
+    outputs:
+      available: ${{ steps.check.outputs.available }}
+    steps:
+      - name: Check credentials
+        id: check
+        env:
+          CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
+          CONTENTFUL_CDA_TOKEN: ${{ secrets.CONTENTFUL_CDA_TOKEN }}
+          CONTENTFUL_CPA_TOKEN: ${{ secrets.CONTENTFUL_CPA_TOKEN }}
+          CONTENTFUL_CMA_TOKEN: ${{ secrets.CONTENTFUL_CMA_TOKEN }}
+        run: |
+          missing=""
+          for name in CONTENTFUL_SPACE_ID CONTENTFUL_CDA_TOKEN CONTENTFUL_CPA_TOKEN CONTENTFUL_CMA_TOKEN; do
+            if [ -z "${!name}" ]; then missing="$missing $name"; fi
+          done
+          if [ -n "$missing" ]; then
+            echo "::warning::Integration tests skipped, repository secrets not set:$missing"
+            echo "available=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "available=true" >> "$GITHUB_OUTPUT"
+          fi
+
+  integration:
+    needs: credentials
+    if: needs.credentials.outputs.available == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+
+      - name: Set up node
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        with:
+          node-version: 24
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run integration tests
+        env:
+          CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
+          CONTENTFUL_CDA_TOKEN: ${{ secrets.CONTENTFUL_CDA_TOKEN }}
+          CONTENTFUL_CPA_TOKEN: ${{ secrets.CONTENTFUL_CPA_TOKEN }}
+          CONTENTFUL_CMA_TOKEN: ${{ secrets.CONTENTFUL_CMA_TOKEN }}
+          # Optional repository variables; the tests fall back to prod, master and web when they are empty.
+          CONTENTFUL_API_TARGET: ${{ vars.CONTENTFUL_API_TARGET }}
+          CONTENTFUL_ENV_ID: ${{ vars.CONTENTFUL_ENV_ID }}
+          CONTENTFUL_DESTINATION_CHANNEL_ID: ${{ vars.CONTENTFUL_DESTINATION_CHANNEL_ID }}
+        run: pnpm exec vitest run --config vitest.integration.config.mts

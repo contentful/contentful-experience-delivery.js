@@ -33,6 +33,21 @@ ES6 without Node types and cannot check these files.
 Variables already exported in your shell win over `.env`. Use `env -u CONTENTFUL_SPACE_ID ...` if a stale value is
 getting in the way.
 
+## Running in CI
+
+`.github/workflows/integration.yml` runs the suite on Fern-generated PRs (`fern-bot/**` branches) and on manual
+dispatch. It is not a required check (the required list is in the repo ruleset), so a failure is a signal for the
+reviewer of the Fern PR, not a block.
+
+- Repository **secrets**, all four required: `CONTENTFUL_SPACE_ID`, `CONTENTFUL_CDA_TOKEN`, `CONTENTFUL_CPA_TOKEN`,
+  `CONTENTFUL_CMA_TOKEN`.
+- Repository **variables**, optional: `CONTENTFUL_API_TARGET`, `CONTENTFUL_ENV_ID`,
+  `CONTENTFUL_DESTINATION_CHANNEL_ID`. Empty values fall back to the defaults above.
+- Use a dedicated space with the ExO entitlement and a published channel, and a service-account CMA token rather than a
+  personal one.
+- Until all four secrets exist, the `integration` job is skipped and the `credentials` job passes with a warning
+  annotation naming the missing ones. A green `credentials` job on its own means nothing ran.
+
 ## What it does
 
 1. `globalSetup.ts` removes leftovers from killed runs (see below), then provisions a published template, a published

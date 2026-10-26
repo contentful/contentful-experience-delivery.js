@@ -52,7 +52,8 @@ export function getEnv(): IntegrationEnv {
         );
     }
 
-    const target = process.env.CONTENTFUL_API_TARGET ?? "prod";
+    // An unset repository variable reaches the environment as an empty string, so use || rather than ??.
+    const target = process.env.CONTENTFUL_API_TARGET || "prod";
     if (target !== "prod" && target !== "staging") {
         throw new Error(`CONTENTFUL_API_TARGET must be "prod" or "staging", got "${target}"`);
     }
@@ -63,8 +64,8 @@ export function getEnv(): IntegrationEnv {
         cpaToken: process.env.CONTENTFUL_CPA_TOKEN as string,
         cmaToken: process.env.CONTENTFUL_CMA_TOKEN as string,
         spaceId: process.env.CONTENTFUL_SPACE_ID as string,
-        envId: process.env.CONTENTFUL_ENV_ID ?? "master",
-        channelId: process.env.CONTENTFUL_DESTINATION_CHANNEL_ID ?? "web",
+        envId: process.env.CONTENTFUL_ENV_ID || "master",
+        channelId: process.env.CONTENTFUL_DESTINATION_CHANNEL_ID || "web",
         deliveryUrl: hosts.delivery,
         previewUrl: hosts.preview,
         cmaUrl: hosts.cma,
