@@ -38,7 +38,6 @@ getting in the way.
 `.github/workflows/integration.yml` runs the suite on Fern-generated PRs (`fern-bot/**` branches) and on manual
 dispatch. It is not a required check (the required list is in the repo ruleset), so a failure is a signal for the
 reviewer of the Fern PR, not a block.
-
 - Repository **secrets**, all four required: `CONTENTFUL_SPACE_ID`, `CONTENTFUL_CDA_TOKEN`, `CONTENTFUL_CPA_TOKEN`,
   `CONTENTFUL_CMA_TOKEN`.
 - Repository **variables**, optional: `CONTENTFUL_API_TARGET`, `CONTENTFUL_ENV_ID`,
