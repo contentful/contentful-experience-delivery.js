@@ -19,3 +19,8 @@ BUILDING.md
 AGENTS.md
 ARCHITECTURE.md
 docs
+
+# Live integration tests (AIS-804)
+tests/integration
+vitest.integration.config.mts
+.github/workflows/integration.yml
