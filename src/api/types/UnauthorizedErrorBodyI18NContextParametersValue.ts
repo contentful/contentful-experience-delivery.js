@@ -10,25 +10,28 @@ export type UnauthorizedErrorBodyI18NContextParametersValue =
     | ContentfulViewDelivery.UnauthorizedErrorBodyI18NContextParametersValue.ArrayNumber;
 
 export namespace UnauthorizedErrorBodyI18NContextParametersValue {
-    export interface String extends ContentfulViewDelivery.UnauthorizedErrorBodyI18NContextParametersValueString {
+    export interface String {
         type: "string";
+        value: string;
     }
 
-    export interface Number extends ContentfulViewDelivery.UnauthorizedErrorBodyI18NContextParametersValueNumber {
+    export interface Number {
         type: "number";
+        value: number;
     }
 
-    export interface Date extends ContentfulViewDelivery.UnauthorizedErrorBodyI18NContextParametersValueDate {
+    export interface Date {
         type: "date";
+        value: string;
     }
 
-    export interface ArrayString
-        extends ContentfulViewDelivery.UnauthorizedErrorBodyI18NContextParametersValueArrayString {
+    export interface ArrayString {
         type: "array.string";
+        value: string[];
     }
 
-    export interface ArrayNumber
-        extends ContentfulViewDelivery.UnauthorizedErrorBodyI18NContextParametersValueArrayNumber {
+    export interface ArrayNumber {
         type: "array.number";
+        value: number[];
     }
 }

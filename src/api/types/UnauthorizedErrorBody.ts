@@ -3,9 +3,22 @@
 import type * as ContentfulViewDelivery from "../index.js";
 
 export interface UnauthorizedErrorBody {
-    sys: ContentfulViewDelivery.UnauthorizedErrorBodySys;
-    message?: string;
-    requestId?: string;
-    details?: unknown;
-    i18NContext?: ContentfulViewDelivery.UnauthorizedErrorBodyI18NContext;
+    sys: UnauthorizedErrorBody.Sys;
+    message?: string | undefined;
+    requestId?: string | undefined;
+    details?: unknown | undefined;
+    i18nContext?: UnauthorizedErrorBody.I18NContext | undefined;
+}
+
+export namespace UnauthorizedErrorBody {
+    export interface Sys {
+        id: string;
+        type: "Error";
+    }
+
+    export interface I18NContext {
+        code: string;
+        pluralCount?: number | undefined;
+        parameters?: Record<string, ContentfulViewDelivery.UnauthorizedErrorBodyI18NContextParametersValue> | undefined;
+    }
 }

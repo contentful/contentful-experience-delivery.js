@@ -3,9 +3,22 @@
 import type * as ContentfulViewDelivery from "../index.js";
 
 export interface NotFoundErrorBody {
-    sys: ContentfulViewDelivery.NotFoundErrorBodySys;
-    message?: string;
-    requestId?: string;
-    details?: unknown;
-    i18NContext?: ContentfulViewDelivery.NotFoundErrorBodyI18NContext;
+    sys: NotFoundErrorBody.Sys;
+    message?: string | undefined;
+    requestId?: string | undefined;
+    details?: unknown | undefined;
+    i18nContext?: NotFoundErrorBody.I18NContext | undefined;
+}
+
+export namespace NotFoundErrorBody {
+    export interface Sys {
+        id: "NotFound";
+        type: "Error";
+    }
+
+    export interface I18NContext {
+        code: string;
+        pluralCount?: number | undefined;
+        parameters?: Record<string, ContentfulViewDelivery.NotFoundErrorBodyI18NContextParametersValue> | undefined;
+    }
 }

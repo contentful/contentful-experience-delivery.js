@@ -10,27 +10,28 @@ export type UnprocessableEntityErrorBodyI18NContextParametersValue =
     | ContentfulViewDelivery.UnprocessableEntityErrorBodyI18NContextParametersValue.ArrayNumber;
 
 export namespace UnprocessableEntityErrorBodyI18NContextParametersValue {
-    export interface String
-        extends ContentfulViewDelivery.UnprocessableEntityErrorBodyI18NContextParametersValueString {
+    export interface String {
         type: "string";
+        value: string;
     }
 
-    export interface Number
-        extends ContentfulViewDelivery.UnprocessableEntityErrorBodyI18NContextParametersValueNumber {
+    export interface Number {
         type: "number";
+        value: number;
     }
 
-    export interface Date extends ContentfulViewDelivery.UnprocessableEntityErrorBodyI18NContextParametersValueDate {
+    export interface Date {
         type: "date";
+        value: string;
     }
 
-    export interface ArrayString
-        extends ContentfulViewDelivery.UnprocessableEntityErrorBodyI18NContextParametersValueArrayString {
+    export interface ArrayString {
         type: "array.string";
+        value: string[];
     }
 
-    export interface ArrayNumber
-        extends ContentfulViewDelivery.UnprocessableEntityErrorBodyI18NContextParametersValueArrayNumber {
+    export interface ArrayNumber {
         type: "array.number";
+        value: number[];
     }
 }

@@ -5,11 +5,14 @@ import type * as ContentfulViewDelivery from "../../../../index.js";
 /**
  * @example
  *     {
- *         path: "/products"
+ *         access_token: "access_token",
+ *         locale: "locale",
+ *         path: "path"
  *     }
  */
 export interface DestinationExperiencesByPathRequest {
-    /** Absolute path to resolve. Must start with `/`. */
+    access_token?: string;
+    locale?: string;
     path: string;
     extensions?: ContentfulViewDelivery.DestinationExperiencesExtensions;
 }

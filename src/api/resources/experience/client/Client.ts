@@ -7,7 +7,6 @@ import * as core from "../../../../core/index.js";
 import * as environments from "../../../../environments.js";
 import { handleNonStatusCodeError } from "../../../../errors/handleNonStatusCodeError.js";
 import * as errors from "../../../../errors/index.js";
-import * as serializers from "../../../../serialization/index.js";
 import * as ContentfulViewDelivery from "../../../index.js";
 
 export declare namespace ExperienceClient {
@@ -44,8 +43,8 @@ export class ExperienceClient {
      * @example
      *     await client.experience.get("spaceId", "environmentId", "id", {
      *         preview: "true",
-     *         accessToken: "access_token",
-     *         optimizationProfileId: "optimization-profile-id",
+     *         access_token: "access_token",
+     *         "optimization-profile-id": "optimization-profile-id",
      *         locale: "locale",
      *         variant: "variant"
      *     })
@@ -67,9 +66,15 @@ export class ExperienceClient {
         request: ContentfulViewDelivery.GetExperienceRequest = {},
         requestOptions?: ExperienceClient.RequestOptions,
     ): Promise<core.WithRawResponse<ContentfulViewDelivery.GetExperienceResponse>> {
-        const { preview, accessToken, optimizationProfileId, locale, variant } = request;
-        const _queryParams: Record<string, unknown> = {
+        const {
             preview,
+            access_token: accessToken,
+            "optimization-profile-id": optimizationProfileId,
+            locale,
+            variant,
+        } = request;
+        const _queryParams: Record<string, unknown> = {
+            preview: preview != null ? preview : undefined,
             access_token: accessToken,
             "optimization-profile-id": optimizationProfileId,
             locale,
@@ -107,13 +112,7 @@ export class ExperienceClient {
         });
         if (_response.ok) {
             return {
-                data: serializers.GetExperienceResponse.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    skipValidation: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: _response.body as ContentfulViewDelivery.GetExperienceResponse,
                 rawResponse: _response.rawResponse,
             };
         }
@@ -121,22 +120,40 @@ export class ExperienceClient {
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
                 case 400:
-                    throw new ContentfulViewDelivery.BadRequestError(_response.error.body, _response.rawResponse);
+                    throw new ContentfulViewDelivery.BadRequestError(
+                        _response.error.body as unknown,
+                        _response.rawResponse,
+                    );
                 case 401:
-                    throw new ContentfulViewDelivery.UnauthorizedError(_response.error.body, _response.rawResponse);
+                    throw new ContentfulViewDelivery.UnauthorizedError(
+                        _response.error.body as unknown,
+                        _response.rawResponse,
+                    );
                 case 403:
-                    throw new ContentfulViewDelivery.ForbiddenError(_response.error.body, _response.rawResponse);
+                    throw new ContentfulViewDelivery.ForbiddenError(
+                        _response.error.body as unknown,
+                        _response.rawResponse,
+                    );
                 case 404:
-                    throw new ContentfulViewDelivery.NotFoundError(_response.error.body, _response.rawResponse);
+                    throw new ContentfulViewDelivery.NotFoundError(
+                        _response.error.body as unknown,
+                        _response.rawResponse,
+                    );
                 case 409:
-                    throw new ContentfulViewDelivery.ConflictError(_response.error.body, _response.rawResponse);
+                    throw new ContentfulViewDelivery.ConflictError(
+                        _response.error.body as unknown,
+                        _response.rawResponse,
+                    );
                 case 422:
                     throw new ContentfulViewDelivery.UnprocessableEntityError(
-                        _response.error.body,
+                        _response.error.body as unknown,
                         _response.rawResponse,
                     );
                 case 500:
-                    throw new ContentfulViewDelivery.InternalServerError(_response.error.body, _response.rawResponse);
+                    throw new ContentfulViewDelivery.InternalServerError(
+                        _response.error.body as unknown,
+                        _response.rawResponse,
+                    );
                 default:
                     throw new errors.ContentfulViewDeliveryError({
                         statusCode: _response.error.statusCode,
@@ -172,8 +189,8 @@ export class ExperienceClient {
      * @example
      *     await client.experience.getWithOverrides("spaceId", "environmentId", "id", {
      *         preview: "true",
-     *         accessToken: "access_token",
-     *         optimizationProfileId: "optimization-profile-id",
+     *         access_token: "access_token",
+     *         "optimization-profile-id": "optimization-profile-id",
      *         locale: "locale",
      *         variant: "variant"
      *     })
@@ -197,9 +214,16 @@ export class ExperienceClient {
         request: ContentfulViewDelivery.GetWithOverridesExperienceRequest = {},
         requestOptions?: ExperienceClient.RequestOptions,
     ): Promise<core.WithRawResponse<ContentfulViewDelivery.GetWithOverridesExperienceResponse>> {
-        const { preview, accessToken, optimizationProfileId, locale, variant, ..._body } = request;
-        const _queryParams: Record<string, unknown> = {
+        const {
             preview,
+            access_token: accessToken,
+            "optimization-profile-id": optimizationProfileId,
+            locale,
+            variant,
+            ..._body
+        } = request;
+        const _queryParams: Record<string, unknown> = {
+            preview: preview != null ? preview : undefined,
             access_token: accessToken,
             "optimization-profile-id": optimizationProfileId,
             locale,
@@ -231,12 +255,7 @@ export class ExperienceClient {
                 .mergeAdditional(requestOptions?.queryParams)
                 .build(),
             requestType: "json",
-            body: serializers.GetWithOverridesExperienceRequest.jsonOrThrow(_body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                omitUndefined: true,
-            }),
+            body: _body,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -245,13 +264,7 @@ export class ExperienceClient {
         });
         if (_response.ok) {
             return {
-                data: serializers.GetWithOverridesExperienceResponse.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    skipValidation: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
+                data: _response.body as ContentfulViewDelivery.GetWithOverridesExperienceResponse,
                 rawResponse: _response.rawResponse,
             };
         }
@@ -259,22 +272,40 @@ export class ExperienceClient {
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
                 case 400:
-                    throw new ContentfulViewDelivery.BadRequestError(_response.error.body, _response.rawResponse);
+                    throw new ContentfulViewDelivery.BadRequestError(
+                        _response.error.body as unknown,
+                        _response.rawResponse,
+                    );
                 case 401:
-                    throw new ContentfulViewDelivery.UnauthorizedError(_response.error.body, _response.rawResponse);
+                    throw new ContentfulViewDelivery.UnauthorizedError(
+                        _response.error.body as unknown,
+                        _response.rawResponse,
+                    );
                 case 403:
-                    throw new ContentfulViewDelivery.ForbiddenError(_response.error.body, _response.rawResponse);
+                    throw new ContentfulViewDelivery.ForbiddenError(
+                        _response.error.body as unknown,
+                        _response.rawResponse,
+                    );
                 case 404:
-                    throw new ContentfulViewDelivery.NotFoundError(_response.error.body, _response.rawResponse);
+                    throw new ContentfulViewDelivery.NotFoundError(
+                        _response.error.body as unknown,
+                        _response.rawResponse,
+                    );
                 case 409:
-                    throw new ContentfulViewDelivery.ConflictError(_response.error.body, _response.rawResponse);
+                    throw new ContentfulViewDelivery.ConflictError(
+                        _response.error.body as unknown,
+                        _response.rawResponse,
+                    );
                 case 422:
                     throw new ContentfulViewDelivery.UnprocessableEntityError(
-                        _response.error.body,
+                        _response.error.body as unknown,
                         _response.rawResponse,
                     );
                 case 500:
-                    throw new ContentfulViewDelivery.InternalServerError(_response.error.body, _response.rawResponse);
+                    throw new ContentfulViewDelivery.InternalServerError(
+                        _response.error.body as unknown,
+                        _response.rawResponse,
+                    );
                 default:
                     throw new errors.ContentfulViewDeliveryError({
                         statusCode: _response.error.statusCode,
