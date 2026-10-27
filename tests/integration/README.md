@@ -35,9 +35,12 @@ getting in the way.
 
 ## Running in CI
 
-`.github/workflows/integration.yml` runs the suite on Fern-generated PRs (`fern-bot/**` branches) and on manual
-dispatch. It is not a required check (the required list is in the repo ruleset), so a failure is a signal for the
-reviewer of the Fern PR, not a block.
+`.github/workflows/integration.yml` runs the suite on every PR from a branch in this repo, Fern's included, and on
+manual dispatch. Forks are skipped because they cannot read secrets. It is not a required check (the required list is
+in the repo ruleset), so a failure is a signal for the reviewer, not a block.
+
+Renovate's PRs (`renovate/**` branches) are skipped on purpose. The shared Renovate config automerges only when every
+status check passes, not just the required ones, so a red run would stall dependency updates.
 - Repository **secrets**, all four required: `CONTENTFUL_SPACE_ID`, `CONTENTFUL_CDA_TOKEN`, `CONTENTFUL_CPA_TOKEN`,
   `CONTENTFUL_CMA_TOKEN`.
 - Repository **variables**, optional: `CONTENTFUL_API_TARGET`, `CONTENTFUL_ENV_ID`,

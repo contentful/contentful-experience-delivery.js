@@ -1,7 +1,11 @@
 name: integration
 
-# Live checks against the Delivery, Preview and Management APIs (tests/integration). Runs on Fern-generated PRs and on
-# demand. It is deliberately not a required check (see the repo ruleset), so a failure is a signal for the reviewer.
+# Live checks against the Delivery, Preview and Management APIs (tests/integration). Runs on PRs from branches in this
+# repo (Fern's included) and on demand. It is deliberately not a required check (see the repo ruleset), so a failure is
+# a signal for the reviewer.
+#
+# Renovate's PRs are skipped: its shared config automerges only when every status check passes, not just the required
+# ones, so a red run here would stall dependency updates. A skipped job does not hold them back.
 
 on:
   pull_request:
@@ -17,10 +21,10 @@ concurrency:
 
 jobs:
   credentials:
-    # Fern PRs come from branches in this repo, so they can read secrets. Forks and other PRs are skipped.
+    # PRs from branches in this repo can read secrets. Forks are skipped, as are Renovate's branches (see above).
     if: >-
       github.event_name == 'workflow_dispatch' ||
-      (startsWith(github.head_ref, 'fern-bot/') && github.event.pull_request.head.repo.full_name == github.repository)
+      (github.event.pull_request.head.repo.full_name == github.repository && !startsWith(github.head_ref, 'renovate/'))
     runs-on: ubuntu-latest
     outputs:
       available: ${{ steps.check.outputs.available }}
