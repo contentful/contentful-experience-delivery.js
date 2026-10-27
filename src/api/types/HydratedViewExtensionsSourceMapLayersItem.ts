@@ -15,48 +15,61 @@ export type HydratedViewExtensionsSourceMapLayersItem =
     | ContentfulViewDelivery.HydratedViewExtensionsSourceMapLayersItem.InlineExperienceFragment;
 
 export namespace HydratedViewExtensionsSourceMapLayersItem {
-    export interface ComponentType
-        extends ContentfulViewDelivery.HydratedViewExtensionsSourceMapLayersItemComponentType {
+    export interface ComponentType {
         kind: "ComponentType";
+        id: string;
     }
 
-    export interface Template extends ContentfulViewDelivery.HydratedViewExtensionsSourceMapLayersItemTemplate {
+    export interface Template {
         kind: "Template";
+        id: string;
     }
 
-    export interface Slot extends ContentfulViewDelivery.HydratedViewExtensionsSourceMapLayersItemSlot {
+    export interface Slot {
         kind: "Slot";
+        id: string;
     }
 
-    export interface Experience extends ContentfulViewDelivery.HydratedViewExtensionsSourceMapLayersItemExperience {
+    export interface Experience {
         kind: "Experience";
+        id: string;
+        variants: number[];
+        dataAssembly?: number | undefined;
     }
 
-    export interface Fragment extends ContentfulViewDelivery.HydratedViewExtensionsSourceMapLayersItemFragment {
+    export interface Fragment {
         kind: "Fragment";
+        id: string;
+        variants: number[];
+        dataAssembly?: number | undefined;
     }
 
-    export interface InlineFragment
-        extends ContentfulViewDelivery.HydratedViewExtensionsSourceMapLayersItemInlineFragment {
+    export interface InlineFragment {
         kind: "InlineFragment";
+        id: string;
+        dataAssembly?: number | undefined;
     }
 
-    export interface Component extends ContentfulViewDelivery.HydratedViewExtensionsSourceMapLayersItemComponent {
+    export interface Component {
         kind: "Component";
+        id: string;
     }
 
-    export interface ExperienceTemplate
-        extends ContentfulViewDelivery.HydratedViewExtensionsSourceMapLayersItemExperienceTemplate {
+    export interface ExperienceTemplate {
         kind: "ExperienceTemplate";
+        id: string;
     }
 
-    export interface ExperienceFragment
-        extends ContentfulViewDelivery.HydratedViewExtensionsSourceMapLayersItemExperienceFragment {
+    export interface ExperienceFragment {
         kind: "ExperienceFragment";
+        id: string;
+        variants: number[];
+        dataAssembly?: number | undefined;
     }
 
-    export interface InlineExperienceFragment
-        extends ContentfulViewDelivery.HydratedViewExtensionsSourceMapLayersItemInlineExperienceFragment {
+    export interface InlineExperienceFragment {
         kind: "InlineExperienceFragment";
+        id: string;
+        dataAssembly?: number | undefined;
     }
 }

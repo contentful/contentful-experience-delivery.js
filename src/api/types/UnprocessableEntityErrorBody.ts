@@ -3,9 +3,24 @@
 import type * as ContentfulViewDelivery from "../index.js";
 
 export interface UnprocessableEntityErrorBody {
-    sys: ContentfulViewDelivery.UnprocessableEntityErrorBodySys;
-    message?: string;
-    requestId?: string;
-    details?: unknown;
-    i18NContext?: ContentfulViewDelivery.UnprocessableEntityErrorBodyI18NContext;
+    sys: UnprocessableEntityErrorBody.Sys;
+    message?: string | undefined;
+    requestId?: string | undefined;
+    details?: unknown | undefined;
+    i18nContext?: UnprocessableEntityErrorBody.I18NContext | undefined;
+}
+
+export namespace UnprocessableEntityErrorBody {
+    export interface Sys {
+        id: "UnprocessableEntity";
+        type: "Error";
+    }
+
+    export interface I18NContext {
+        code: string;
+        pluralCount?: number | undefined;
+        parameters?:
+            | Record<string, ContentfulViewDelivery.UnprocessableEntityErrorBodyI18NContextParametersValue>
+            | undefined;
+    }
 }

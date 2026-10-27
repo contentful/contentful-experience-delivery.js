@@ -3,17 +3,42 @@
 import type * as ContentfulViewDelivery from "../index.js";
 
 export type HydratedFragmentViewExtensionsPersonalizationChangesItem =
+    | ContentfulViewDelivery.HydratedFragmentViewExtensionsPersonalizationChangesItem.Variable
     | ContentfulViewDelivery.HydratedFragmentViewExtensionsPersonalizationChangesItem.Experience
     | ContentfulViewDelivery.HydratedFragmentViewExtensionsPersonalizationChangesItem.Fragment;
 
 export namespace HydratedFragmentViewExtensionsPersonalizationChangesItem {
-    export interface Experience
-        extends ContentfulViewDelivery.HydratedFragmentViewExtensionsPersonalizationChangesItemExperience {
-        type: "Experience";
+    export interface Variable {
+        type: "Variable";
+        /** Accepts any additional properties */
+        [key: string]: any;
     }
 
-    export interface Fragment
-        extends ContentfulViewDelivery.HydratedFragmentViewExtensionsPersonalizationChangesItemFragment {
+    export interface Experience {
+        type: "Experience";
+        id: string;
+        variantId: string;
+        meta: HydratedFragmentViewExtensionsPersonalizationChangesItemExperience.Meta;
+    }
+
+    export namespace HydratedFragmentViewExtensionsPersonalizationChangesItemExperience {
+        export interface Meta {
+            optimizationId: string;
+            variantIndex: number;
+        }
+    }
+
+    export interface Fragment {
         type: "Fragment";
+        id: string;
+        variantId: string;
+        meta: HydratedFragmentViewExtensionsPersonalizationChangesItemFragment.Meta;
+    }
+
+    export namespace HydratedFragmentViewExtensionsPersonalizationChangesItemFragment {
+        export interface Meta {
+            optimizationId: string;
+            variantIndex: number;
+        }
     }
 }

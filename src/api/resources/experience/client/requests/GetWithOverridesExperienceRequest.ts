@@ -6,17 +6,47 @@ import type * as ContentfulViewDelivery from "../../../../index.js";
  * @example
  *     {
  *         preview: "true",
- *         accessToken: "access_token",
- *         optimizationProfileId: "optimization-profile-id",
+ *         access_token: "access_token",
+ *         "optimization-profile-id": "optimization-profile-id",
  *         locale: "locale",
  *         variant: "variant"
  *     }
  */
 export interface GetWithOverridesExperienceRequest {
-    preview?: string;
-    accessToken?: string;
-    optimizationProfileId?: string;
+    /** Set to `true` to fetch unpublished, preview content. Requires a preview access token. */
+    preview?: ContentfulViewDelivery.GetWithOverridesExperienceRequestPreview;
+    access_token?: string;
+    "optimization-profile-id"?: string;
     locale?: string;
     variant?: string;
-    extensions?: ContentfulViewDelivery.GetWithOverridesExperienceRequestExtensions;
+    parameters?: Record<string, GetWithOverridesExperienceRequest.Parameters.Value>;
+    extensions?: GetWithOverridesExperienceRequest.Extensions;
+}
+
+export namespace GetWithOverridesExperienceRequest {
+    export namespace Parameters {
+        export type Value =
+            | string
+            | number
+            | Record<string, string | number>
+            | {
+                  fields: Record<string, string>;
+              };
+    }
+
+    export interface Extensions {
+        personalization?: Extensions.Personalization | undefined;
+        sourceMap?: Extensions.SourceMap | undefined;
+    }
+
+    export namespace Extensions {
+        export interface Personalization {
+            profileId?: string | undefined;
+            events?:
+                | ContentfulViewDelivery.GetWithOverridesExperienceRequestExtensionsPersonalizationEventsItem[]
+                | undefined;
+        }
+
+        export type SourceMap = {};
+    }
 }

@@ -10,23 +10,28 @@ export type ConflictErrorBodyI18NContextParametersValue =
     | ContentfulViewDelivery.ConflictErrorBodyI18NContextParametersValue.ArrayNumber;
 
 export namespace ConflictErrorBodyI18NContextParametersValue {
-    export interface String extends ContentfulViewDelivery.ConflictErrorBodyI18NContextParametersValueString {
+    export interface String {
         type: "string";
+        value: string;
     }
 
-    export interface Number extends ContentfulViewDelivery.ConflictErrorBodyI18NContextParametersValueNumber {
+    export interface Number {
         type: "number";
+        value: number;
     }
 
-    export interface Date extends ContentfulViewDelivery.ConflictErrorBodyI18NContextParametersValueDate {
+    export interface Date {
         type: "date";
+        value: string;
     }
 
-    export interface ArrayString extends ContentfulViewDelivery.ConflictErrorBodyI18NContextParametersValueArrayString {
+    export interface ArrayString {
         type: "array.string";
+        value: string[];
     }
 
-    export interface ArrayNumber extends ContentfulViewDelivery.ConflictErrorBodyI18NContextParametersValueArrayNumber {
+    export interface ArrayNumber {
         type: "array.number";
+        value: number[];
     }
 }

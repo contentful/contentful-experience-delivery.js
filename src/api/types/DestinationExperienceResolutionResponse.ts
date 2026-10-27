@@ -2,9 +2,6 @@
 
 import type * as ContentfulViewDelivery from "../index.js";
 
-/**
- * Resolution returns either hydrated Experiences or a redirect, never both.
- */
 export type DestinationExperienceResolutionResponse =
     | ContentfulViewDelivery.DestinationExperiencesResponse
     | ContentfulViewDelivery.DestinationRedirectResponse;

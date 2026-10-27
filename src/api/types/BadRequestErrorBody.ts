@@ -3,9 +3,22 @@
 import type * as ContentfulViewDelivery from "../index.js";
 
 export interface BadRequestErrorBody {
-    sys: ContentfulViewDelivery.BadRequestErrorBodySys;
-    message?: string;
-    requestId?: string;
-    details?: unknown;
-    i18NContext?: ContentfulViewDelivery.BadRequestErrorBodyI18NContext;
+    sys: BadRequestErrorBody.Sys;
+    message?: string | undefined;
+    requestId?: string | undefined;
+    details?: unknown | undefined;
+    i18nContext?: BadRequestErrorBody.I18NContext | undefined;
+}
+
+export namespace BadRequestErrorBody {
+    export interface Sys {
+        id: string;
+        type: "Error";
+    }
+
+    export interface I18NContext {
+        code: string;
+        pluralCount?: number | undefined;
+        parameters?: Record<string, ContentfulViewDelivery.BadRequestErrorBodyI18NContextParametersValue> | undefined;
+    }
 }

@@ -10,23 +10,28 @@ export type NotFoundErrorBodyI18NContextParametersValue =
     | ContentfulViewDelivery.NotFoundErrorBodyI18NContextParametersValue.ArrayNumber;
 
 export namespace NotFoundErrorBodyI18NContextParametersValue {
-    export interface String extends ContentfulViewDelivery.NotFoundErrorBodyI18NContextParametersValueString {
+    export interface String {
         type: "string";
+        value: string;
     }
 
-    export interface Number extends ContentfulViewDelivery.NotFoundErrorBodyI18NContextParametersValueNumber {
+    export interface Number {
         type: "number";
+        value: number;
     }
 
-    export interface Date extends ContentfulViewDelivery.NotFoundErrorBodyI18NContextParametersValueDate {
+    export interface Date {
         type: "date";
+        value: string;
     }
 
-    export interface ArrayString extends ContentfulViewDelivery.NotFoundErrorBodyI18NContextParametersValueArrayString {
+    export interface ArrayString {
         type: "array.string";
+        value: string[];
     }
 
-    export interface ArrayNumber extends ContentfulViewDelivery.NotFoundErrorBodyI18NContextParametersValueArrayNumber {
+    export interface ArrayNumber {
         type: "array.number";
+        value: number[];
     }
 }

@@ -3,15 +3,15 @@
 /**
  * @example
  *     {
- *         accessToken: "access_token",
- *         releaseLte: "release[lte]",
- *         timestampLte: "timestamp[lte]",
+ *         access_token: "access_token",
+ *         "release[lte]": "release[lte]",
+ *         "timestamp[lte]": "timestamp[lte]",
  *         locale: "locale"
  *     }
  */
 export interface GetExperienceRequest {
-    accessToken?: string;
-    releaseLte?: string;
-    timestampLte?: string;
+    access_token?: string;
+    "release[lte]"?: string;
+    "timestamp[lte]"?: string;
     locale?: string;
 }

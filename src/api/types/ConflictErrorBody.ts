@@ -3,9 +3,22 @@
 import type * as ContentfulViewDelivery from "../index.js";
 
 export interface ConflictErrorBody {
-    sys: ContentfulViewDelivery.ConflictErrorBodySys;
-    message?: string;
-    requestId?: string;
-    details?: unknown;
-    i18NContext?: ContentfulViewDelivery.ConflictErrorBodyI18NContext;
+    sys: ConflictErrorBody.Sys;
+    message?: string | undefined;
+    requestId?: string | undefined;
+    details?: unknown | undefined;
+    i18nContext?: ConflictErrorBody.I18NContext | undefined;
+}
+
+export namespace ConflictErrorBody {
+    export interface Sys {
+        id: string;
+        type: "Error";
+    }
+
+    export interface I18NContext {
+        code: string;
+        pluralCount?: number | undefined;
+        parameters?: Record<string, ContentfulViewDelivery.ConflictErrorBodyI18NContextParametersValue> | undefined;
+    }
 }
