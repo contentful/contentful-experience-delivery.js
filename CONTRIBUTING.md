@@ -40,6 +40,25 @@ pnpm test
 Run specific test types:
 - `pnpm test:unit` - Run unit tests
 
+### Integration tests
+
+Live tests that call the real Delivery, Preview and Management APIs through the SDK in this checkout live in
+[`tests/integration`](./tests/integration). They are not part of `pnpm test` and need credentials for a test space.
+Run them with:
+
+```bash
+npx vitest run --config vitest.integration.config.mts
+```
+
+`pnpm test:integration` does the same, but that script lives in `package.json`, which Fern regenerates, so it can
+disappear after a regeneration. Setup, environment variables and the organization channel the destination tests need are
+in [`tests/integration/README.md`](./tests/integration/README.md).
+
+In CI, the `integration` workflow runs them on pull requests from branches in this repository, Fern's included.
+Renovate's and forks' pull requests are skipped. It is not a required check, so a failure is a signal to look into, not a
+merge block. A failure on a Fern pull request can mean the API changed (an operation added, removed or renamed, or a
+different status code), in which case the tests need the same change.
+
 ### Linting and Formatting
 
 Check code style:
@@ -94,7 +113,7 @@ This workflow applies to Contentful maintainers and to changes against files lis
 
 1. Create a new branch for your changes
 2. Make your modifications
-3. Run tests to ensure nothing breaks: `pnpm test`
+3. Run tests to ensure nothing breaks: `pnpm test`. If your change affects what the SDK sends or returns, also run the [integration tests](#integration-tests)
 4. Run linting and formatting: `pnpm run check:fix`
 5. Build the project: `pnpm build`
 6. Commit your changes with a clear commit message

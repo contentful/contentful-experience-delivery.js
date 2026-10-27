@@ -46,6 +46,23 @@ otherwise (422 `UnknownNodePropertyType`). A minimal channel that works:
 If it is missing, the destination tests fail in setup with `Channel "<id>" does not exist` (not found in the space's
 organization), `is not published`, or the 422 above. The delivery and preview tests are unaffected.
 
+## Running in CI
+
+`.github/workflows/integration.yml` runs the suite on every PR from a branch in this repo, Fern's included, and on
+manual dispatch. Forks are skipped because they cannot read secrets. It is not a required check (the required list is
+in the repo ruleset), so a failure is a signal for the reviewer, not a block.
+
+Renovate's PRs (`renovate/**` branches) are skipped on purpose. The shared Renovate config automerges only when every
+status check passes, not just the required ones, so a red run would stall dependency updates.
+- Repository **secrets**, all four required: `CONTENTFUL_SPACE_ID`, `CONTENTFUL_CDA_TOKEN`, `CONTENTFUL_CPA_TOKEN`,
+  `CONTENTFUL_CMA_TOKEN`.
+- Repository **variables**, optional: `CONTENTFUL_API_TARGET`, `CONTENTFUL_ENV_ID`,
+  `CONTENTFUL_DESTINATION_CHANNEL_ID`. Empty values fall back to the defaults above.
+- Use a dedicated space with the ExO entitlement and a published channel, and a service-account CMA token rather than a
+  personal one.
+- Until all four secrets exist, the `integration` job is skipped and the `credentials` job passes with a warning
+  annotation naming the missing ones. A green `credentials` job on its own means nothing ran.
+
 ## What it does
 
 1. `globalSetup.ts` removes leftovers from killed runs (see below), then provisions a published template, a published
