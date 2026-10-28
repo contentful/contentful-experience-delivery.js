@@ -113,7 +113,7 @@ scenarios), the API also accepts an `access_token` query parameter:
 ```typescript
 await client.experience.get(spaceId, envId, experienceId, {
     locale: "en-US",
-    accessToken: process.env.CONTENTFUL_CDA_TOKEN!,
+    access_token: process.env.CONTENTFUL_CDA_TOKEN!,
 });
 ```
 
