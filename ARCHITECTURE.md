@@ -16,22 +16,26 @@ the exact provenance of the checked-in output:
 
 | Field | Value |
 | --- | --- |
-| `cliVersion` | `5.45.3` |
+| `cliVersion` | `5.151.4` |
 | `generatorName` | `fernapi/fern-typescript-node-sdk` |
 | `generatorVersion` | `3.70.6` |
 | `namespaceExport` | `ContentfulViewDelivery` |
-| `originGitCommit` | `4e878a3cc88c52d6d6165f6e4ad46bb26dafec60` (commit in the API-definition repo) |
-| `sdkVersion` | `0.0.0-fern-placeholder.9` |
+| `originGitCommit` | `7448356415ee9814bb7ac5f94d7a1614ac8b60cd` (commit in the API-definition repo) |
+| `sdkVersion` | `1.0.0-dev.11` |
 
-Three generator settings shape the runtime behaviour more than anything else in
+Two generator settings shape the runtime behaviour more than anything else in
 this repo:
 
-- `noSerdeLayer: false` — a full serialization layer is generated under
-  `src/serialization/`, so responses are parsed through schemas rather than cast.
-- `skipResponseValidation: true` and `allowExtraFields: true` — those schemas
-  parse permissively. A response with unexpected fields, or one that does not
-  match the schema, does not throw; the API can add fields without breaking
-  installed clients.
+- `noSerdeLayer: true` — **no serialization layer is generated.** `src/serialization/`
+  and `core/schemas/` do not exist in this repo. Responses are parsed JSON cast
+  directly to the TypeScript interface, with no runtime validation or renaming —
+  what the API sends is what callers get, and request/response fields use their
+  raw wire names (`access_token`, `"optimization-profile-id"`, `"release[lte]"`,
+  `"timestamp[lte]"`) rather than a camelCased mapping. This was flipped from
+  `false` in `46a4f47` (`feat!: regenerate the SDK without the serde layer and
+  drop four clients [AIS-809]`); before that, a full schema-based serialization
+  layer validated responses permissively (`skipResponseValidation: true`,
+  `allowExtraFields: true`).
 - `generateWireTests: false` / `writeUnitTests: false` — no endpoint tests are
   generated. See [Tests](#tests).
 
@@ -52,7 +56,6 @@ src/index.ts                  public entry point (re-exports)
             ├─ src/auth/      BearerAuthProvider
             ├─ src/core/      transport and runtime primitives (not API-specific)
             └─ src/api/       one client + types per API resource
-                 └─ src/serialization/  request/response schemas per resource
 ```
 
 ### `src/index.ts` — the public surface
@@ -64,8 +67,10 @@ export { ContentfulViewDeliveryClient } from "./Client.js";
 export { ContentfulViewDeliveryEnvironment } from "./environments.js";
 export { ContentfulViewDeliveryError, ContentfulViewDeliveryTimeoutError } from "./errors/index.js";
 export * from "./exports.js";                                // core primitives
-export * as serialization from "./serialization/index.js";
 ```
+
+There is no `serialization` export — the serde layer was removed in `46a4f47`
+along with the `./serialization` package subpath.
 
 ### `src/Client.ts` — the root client
 
@@ -98,7 +103,6 @@ Not API-specific; this is the generator's runtime library.
 | Directory | Responsibility |
 | --- | --- |
 | `core/fetcher/` | `Fetcher`, `makeRequest`, `requestWithRetries`, `HttpResponsePromise`, `RawResponse`, `createRequestUrl`, abort `signals`, `Supplier` |
-| `core/schemas/` | The schema builder library (`object`, `union`, `undiscriminated-union`, `record`, `list`, `set`, `enum`, `literals`, `date`, `bigint`, `lazy`, primitives) backing `src/serialization/` |
 | `core/url/` | `join`, `qs`, `QueryStringBuilder` |
 | `core/logging/` | `LogLevel`, `ConsoleLogger`, the `ILogger` interface |
 | `core/runtime/` | Runtime detection, surfaced as the `X-Fern-Runtime*` headers |
@@ -110,20 +114,33 @@ parsed body *or* awaited via `.withRawResponse()` for `{ data, rawResponse }`.
 
 ### `src/api/` — resources
 
-Six top-level resources, each with `client/Client.ts`, `client/requests/`, and
+Three top-level resources, each with `client/Client.ts`, `client/requests/`, and
 (where the resource owns types) `types/`:
 
 | Resource | Client property |
 | --- | --- |
 | `experience` | `client.experience` |
-| `template` | `client.template` |
-| `component` | `client.component` |
-| `fragment` | `client.fragment` |
-| `experienceFragment` | `client.experienceFragment` |
+| `destination` | `client.destination` |
 | `release` | `client.release`, with nested `release/experience` and `release/fragment` |
 
-`src/api/types/` holds the 230 shared model types (`ComponentTreeNode`,
-`DesignToken`, `DeliveryExperienceSys`, the per-status error bodies, and so on).
+The `template`, `component`, `fragment`, and `experienceFragment` resources
+(and their `client.template`/`client.component`/`client.fragment`/
+`client.experienceFragment` getters) were removed in `46a4f47`
+(`feat!: regenerate the SDK without the serde layer and drop four clients
+[AIS-809]`). `release.fragment` is unaffected — it is a distinct resource under
+`release/resources/fragment`, not the removed top-level `fragment`.
+
+`src/api/types/` holds the shared model types (the per-status error bodies,
+`BindingValue`, personalization event types, and so on) — 45 top-level exports
+as of `fcd908a`, down from ~230 before `46a4f47`. Much of that drop is type
+nesting rather than deletion: deeply-nested extension/source-map/personalization
+variants (e.g. `HydratedExperienceViewExtensionsSourceMap`) moved from
+standalone top-level exports to namespace-nested types (e.g.
+`HydratedExperienceView.Extensions.SourceMap`). Some types were genuinely
+removed along with their owning resource (`ComponentTreeNode`,
+`HydratedExperienceFragmentView`) or outright (`UserLink`, `SpaceLink`,
+`EnvironmentLink`, `Viewport`, `ValuesByViewport`, `TreeNodeDesignProperty`,
+`DesignToken`). See `changelog.md` for the full list.
 
 Endpoint methods return `core.HttpResponsePromise<T>` and delegate to a private
 `__method` that assembles query params, resolves auth via
@@ -173,10 +190,12 @@ Both extend `tsconfig.base.json`: `strict`, `target: ES6`,
 `isolatedDeclarations`. `tsconfig.json` simply extends the CJS config so
 editors and bare `tsc` see that variant.
 
-`package.json` `exports` maps the root plus `./serialization` and one subpath per
-resource (`./experience`, `./template`, `./component`, `./fragment`,
-`./experienceFragment`, `./release`, `./release/experience`,
-`./release/fragment`), each with separate `import`/`require` conditions. Combined
+`package.json` `exports` maps the root plus one subpath per resource
+(`./experience`, `./destination`, `./release`, `./release/experience`,
+`./release/fragment`), each with separate `import`/`require` conditions.
+(`./serialization`, `./template`, `./component`, `./fragment`, and
+`./experienceFragment` were removed in `46a4f47` along with the serde layer
+and the four dropped clients.) Combined
 with `sideEffects: false`, that lets bundlers pull in a single resource client
 instead of the whole SDK. The `browser` field stubs out `fs`, `os`, `path`,
 `stream` and `crypto` to `false`.
@@ -190,10 +209,16 @@ URL install yields a non-functional package — see [BUILDING.md](./BUILDING.md)
 `tests/setup.ts` (which registers a `toContainHeaders` custom matcher) and
 `typecheck.enabled: true` against `tests/tsconfig.json`. `passWithNoTests` is on.
 
-Coverage is of the core runtime — `tests/unit/fetcher/`, `tests/unit/schemas/`,
-`tests/unit/url/`, `tests/unit/auth/`, `tests/unit/logging/`. No test calls the
-live API, so no Contentful credentials are required. `tests/custom.test.ts` is
-the generator's placeholder for hand-written tests.
+Coverage is of the core runtime — `tests/unit/fetcher/`, `tests/unit/url/`,
+`tests/unit/auth/`, `tests/unit/logging/`. (`tests/unit/schemas/` was removed
+along with `core/schemas/` and the rest of the serde layer in `46a4f47`.) No
+test calls the live API, so no Contentful credentials are required.
+`tests/custom.test.ts` is the generator's placeholder for hand-written tests.
+
+`tests/integration/` (added in `c014cf8`/`ca1227b`, protected by `.fernignore`)
+holds separate live tests against the real Delivery, Preview and Management
+APIs, run via `vitest.integration.config.mts` — kept out of `pnpm test` and
+not run by `ci.yml`'s blocking jobs. See `tests/integration/README.md`.
 
 ## Release and versioning
 

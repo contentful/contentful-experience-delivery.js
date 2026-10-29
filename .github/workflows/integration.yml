@@ -64,7 +64,7 @@ jobs:
         uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
         with:
           # At least 24.22.1, staying on the 24 line. check-latest picks the newest matching patch rather than a cached one.
-          node-version: ">=24.22.1 <25"
+          node-version: "<27"
           check-latest: true
 
       - name: Install pnpm
