@@ -18,10 +18,10 @@
         "generateWireTests": false,
         "omitFernHeaders": true
     },
-    "originGitCommit": "7448356415ee9814bb7ac5f94d7a1614ac8b60cd",
+    "originGitCommit": "cc252e98d1856aa450483511a4166de1c7b0ab02",
     "originGitCommitIsDirty": false,
     "invokedBy": "ci",
     "requestedVersion": "AUTO",
     "ciProvider": "github",
-    "sdkVersion": "1.0.0-dev.11"
+    "sdkVersion": "0.0.0-fern-placeholder"
 }
