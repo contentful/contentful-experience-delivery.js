@@ -435,7 +435,7 @@ export class DestinationClient {
     /**
      * @param {string} spaceId
      * @param {string} destinationId
-     * @param {ContentfulViewDelivery.DestinationExperiencesByPathRequest} request
+     * @param {ContentfulViewDelivery.ResolveByPathDestinationRequest} request
      * @param {DestinationClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link ContentfulViewDelivery.BadRequestError}
@@ -456,7 +456,7 @@ export class DestinationClient {
     public resolveByPath(
         spaceId: string,
         destinationId: string,
-        request: ContentfulViewDelivery.DestinationExperiencesByPathRequest,
+        request: ContentfulViewDelivery.ResolveByPathDestinationRequest,
         requestOptions?: DestinationClient.RequestOptions,
     ): core.HttpResponsePromise<ContentfulViewDelivery.DestinationExperienceResolutionResponse> {
         return core.HttpResponsePromise.fromPromise(
@@ -465,6 +465,141 @@ export class DestinationClient {
     }
 
     private async __resolveByPath(
+        spaceId: string,
+        destinationId: string,
+        request: ContentfulViewDelivery.ResolveByPathDestinationRequest,
+        requestOptions?: DestinationClient.RequestOptions,
+    ): Promise<core.WithRawResponse<ContentfulViewDelivery.DestinationExperienceResolutionResponse>> {
+        const { access_token: accessToken, locale, path } = request;
+        const _queryParams: Record<string, unknown> = {
+            access_token: accessToken,
+            locale,
+            path,
+        };
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({
+                "x-contentful-enable-alpha-feature":
+                    requestOptions?.xContentfulEnableAlphaFeature ?? "new-exo-entity-types",
+            }),
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.ContentfulViewDeliveryEnvironment.Default,
+                `spaces/${core.url.encodePathParam(spaceId)}/destinations/${core.url.encodePathParam(destinationId)}/experiences`,
+            ),
+            method: "GET",
+            headers: _headers,
+            queryString: core.url
+                .queryBuilder()
+                .addMany(_queryParams)
+                .mergeAdditional(requestOptions?.queryParams)
+                .build(),
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return {
+                data: _response.body as ContentfulViewDelivery.DestinationExperienceResolutionResponse,
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 400:
+                    throw new ContentfulViewDelivery.BadRequestError(
+                        _response.error.body as unknown,
+                        _response.rawResponse,
+                    );
+                case 401:
+                    throw new ContentfulViewDelivery.UnauthorizedError(
+                        _response.error.body as unknown,
+                        _response.rawResponse,
+                    );
+                case 403:
+                    throw new ContentfulViewDelivery.ForbiddenError(
+                        _response.error.body as unknown,
+                        _response.rawResponse,
+                    );
+                case 404:
+                    throw new ContentfulViewDelivery.NotFoundError(
+                        _response.error.body as unknown,
+                        _response.rawResponse,
+                    );
+                case 409:
+                    throw new ContentfulViewDelivery.ConflictError(
+                        _response.error.body as unknown,
+                        _response.rawResponse,
+                    );
+                case 422:
+                    throw new ContentfulViewDelivery.UnprocessableEntityError(
+                        _response.error.body as unknown,
+                        _response.rawResponse,
+                    );
+                case 500:
+                    throw new ContentfulViewDelivery.InternalServerError(
+                        _response.error.body as unknown,
+                        _response.rawResponse,
+                    );
+                default:
+                    throw new errors.ContentfulViewDeliveryError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                        rawResponse: _response.rawResponse,
+                    });
+            }
+        }
+
+        return handleNonStatusCodeError(
+            _response.error,
+            _response.rawResponse,
+            "GET",
+            "/spaces/{spaceId}/destinations/{destinationId}/experiences",
+        );
+    }
+
+    /**
+     * @param {string} spaceId
+     * @param {string} destinationId
+     * @param {ContentfulViewDelivery.DestinationExperiencesByPathRequest} request
+     * @param {DestinationClient.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link ContentfulViewDelivery.BadRequestError}
+     * @throws {@link ContentfulViewDelivery.UnauthorizedError}
+     * @throws {@link ContentfulViewDelivery.ForbiddenError}
+     * @throws {@link ContentfulViewDelivery.NotFoundError}
+     * @throws {@link ContentfulViewDelivery.ConflictError}
+     * @throws {@link ContentfulViewDelivery.UnprocessableEntityError}
+     * @throws {@link ContentfulViewDelivery.InternalServerError}
+     *
+     * @example
+     *     await client.destination.resolveByPathWithOverrides("spaceId", "destinationId", {
+     *         access_token: "access_token",
+     *         locale: "locale",
+     *         path: "path"
+     *     })
+     */
+    public resolveByPathWithOverrides(
+        spaceId: string,
+        destinationId: string,
+        request: ContentfulViewDelivery.DestinationExperiencesByPathRequest,
+        requestOptions?: DestinationClient.RequestOptions,
+    ): core.HttpResponsePromise<ContentfulViewDelivery.DestinationExperienceResolutionResponse> {
+        return core.HttpResponsePromise.fromPromise(
+            this.__resolveByPathWithOverrides(spaceId, destinationId, request, requestOptions),
+        );
+    }
+
+    private async __resolveByPathWithOverrides(
         spaceId: string,
         destinationId: string,
         request: ContentfulViewDelivery.DestinationExperiencesByPathRequest,

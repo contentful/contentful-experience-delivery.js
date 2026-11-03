@@ -89,8 +89,9 @@ pnpm run check:fix
 
 The following directories contain generated code:
 - `src/api/` - API client classes and types
-- `src/serialization/` - Serialization/deserialization logic
 - Most TypeScript files in `src/`
+
+Note: `src/serialization/` (serialization/deserialization logic) was removed in `46a4f47` when the SDK's serde layer was turned off; it no longer exists in this repo.
 
 ### How to Customize
 
