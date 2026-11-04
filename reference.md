@@ -430,6 +430,75 @@ await client.destination.resolveByPath("spaceId", "destinationId", {
 <dl>
 <dd>
 
+**request:** `ContentfulViewDelivery.ResolveByPathDestinationRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `DestinationClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.destination.<a href="/src/api/resources/destination/client/Client.ts">resolveByPathWithOverrides</a>(spaceId, destinationId, { ...params }) -> ContentfulViewDelivery.DestinationExperienceResolutionResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.destination.resolveByPathWithOverrides("spaceId", "destinationId", {
+    access_token: "access_token",
+    locale: "locale",
+    path: "path"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**spaceId:** `string` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**destinationId:** `string` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
 **request:** `ContentfulViewDelivery.DestinationExperiencesByPathRequest` 
     
 </dd>

@@ -30,6 +30,7 @@ export namespace GetWithOverridesExperienceRequest {
             | number
             | Record<string, string | number>
             | {
+                  content_type?: string | undefined;
                   fields: Record<string, string>;
               };
     }
