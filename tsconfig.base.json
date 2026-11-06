@@ -3,14 +3,15 @@
         "extendedDiagnostics": true,
         "strict": true,
         "target": "ES6",
-        "moduleResolution": "node",
+        "moduleResolution": "bundler",
         "esModuleInterop": true,
         "skipLibCheck": true,
         "declaration": true,
         "outDir": "dist",
         "rootDir": "src",
         "isolatedModules": true,
-        "isolatedDeclarations": true
+        "isolatedDeclarations": true,
+        "types": ["node"]
     },
     "include": ["src"],
     "exclude": []
