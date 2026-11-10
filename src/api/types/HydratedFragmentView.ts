@@ -239,9 +239,13 @@ export namespace HydratedFragmentView {
                 stableId: string;
                 random: number;
                 audiences: string[];
-                traits: Record<string, unknown>;
+                traits: Record<
+                    string,
+                    ContentfulViewDelivery.GetSpacesSpaceIdEnvironmentsEnvironmentIdTimelineFragmentsId3200Schema1
+                >;
                 location: Profile.Location;
                 session: Profile.Session;
+                jurisdiction?: Profile.Jurisdiction | undefined;
             }
 
             export namespace Profile {
@@ -279,6 +283,7 @@ export namespace HydratedFragmentView {
                         query: Record<string, LandingPage.Query.Value>;
                         referrer: string;
                         search: string;
+                        title?: string | undefined;
                         url: string;
                     }
 
@@ -288,6 +293,12 @@ export namespace HydratedFragmentView {
                         }
                     }
                 }
+
+                export const Jurisdiction = {
+                    Us: "US",
+                    Eu: "EU",
+                } as const;
+                export type Jurisdiction = (typeof Jurisdiction)[keyof typeof Jurisdiction];
             }
 
             export type Experiences = Experiences.Item[];
@@ -297,6 +308,7 @@ export namespace HydratedFragmentView {
                     experienceId: string;
                     variantIndex: number;
                     variants: Record<string, string>;
+                    sticky?: boolean | undefined;
                 }
             }
         }

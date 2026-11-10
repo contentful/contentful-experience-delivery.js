@@ -3,33 +3,28 @@
 export interface PersonalizationPageEvent {
     channel: PersonalizationPageEvent.Channel;
     context: PersonalizationPageEvent.Context;
+    anonymousId?: string | undefined;
     messageId: string;
+    originalTimestamp: string;
+    sentAt: string;
     timestamp: string;
-    originalTimestamp?: string | undefined;
-    sentAt?: string | undefined;
     userId?: string | undefined;
     name?: string | undefined;
     properties: PersonalizationPageEvent.Properties;
 }
 
 export namespace PersonalizationPageEvent {
-    export const Channel = {
-        Web: "web",
-        Mobile: "mobile",
-        Server: "server",
-        Client: "client",
-    } as const;
-    export type Channel = (typeof Channel)[keyof typeof Channel];
+    export type Channel = ("mobile" | "server" | "web") | "client";
 
     export interface Context {
         app?: Context.App | undefined;
-        campaign?: Context.Campaign | undefined;
+        campaign: Context.Campaign;
         gdpr?: Context.Gdpr | undefined;
         library: Context.Library;
         locale?: string | undefined;
         location?: Context.Location | undefined;
-        page?: Context.Page | undefined;
         userAgent?: string | undefined;
+        page?: Context.Page | undefined;
     }
 
     export namespace Context {
@@ -79,6 +74,7 @@ export namespace PersonalizationPageEvent {
             query: Record<string, Page.Query.Value>;
             referrer: string;
             search: string;
+            title?: string | undefined;
             url: string;
         }
 
@@ -94,11 +90,8 @@ export namespace PersonalizationPageEvent {
         query: Record<string, Properties.Query.Value>;
         referrer: string;
         search: string;
+        title: string;
         url: string;
-        title?: string | undefined;
-        category?: string | undefined;
-        /** Accepts any additional properties */
-        [key: string]: any;
     }
 
     export namespace Properties {

@@ -250,9 +250,13 @@ export namespace HydratedExperienceView {
                 stableId: string;
                 random: number;
                 audiences: string[];
-                traits: Record<string, unknown>;
+                traits: Record<
+                    string,
+                    ContentfulViewDelivery.GetSpacesSpaceIdEnvironmentsEnvironmentIdExperiencesId0200Schema1
+                >;
                 location: Profile.Location;
                 session: Profile.Session;
+                jurisdiction?: Profile.Jurisdiction | undefined;
             }
 
             export namespace Profile {
@@ -290,6 +294,7 @@ export namespace HydratedExperienceView {
                         query: Record<string, LandingPage.Query.Value>;
                         referrer: string;
                         search: string;
+                        title?: string | undefined;
                         url: string;
                     }
 
@@ -299,6 +304,12 @@ export namespace HydratedExperienceView {
                         }
                     }
                 }
+
+                export const Jurisdiction = {
+                    Us: "US",
+                    Eu: "EU",
+                } as const;
+                export type Jurisdiction = (typeof Jurisdiction)[keyof typeof Jurisdiction];
             }
 
             export type Experiences = Experiences.Item[];
@@ -308,6 +319,7 @@ export namespace HydratedExperienceView {
                     experienceId: string;
                     variantIndex: number;
                     variants: Record<string, string>;
+                    sticky?: boolean | undefined;
                 }
             }
         }

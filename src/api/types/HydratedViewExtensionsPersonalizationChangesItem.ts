@@ -10,8 +10,22 @@ export type HydratedViewExtensionsPersonalizationChangesItem =
 export namespace HydratedViewExtensionsPersonalizationChangesItem {
     export interface Variable {
         type: "Variable";
-        /** Accepts any additional properties */
-        [key: string]: any;
+        key: string;
+        meta: HydratedViewExtensionsPersonalizationChangesItemVariable.Meta;
+        value?: HydratedViewExtensionsPersonalizationChangesItemVariable.Value | undefined;
+    }
+
+    export namespace HydratedViewExtensionsPersonalizationChangesItemVariable {
+        export interface Meta {
+            experienceId: string;
+            variantIndex: number;
+        }
+
+        export type Value =
+            | string
+            | boolean
+            | number
+            | Record<string, ContentfulViewDelivery.GetSpacesSpaceIdEnvironmentsEnvironmentIdExperiencesId0200Schema3>;
     }
 
     export interface Experience {

@@ -26,8 +26,6 @@ export class ExperienceClient {
     }
 
     /**
-     * @param {string} spaceId
-     * @param {string} environmentId
      * @param {string} id
      * @param {ContentfulViewDelivery.GetExperienceRequest} request
      * @param {ExperienceClient.RequestOptions} requestOptions - Request-specific configuration.
@@ -41,7 +39,7 @@ export class ExperienceClient {
      * @throws {@link ContentfulViewDelivery.InternalServerError}
      *
      * @example
-     *     await client.experience.get("spaceId", "environmentId", "id", {
+     *     await client.experience.get("id", {
      *         preview: "true",
      *         access_token: "access_token",
      *         "optimization-profile-id": "optimization-profile-id",
@@ -50,18 +48,14 @@ export class ExperienceClient {
      *     })
      */
     public get(
-        spaceId: string,
-        environmentId: string,
         id: string,
         request: ContentfulViewDelivery.GetExperienceRequest = {},
         requestOptions?: ExperienceClient.RequestOptions,
     ): core.HttpResponsePromise<ContentfulViewDelivery.GetExperienceResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__get(spaceId, environmentId, id, request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__get(id, request, requestOptions));
     }
 
     private async __get(
-        spaceId: string,
-        environmentId: string,
         id: string,
         request: ContentfulViewDelivery.GetExperienceRequest = {},
         requestOptions?: ExperienceClient.RequestOptions,
@@ -95,7 +89,7 @@ export class ExperienceClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.ContentfulViewDeliveryEnvironment.Default,
-                `spaces/${core.url.encodePathParam(spaceId)}/environments/${core.url.encodePathParam(environmentId)}/experiences/${core.url.encodePathParam(id)}`,
+                `spaces/${core.url.encodePathParam(this._options.spaceId)}/environments/${core.url.encodePathParam(this._options.environmentId)}/experiences/${core.url.encodePathParam(id)}`,
             ),
             method: "GET",
             headers: _headers,
@@ -172,8 +166,6 @@ export class ExperienceClient {
     }
 
     /**
-     * @param {string} spaceId
-     * @param {string} environmentId
      * @param {string} id
      * @param {ContentfulViewDelivery.GetWithOverridesExperienceRequest} request
      * @param {ExperienceClient.RequestOptions} requestOptions - Request-specific configuration.
@@ -187,7 +179,7 @@ export class ExperienceClient {
      * @throws {@link ContentfulViewDelivery.InternalServerError}
      *
      * @example
-     *     await client.experience.getWithOverrides("spaceId", "environmentId", "id", {
+     *     await client.experience.getWithOverrides("id", {
      *         preview: "true",
      *         access_token: "access_token",
      *         "optimization-profile-id": "optimization-profile-id",
@@ -196,20 +188,14 @@ export class ExperienceClient {
      *     })
      */
     public getWithOverrides(
-        spaceId: string,
-        environmentId: string,
         id: string,
         request: ContentfulViewDelivery.GetWithOverridesExperienceRequest = {},
         requestOptions?: ExperienceClient.RequestOptions,
     ): core.HttpResponsePromise<ContentfulViewDelivery.GetWithOverridesExperienceResponse> {
-        return core.HttpResponsePromise.fromPromise(
-            this.__getWithOverrides(spaceId, environmentId, id, request, requestOptions),
-        );
+        return core.HttpResponsePromise.fromPromise(this.__getWithOverrides(id, request, requestOptions));
     }
 
     private async __getWithOverrides(
-        spaceId: string,
-        environmentId: string,
         id: string,
         request: ContentfulViewDelivery.GetWithOverridesExperienceRequest = {},
         requestOptions?: ExperienceClient.RequestOptions,
@@ -244,7 +230,7 @@ export class ExperienceClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.ContentfulViewDeliveryEnvironment.Default,
-                `spaces/${core.url.encodePathParam(spaceId)}/environments/${core.url.encodePathParam(environmentId)}/experiences/${core.url.encodePathParam(id)}`,
+                `spaces/${core.url.encodePathParam(this._options.spaceId)}/environments/${core.url.encodePathParam(this._options.environmentId)}/experiences/${core.url.encodePathParam(id)}`,
             ),
             method: "POST",
             headers: _headers,

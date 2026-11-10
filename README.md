@@ -14,8 +14,8 @@ and first-class IntelliSense.
 
 - [Installation](#installation)
 - [Reference](#reference)
-- [Usage](#usage)
 - [Available Methods](#available-methods)
+- [Usage](#usage)
 - [Authentication](#authentication)
 - [Environments](#environments)
 - [Request and Response Types](#request-and-response-types)
@@ -38,36 +38,9 @@ and first-class IntelliSense.
 npm i -s @contentful/experience-delivery
 ```
 
-> **Note**: This package is not yet published as a stable release on the public npm
-> registry. Until then, see [BUILDING.md](./BUILDING.md) for how to build and
-> consume it from source.
-
 ## Reference
 
 A full reference for this library is available [here](https://github.com/contentful/contentful-experience-delivery.js/blob/HEAD/./reference.md).
-
-## Usage
-
-Instantiate the client with a Content Delivery API token and fetch a published
-Experience:
-
-```typescript
-import { ContentfulViewDeliveryClient } from "@contentful/experience-delivery";
-
-const client = new ContentfulViewDeliveryClient({
-    token: process.env.CONTENTFUL_CDA_TOKEN!,
-});
-
-const experience = await client.experience.get(
-    "spaceId",
-    "environmentId",
-    "experienceId",
-    { locale: "en-US" },
-);
-```
-
-See [Authentication](#authentication) for preview tokens and the
-`access_token` query-parameter alternative.
 
 ## Available Methods
 
@@ -85,6 +58,31 @@ See [Authentication](#authentication) for preview tokens and the
 
 All methods accept an optional trailing `requestOptions` argument (`headers`, `queryParams`, `timeoutInSeconds`, `maxRetries`, `abortSignal`) and return an `HttpResponsePromise` — `await` it directly for the typed data, or call `.withRawResponse()` to also get response headers (see [Access Raw Response Data](#access-raw-response-data)).
 
+## Usage
+
+Instantiate the client with a Content Delivery API token, a space, and an
+environment (both of which are then reused for every call), and fetch a
+published Experience:
+
+```typescript
+import { ContentfulViewDeliveryClient } from "@contentful/experience-delivery";
+
+const client = new ContentfulViewDeliveryClient({
+    token: process.env.CONTENTFUL_CDA_TOKEN!,
+    spaceId: "spaceId",
+    environmentId: "environmentId",
+});
+
+const experience = await client.experience.get(
+    "experienceId",
+    { locale: "en-US" },
+);
+```
+
+See [Authentication](#authentication) for preview tokens and the
+`access_token` query-parameter alternative.
+
+
 ## Authentication
 
 The API supports two authentication modes — both backed by a Contentful access token.
@@ -99,6 +97,8 @@ import { ContentfulViewDeliveryClient } from "@contentful/experience-delivery";
 
 const client = new ContentfulViewDeliveryClient({
     token: process.env.CONTENTFUL_CDA_TOKEN!,
+    spaceId: "spaceId",
+    environmentId: "environmentId",
 });
 ```
 
@@ -113,9 +113,11 @@ import { ContentfulViewDeliveryClient } from "@contentful/experience-delivery";
 const previewClient = new ContentfulViewDeliveryClient({
     token: process.env.CONTENTFUL_CPA_TOKEN!,
     baseUrl: "https://preview.xdn.contentful.com",
+    spaceId: "spaceId",
+    environmentId: "environmentId",
 });
 
-const draft = await previewClient.experience.get(spaceId, envId, experienceId, {
+const draft = await previewClient.experience.get(experienceId, {
     preview: "true",
     locale: "en-US",
 });
@@ -127,7 +129,7 @@ For environments where you can't send the `Authorization` header (e.g. some brow
 scenarios), the API also accepts an `access_token` query parameter:
 
 ```typescript
-await client.experience.get(spaceId, envId, experienceId, {
+await client.experience.get(experienceId, {
     locale: "en-US",
     access_token: process.env.CONTENTFUL_CDA_TOKEN!,
 });
@@ -376,7 +378,7 @@ The SDK works in the following runtimes:
 
 
 
-- Node.js 22+
+- Node.js 18+
 - Vercel
 - Cloudflare Workers
 - Deno v1.25+

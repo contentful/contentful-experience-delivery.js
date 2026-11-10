@@ -3,13 +3,14 @@
 export interface PersonalizationComponentEvent {
     channel: PersonalizationComponentEvent.Channel;
     context: PersonalizationComponentEvent.Context;
+    anonymousId?: string | undefined;
     messageId: string;
+    originalTimestamp: string;
+    sentAt: string;
     timestamp: string;
-    originalTimestamp?: string | undefined;
-    sentAt?: string | undefined;
     userId?: string | undefined;
-    componentId: string;
     componentType?: PersonalizationComponentEvent.ComponentType | undefined;
+    componentId: string;
     experienceId?: string | undefined;
     variantIndex?: number | undefined;
     viewDurationMs?: number | undefined;
@@ -17,23 +18,18 @@ export interface PersonalizationComponentEvent {
 }
 
 export namespace PersonalizationComponentEvent {
-    export const Channel = {
-        Web: "web",
-        Mobile: "mobile",
-        Server: "server",
-        Client: "client",
-    } as const;
-    export type Channel = (typeof Channel)[keyof typeof Channel];
+    export type Channel = ("mobile" | "server" | "web") | "client";
 
     export interface Context {
         app?: Context.App | undefined;
-        campaign?: Context.Campaign | undefined;
+        campaign: Context.Campaign;
         gdpr?: Context.Gdpr | undefined;
         library: Context.Library;
         locale?: string | undefined;
         location?: Context.Location | undefined;
-        page?: Context.Page | undefined;
         userAgent?: string | undefined;
+        page?: Context.Page | undefined;
+        screen?: Context.Screen | undefined;
     }
 
     export namespace Context {
@@ -83,6 +79,7 @@ export namespace PersonalizationComponentEvent {
             query: Record<string, Page.Query.Value>;
             referrer: string;
             search: string;
+            title?: string | undefined;
             url: string;
         }
 
@@ -90,6 +87,10 @@ export namespace PersonalizationComponentEvent {
             export namespace Query {
                 export type Value = string | string[];
             }
+        }
+
+        export interface Screen {
+            name: string;
         }
     }
 

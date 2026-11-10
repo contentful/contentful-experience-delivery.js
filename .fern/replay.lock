@@ -9992,28 +9992,15 @@ patches:
     user_owned: true
     status: unresolved
   - id: patch-3f2d2e73
-    content_hash: sha256:fad151a2fbb2b67607ad90704fceadb87779a389876012ebbb80a2f34ab97624
+    content_hash: sha256:c39bc1952e889740277bf9ae0442b45c648d3911f60f349c28a28ac8f842a85e
     original_commit: 3f2d2e7320c9f8f357709afff0db1c49e3c20724
     original_message: "fix: restore Fern placeholder version after #41 regeneration [AIS-658] (#43)"
     original_author: Chase Poirier <chase.poirier@contentful.com>
     base_generation: 3e8e1507204aed9e14790365fa83abed6601e9c7
     files:
-      - changelog.md
       - package.json
       - src/version.ts
     patch_content: |
-      diff --git a/changelog.md b/changelog.md
-      index 5b5c97c..d1b6de2 100644
-      --- a/changelog.md
-      +++ b/changelog.md
-      @@ -1,6 +1,6 @@
-       # Changelog
-       
-      -## [1.0.0-dev.9] - 2026-09-29
-      +## [0.0.0-fern-placeholder.8] - 2026-09-29
-       ### Breaking Changes
-       - **`HydratedView.viewports`**, **`HydratedExperienceView.viewports`**, **`HydratedFragmentView.viewports`**, and **`HydratedExperienceFragmentView.viewports`** are now optional (`Viewport[] | undefined`) instead of required. Add a null/undefined guard before accessing this field: `if (view.viewports) { ... }`.
-       
       diff --git a/package.json b/package.json
       index d2d7192..9fde2da 100644
       --- a/package.json
@@ -10034,17 +10021,6 @@ patches:
       -export const SDK_VERSION = "1.0.0-dev.9";
       +export const SDK_VERSION = "0.0.0-fern-placeholder.8";
     theirs_snapshot:
-      changelog.md: |+
-        # Changelog
-
-        ## [0.0.0-fern-placeholder.8] - 2026-09-29
-        ### Breaking Changes
-        - **`HydratedView.viewports`**, **`HydratedExperienceView.viewports`**, **`HydratedFragmentView.viewports`**, and **`HydratedExperienceFragmentView.viewports`** are now optional (`Viewport[] | undefined`) instead of required. Add a null/undefined guard before accessing this field: `if (view.viewports) { ... }`.
-
-        ### Changed
-        - Minimum supported Node.js version lowered from `>=22.0.0` to `>=18.0.0`, broadening runtime compatibility.
-        - Internal Fern telemetry headers (`X-Fern-Language`, `X-Fern-SDK-Name`, `X-Fern-Runtime`, `X-Fern-Runtime-Version`) are no longer sent with API requests.
-
       package.json: |
         {
             "name": "@contentful/experience-delivery",
