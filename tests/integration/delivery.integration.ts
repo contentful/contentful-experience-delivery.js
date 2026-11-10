@@ -9,44 +9,54 @@ const { spaceId, envId } = env;
 const locale = "en-US";
 
 describe("experience delivery and preview", () => {
-    const client = new ContentfulViewDeliveryClient({ token: env.cdaToken, baseUrl: env.deliveryUrl });
-    const previewClient = new ContentfulViewDeliveryClient({ token: env.cpaToken, baseUrl: env.previewUrl });
+    const client = new ContentfulViewDeliveryClient({
+        token: env.cdaToken,
+        baseUrl: env.deliveryUrl,
+        spaceId: env.spaceId,
+        environmentId: env.envId,
+    });
+    const previewClient = new ContentfulViewDeliveryClient({
+        token: env.cpaToken,
+        baseUrl: env.previewUrl,
+        spaceId: env.spaceId,
+        environmentId: env.envId,
+    });
 
     beforeAll(async () => {
         await waitFor("published experience on delivery", () =>
-            client.experience.get(spaceId, envId, experienceId, { locale }),
+            client.experience.get(experienceId, { locale }),
         );
         await waitFor("draft experience on preview", () =>
-            previewClient.experience.get(spaceId, envId, draftExperienceId, { locale }),
+            previewClient.experience.get(draftExperienceId, { locale }),
         );
     });
 
     it("experience.get returns the published experience", async () => {
-        const experience = await client.experience.get(spaceId, envId, experienceId, { locale });
+        const experience = await client.experience.get(experienceId, { locale });
 
         expect(experience.sys.id).toBe(experienceId);
     });
 
     it("experience.getWithOverrides returns the personalized experience", async () => {
-        const experience = await client.experience.getWithOverrides(spaceId, envId, experienceId, { locale });
+        const experience = await client.experience.getWithOverrides(experienceId, { locale });
 
         expect(experience.sys.id).toBe(experienceId);
     });
 
     it("experience.get accepts a variant", async () => {
-        const experience = await client.experience.get(spaceId, envId, experienceId, { locale, variant: "control" });
+        const experience = await client.experience.get(experienceId, { locale, variant: "control" });
 
         expect(experience.sys.id).toBe(experienceId);
     });
 
     it("delivery returns 404 for a draft experience", async () => {
-        const status = await rejectionStatus(client.experience.get(spaceId, envId, draftExperienceId, { locale }));
+        const status = await rejectionStatus(client.experience.get(draftExperienceId, { locale }));
 
         expect(status).toBe(404);
     });
 
     it("preview returns a draft experience", async () => {
-        const experience = await previewClient.experience.get(spaceId, envId, draftExperienceId, { locale });
+        const experience = await previewClient.experience.get(draftExperienceId, { locale });
 
         expect(experience.sys.id).toBe(draftExperienceId);
     });
