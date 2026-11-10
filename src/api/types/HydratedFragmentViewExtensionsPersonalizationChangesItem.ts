@@ -10,8 +10,25 @@ export type HydratedFragmentViewExtensionsPersonalizationChangesItem =
 export namespace HydratedFragmentViewExtensionsPersonalizationChangesItem {
     export interface Variable {
         type: "Variable";
-        /** Accepts any additional properties */
-        [key: string]: any;
+        key: string;
+        meta: HydratedFragmentViewExtensionsPersonalizationChangesItemVariable.Meta;
+        value?: HydratedFragmentViewExtensionsPersonalizationChangesItemVariable.Value | undefined;
+    }
+
+    export namespace HydratedFragmentViewExtensionsPersonalizationChangesItemVariable {
+        export interface Meta {
+            experienceId: string;
+            variantIndex: number;
+        }
+
+        export type Value =
+            | string
+            | boolean
+            | number
+            | Record<
+                  string,
+                  ContentfulViewDelivery.GetSpacesSpaceIdEnvironmentsEnvironmentIdTimelineFragmentsId3200Schema3
+              >;
     }
 
     export interface Experience {

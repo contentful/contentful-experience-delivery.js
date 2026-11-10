@@ -23,8 +23,6 @@ export class ExperienceClient {
     }
 
     /**
-     * @param {string} spaceId
-     * @param {string} environmentId
      * @param {string} id
      * @param {ContentfulViewDelivery.release.GetExperienceRequest} request
      * @param {ExperienceClient.RequestOptions} requestOptions - Request-specific configuration.
@@ -38,7 +36,7 @@ export class ExperienceClient {
      * @throws {@link ContentfulViewDelivery.InternalServerError}
      *
      * @example
-     *     await client.release.experience.get("spaceId", "environmentId", "id", {
+     *     await client.release.experience.get("id", {
      *         access_token: "access_token",
      *         "release[lte]": "release[lte]",
      *         "timestamp[lte]": "timestamp[lte]",
@@ -46,18 +44,14 @@ export class ExperienceClient {
      *     })
      */
     public get(
-        spaceId: string,
-        environmentId: string,
         id: string,
         request: ContentfulViewDelivery.release.GetExperienceRequest = {},
         requestOptions?: ExperienceClient.RequestOptions,
     ): core.HttpResponsePromise<ContentfulViewDelivery.HydratedView> {
-        return core.HttpResponsePromise.fromPromise(this.__get(spaceId, environmentId, id, request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__get(id, request, requestOptions));
     }
 
     private async __get(
-        spaceId: string,
-        environmentId: string,
         id: string,
         request: ContentfulViewDelivery.release.GetExperienceRequest = {},
         requestOptions?: ExperienceClient.RequestOptions,
@@ -89,7 +83,7 @@ export class ExperienceClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.ContentfulViewDeliveryEnvironment.Default,
-                `spaces/${core.url.encodePathParam(spaceId)}/environments/${core.url.encodePathParam(environmentId)}/timeline/experiences/${core.url.encodePathParam(id)}`,
+                `spaces/${core.url.encodePathParam(this._options.spaceId)}/environments/${core.url.encodePathParam(this._options.environmentId)}/timeline/experiences/${core.url.encodePathParam(id)}`,
             ),
             method: "GET",
             headers: _headers,

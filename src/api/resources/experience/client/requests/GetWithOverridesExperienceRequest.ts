@@ -46,6 +46,7 @@ export namespace GetWithOverridesExperienceRequest {
             events?:
                 | ContentfulViewDelivery.GetWithOverridesExperienceRequestExtensionsPersonalizationEventsItem[]
                 | undefined;
+            preflight?: boolean | undefined;
         }
 
         export type SourceMap = {};

@@ -1,6 +1,6 @@
 {
     "name": "@contentful/experience-delivery",
-    "version": "1.0.0-dev.12",
+    "version": "1.0.0-dev.13",
     "private": false,
     "repository": {
         "type": "git",
@@ -116,7 +116,7 @@
         "stream": false,
         "crypto": false
     },
-    "packageManager": "pnpm@12.18.0",
+    "packageManager": "pnpm@12.16.0",
     "engines": {
         "node": ">=22.0.0"
     },

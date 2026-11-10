@@ -14,33 +14,28 @@ export namespace GetWithOverridesExperienceRequestExtensionsPersonalizationEvent
         type: "page";
         channel: GetWithOverridesExperienceRequestExtensionsPersonalizationEventsItemPage.Channel;
         context: GetWithOverridesExperienceRequestExtensionsPersonalizationEventsItemPage.Context;
+        anonymousId?: string | undefined;
         messageId: string;
+        originalTimestamp: string;
+        sentAt: string;
         timestamp: string;
-        originalTimestamp?: string | undefined;
-        sentAt?: string | undefined;
         userId?: string | undefined;
         name?: string | undefined;
         properties: GetWithOverridesExperienceRequestExtensionsPersonalizationEventsItemPage.Properties;
     }
 
     export namespace GetWithOverridesExperienceRequestExtensionsPersonalizationEventsItemPage {
-        export const Channel = {
-            Web: "web",
-            Mobile: "mobile",
-            Server: "server",
-            Client: "client",
-        } as const;
-        export type Channel = (typeof Channel)[keyof typeof Channel];
+        export type Channel = ("mobile" | "server" | "web") | "client";
 
         export interface Context {
             app?: Context.App | undefined;
-            campaign?: Context.Campaign | undefined;
+            campaign: Context.Campaign;
             gdpr?: Context.Gdpr | undefined;
             library: Context.Library;
             locale?: string | undefined;
             location?: Context.Location | undefined;
-            page?: Context.Page | undefined;
             userAgent?: string | undefined;
+            page?: Context.Page | undefined;
         }
 
         export namespace Context {
@@ -90,6 +85,7 @@ export namespace GetWithOverridesExperienceRequestExtensionsPersonalizationEvent
                 query: Record<string, Page.Query.Value>;
                 referrer: string;
                 search: string;
+                title?: string | undefined;
                 url: string;
             }
 
@@ -105,11 +101,8 @@ export namespace GetWithOverridesExperienceRequestExtensionsPersonalizationEvent
             query: Record<string, Properties.Query.Value>;
             referrer: string;
             search: string;
+            title: string;
             url: string;
-            title?: string | undefined;
-            category?: string | undefined;
-            /** Accepts any additional properties */
-            [key: string]: any;
         }
 
         export namespace Properties {
@@ -123,33 +116,32 @@ export namespace GetWithOverridesExperienceRequestExtensionsPersonalizationEvent
         type: "track";
         channel: GetWithOverridesExperienceRequestExtensionsPersonalizationEventsItemTrack.Channel;
         context: GetWithOverridesExperienceRequestExtensionsPersonalizationEventsItemTrack.Context;
+        anonymousId?: string | undefined;
         messageId: string;
+        originalTimestamp: string;
+        sentAt: string;
         timestamp: string;
-        originalTimestamp?: string | undefined;
-        sentAt?: string | undefined;
         userId?: string | undefined;
         event: string;
-        properties?: Record<string, unknown> | undefined;
+        properties: Record<
+            string,
+            ContentfulViewDelivery.PostSpacesSpaceIdEnvironmentsEnvironmentIdExperiencesId1BodySchema2
+        >;
     }
 
     export namespace GetWithOverridesExperienceRequestExtensionsPersonalizationEventsItemTrack {
-        export const Channel = {
-            Web: "web",
-            Mobile: "mobile",
-            Server: "server",
-            Client: "client",
-        } as const;
-        export type Channel = (typeof Channel)[keyof typeof Channel];
+        export type Channel = ("mobile" | "server" | "web") | "client";
 
         export interface Context {
             app?: Context.App | undefined;
-            campaign?: Context.Campaign | undefined;
+            campaign: Context.Campaign;
             gdpr?: Context.Gdpr | undefined;
             library: Context.Library;
             locale?: string | undefined;
             location?: Context.Location | undefined;
-            page?: Context.Page | undefined;
             userAgent?: string | undefined;
+            page?: Context.Page | undefined;
+            screen?: Context.Screen | undefined;
         }
 
         export namespace Context {
@@ -199,6 +191,7 @@ export namespace GetWithOverridesExperienceRequestExtensionsPersonalizationEvent
                 query: Record<string, Page.Query.Value>;
                 referrer: string;
                 search: string;
+                title?: string | undefined;
                 url: string;
             }
 
@@ -206,6 +199,10 @@ export namespace GetWithOverridesExperienceRequestExtensionsPersonalizationEvent
                 export namespace Query {
                     export type Value = string | string[];
                 }
+            }
+
+            export interface Screen {
+                name: string;
             }
         }
     }
@@ -214,32 +211,31 @@ export namespace GetWithOverridesExperienceRequestExtensionsPersonalizationEvent
         type: "identify";
         channel: GetWithOverridesExperienceRequestExtensionsPersonalizationEventsItemIdentify.Channel;
         context: GetWithOverridesExperienceRequestExtensionsPersonalizationEventsItemIdentify.Context;
+        anonymousId?: string | undefined;
         messageId: string;
+        originalTimestamp: string;
+        sentAt: string;
         timestamp: string;
-        originalTimestamp?: string | undefined;
-        sentAt?: string | undefined;
         userId: string;
-        traits: Record<string, unknown>;
+        traits: Record<
+            string,
+            ContentfulViewDelivery.PostSpacesSpaceIdEnvironmentsEnvironmentIdExperiencesId1BodySchema3
+        >;
     }
 
     export namespace GetWithOverridesExperienceRequestExtensionsPersonalizationEventsItemIdentify {
-        export const Channel = {
-            Web: "web",
-            Mobile: "mobile",
-            Server: "server",
-            Client: "client",
-        } as const;
-        export type Channel = (typeof Channel)[keyof typeof Channel];
+        export type Channel = ("mobile" | "server" | "web") | "client";
 
         export interface Context {
             app?: Context.App | undefined;
-            campaign?: Context.Campaign | undefined;
+            campaign: Context.Campaign;
             gdpr?: Context.Gdpr | undefined;
             library: Context.Library;
             locale?: string | undefined;
             location?: Context.Location | undefined;
-            page?: Context.Page | undefined;
             userAgent?: string | undefined;
+            page?: Context.Page | undefined;
+            screen?: Context.Screen | undefined;
         }
 
         export namespace Context {
@@ -289,6 +285,7 @@ export namespace GetWithOverridesExperienceRequestExtensionsPersonalizationEvent
                 query: Record<string, Page.Query.Value>;
                 referrer: string;
                 search: string;
+                title?: string | undefined;
                 url: string;
             }
 
@@ -296,6 +293,10 @@ export namespace GetWithOverridesExperienceRequestExtensionsPersonalizationEvent
                 export namespace Query {
                     export type Value = string | string[];
                 }
+            }
+
+            export interface Screen {
+                name: string;
             }
         }
     }
@@ -304,32 +305,30 @@ export namespace GetWithOverridesExperienceRequestExtensionsPersonalizationEvent
         type: "screen";
         channel: GetWithOverridesExperienceRequestExtensionsPersonalizationEventsItemScreen.Channel;
         context: GetWithOverridesExperienceRequestExtensionsPersonalizationEventsItemScreen.Context;
+        anonymousId?: string | undefined;
         messageId: string;
+        originalTimestamp: string;
+        sentAt: string;
         timestamp: string;
-        originalTimestamp?: string | undefined;
-        sentAt?: string | undefined;
         userId?: string | undefined;
-        properties: GetWithOverridesExperienceRequestExtensionsPersonalizationEventsItemScreen.Properties;
+        name: string;
+        properties?:
+            | Record<string, ContentfulViewDelivery.PostSpacesSpaceIdEnvironmentsEnvironmentIdExperiencesId1BodySchema2>
+            | undefined;
     }
 
     export namespace GetWithOverridesExperienceRequestExtensionsPersonalizationEventsItemScreen {
-        export const Channel = {
-            Web: "web",
-            Mobile: "mobile",
-            Server: "server",
-            Client: "client",
-        } as const;
-        export type Channel = (typeof Channel)[keyof typeof Channel];
+        export type Channel = ("mobile" | "server" | "web") | "client";
 
         export interface Context {
             app?: Context.App | undefined;
-            campaign?: Context.Campaign | undefined;
+            campaign: Context.Campaign;
             gdpr?: Context.Gdpr | undefined;
             library: Context.Library;
             locale?: string | undefined;
             location?: Context.Location | undefined;
-            page?: Context.Page | undefined;
             userAgent?: string | undefined;
+            screen: Context.Screen;
         }
 
         export namespace Context {
@@ -374,25 +373,9 @@ export namespace GetWithOverridesExperienceRequestExtensionsPersonalizationEvent
                 }
             }
 
-            export interface Page {
-                path: string;
-                query: Record<string, Page.Query.Value>;
-                referrer: string;
-                search: string;
-                url: string;
+            export interface Screen {
+                name: string;
             }
-
-            export namespace Page {
-                export namespace Query {
-                    export type Value = string | string[];
-                }
-            }
-        }
-
-        export interface Properties {
-            name: string;
-            /** Accepts any additional properties */
-            [key: string]: any;
         }
     }
 
@@ -400,15 +383,16 @@ export namespace GetWithOverridesExperienceRequestExtensionsPersonalizationEvent
         type: "component";
         channel: GetWithOverridesExperienceRequestExtensionsPersonalizationEventsItemComponent.Channel;
         context: GetWithOverridesExperienceRequestExtensionsPersonalizationEventsItemComponent.Context;
+        anonymousId?: string | undefined;
         messageId: string;
+        originalTimestamp: string;
+        sentAt: string;
         timestamp: string;
-        originalTimestamp?: string | undefined;
-        sentAt?: string | undefined;
         userId?: string | undefined;
-        componentId: string;
         componentType?:
             | GetWithOverridesExperienceRequestExtensionsPersonalizationEventsItemComponent.ComponentType
             | undefined;
+        componentId: string;
         experienceId?: string | undefined;
         variantIndex?: number | undefined;
         viewDurationMs?: number | undefined;
@@ -416,23 +400,18 @@ export namespace GetWithOverridesExperienceRequestExtensionsPersonalizationEvent
     }
 
     export namespace GetWithOverridesExperienceRequestExtensionsPersonalizationEventsItemComponent {
-        export const Channel = {
-            Web: "web",
-            Mobile: "mobile",
-            Server: "server",
-            Client: "client",
-        } as const;
-        export type Channel = (typeof Channel)[keyof typeof Channel];
+        export type Channel = ("mobile" | "server" | "web") | "client";
 
         export interface Context {
             app?: Context.App | undefined;
-            campaign?: Context.Campaign | undefined;
+            campaign: Context.Campaign;
             gdpr?: Context.Gdpr | undefined;
             library: Context.Library;
             locale?: string | undefined;
             location?: Context.Location | undefined;
-            page?: Context.Page | undefined;
             userAgent?: string | undefined;
+            page?: Context.Page | undefined;
+            screen?: Context.Screen | undefined;
         }
 
         export namespace Context {
@@ -482,6 +461,7 @@ export namespace GetWithOverridesExperienceRequestExtensionsPersonalizationEvent
                 query: Record<string, Page.Query.Value>;
                 referrer: string;
                 search: string;
+                title?: string | undefined;
                 url: string;
             }
 
@@ -489,6 +469,10 @@ export namespace GetWithOverridesExperienceRequestExtensionsPersonalizationEvent
                 export namespace Query {
                     export type Value = string | string[];
                 }
+            }
+
+            export interface Screen {
+                name: string;
             }
         }
 

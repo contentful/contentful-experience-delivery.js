@@ -23,7 +23,6 @@ export class DestinationClient {
     }
 
     /**
-     * @param {string} spaceId
      * @param {string} destinationId
      * @param {ContentfulViewDelivery.SitemapDestinationRequest} request
      * @param {DestinationClient.RequestOptions} requestOptions - Request-specific configuration.
@@ -37,7 +36,7 @@ export class DestinationClient {
      * @throws {@link ContentfulViewDelivery.InternalServerError}
      *
      * @example
-     *     await client.destination.sitemap("spaceId", "destinationId", {
+     *     await client.destination.sitemap("destinationId", {
      *         access_token: "access_token",
      *         pageNext: "pageNext",
      *         pagePrev: "pagePrev",
@@ -45,16 +44,14 @@ export class DestinationClient {
      *     })
      */
     public sitemap(
-        spaceId: string,
         destinationId: string,
         request: ContentfulViewDelivery.SitemapDestinationRequest = {},
         requestOptions?: DestinationClient.RequestOptions,
     ): core.HttpResponsePromise<ContentfulViewDelivery.DestinationSitemap> {
-        return core.HttpResponsePromise.fromPromise(this.__sitemap(spaceId, destinationId, request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__sitemap(destinationId, request, requestOptions));
     }
 
     private async __sitemap(
-        spaceId: string,
         destinationId: string,
         request: ContentfulViewDelivery.SitemapDestinationRequest = {},
         requestOptions?: DestinationClient.RequestOptions,
@@ -81,7 +78,7 @@ export class DestinationClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.ContentfulViewDeliveryEnvironment.Default,
-                `spaces/${core.url.encodePathParam(spaceId)}/destinations/${core.url.encodePathParam(destinationId)}/sitemap`,
+                `spaces/${core.url.encodePathParam(this._options.spaceId)}/destinations/${core.url.encodePathParam(destinationId)}/sitemap`,
             ),
             method: "GET",
             headers: _headers,
@@ -158,7 +155,6 @@ export class DestinationClient {
     }
 
     /**
-     * @param {string} spaceId
      * @param {string} destinationId
      * @param {string} nodeId
      * @param {ContentfulViewDelivery.ResolveByNodeIdDestinationRequest} request
@@ -173,25 +169,23 @@ export class DestinationClient {
      * @throws {@link ContentfulViewDelivery.InternalServerError}
      *
      * @example
-     *     await client.destination.resolveByNodeId("spaceId", "destinationId", "nodeId", {
+     *     await client.destination.resolveByNodeId("destinationId", "nodeId", {
      *         access_token: "access_token",
      *         locale: "locale"
      *     })
      */
     public resolveByNodeId(
-        spaceId: string,
         destinationId: string,
         nodeId: string,
         request: ContentfulViewDelivery.ResolveByNodeIdDestinationRequest = {},
         requestOptions?: DestinationClient.RequestOptions,
     ): core.HttpResponsePromise<ContentfulViewDelivery.DestinationExperienceResolutionResponse> {
         return core.HttpResponsePromise.fromPromise(
-            this.__resolveByNodeId(spaceId, destinationId, nodeId, request, requestOptions),
+            this.__resolveByNodeId(destinationId, nodeId, request, requestOptions),
         );
     }
 
     private async __resolveByNodeId(
-        spaceId: string,
         destinationId: string,
         nodeId: string,
         request: ContentfulViewDelivery.ResolveByNodeIdDestinationRequest = {},
@@ -217,7 +211,7 @@ export class DestinationClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.ContentfulViewDeliveryEnvironment.Default,
-                `spaces/${core.url.encodePathParam(spaceId)}/destinations/${core.url.encodePathParam(destinationId)}/nodes/${core.url.encodePathParam(nodeId)}/experiences`,
+                `spaces/${core.url.encodePathParam(this._options.spaceId)}/destinations/${core.url.encodePathParam(destinationId)}/nodes/${core.url.encodePathParam(nodeId)}/experiences`,
             ),
             method: "GET",
             headers: _headers,
@@ -294,7 +288,6 @@ export class DestinationClient {
     }
 
     /**
-     * @param {string} spaceId
      * @param {string} destinationId
      * @param {string} nodeId
      * @param {ContentfulViewDelivery.DestinationExperiencesByNodeRequest} request
@@ -309,25 +302,23 @@ export class DestinationClient {
      * @throws {@link ContentfulViewDelivery.InternalServerError}
      *
      * @example
-     *     await client.destination.resolveByNodeIdWithOverrides("spaceId", "destinationId", "nodeId", {
+     *     await client.destination.resolveByNodeIdWithOverrides("destinationId", "nodeId", {
      *         access_token: "access_token",
      *         locale: "locale"
      *     })
      */
     public resolveByNodeIdWithOverrides(
-        spaceId: string,
         destinationId: string,
         nodeId: string,
         request: ContentfulViewDelivery.DestinationExperiencesByNodeRequest = {},
         requestOptions?: DestinationClient.RequestOptions,
     ): core.HttpResponsePromise<ContentfulViewDelivery.DestinationExperienceResolutionResponse> {
         return core.HttpResponsePromise.fromPromise(
-            this.__resolveByNodeIdWithOverrides(spaceId, destinationId, nodeId, request, requestOptions),
+            this.__resolveByNodeIdWithOverrides(destinationId, nodeId, request, requestOptions),
         );
     }
 
     private async __resolveByNodeIdWithOverrides(
-        spaceId: string,
         destinationId: string,
         nodeId: string,
         request: ContentfulViewDelivery.DestinationExperiencesByNodeRequest = {},
@@ -353,7 +344,7 @@ export class DestinationClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.ContentfulViewDeliveryEnvironment.Default,
-                `spaces/${core.url.encodePathParam(spaceId)}/destinations/${core.url.encodePathParam(destinationId)}/nodes/${core.url.encodePathParam(nodeId)}/experiences`,
+                `spaces/${core.url.encodePathParam(this._options.spaceId)}/destinations/${core.url.encodePathParam(destinationId)}/nodes/${core.url.encodePathParam(nodeId)}/experiences`,
             ),
             method: "POST",
             headers: _headers,
@@ -433,7 +424,6 @@ export class DestinationClient {
     }
 
     /**
-     * @param {string} spaceId
      * @param {string} destinationId
      * @param {ContentfulViewDelivery.ResolveByPathDestinationRequest} request
      * @param {DestinationClient.RequestOptions} requestOptions - Request-specific configuration.
@@ -447,25 +437,21 @@ export class DestinationClient {
      * @throws {@link ContentfulViewDelivery.InternalServerError}
      *
      * @example
-     *     await client.destination.resolveByPath("spaceId", "destinationId", {
+     *     await client.destination.resolveByPath("destinationId", {
      *         access_token: "access_token",
      *         locale: "locale",
      *         path: "path"
      *     })
      */
     public resolveByPath(
-        spaceId: string,
         destinationId: string,
         request: ContentfulViewDelivery.ResolveByPathDestinationRequest,
         requestOptions?: DestinationClient.RequestOptions,
     ): core.HttpResponsePromise<ContentfulViewDelivery.DestinationExperienceResolutionResponse> {
-        return core.HttpResponsePromise.fromPromise(
-            this.__resolveByPath(spaceId, destinationId, request, requestOptions),
-        );
+        return core.HttpResponsePromise.fromPromise(this.__resolveByPath(destinationId, request, requestOptions));
     }
 
     private async __resolveByPath(
-        spaceId: string,
         destinationId: string,
         request: ContentfulViewDelivery.ResolveByPathDestinationRequest,
         requestOptions?: DestinationClient.RequestOptions,
@@ -491,7 +477,7 @@ export class DestinationClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.ContentfulViewDeliveryEnvironment.Default,
-                `spaces/${core.url.encodePathParam(spaceId)}/destinations/${core.url.encodePathParam(destinationId)}/experiences`,
+                `spaces/${core.url.encodePathParam(this._options.spaceId)}/destinations/${core.url.encodePathParam(destinationId)}/experiences`,
             ),
             method: "GET",
             headers: _headers,
@@ -568,7 +554,6 @@ export class DestinationClient {
     }
 
     /**
-     * @param {string} spaceId
      * @param {string} destinationId
      * @param {ContentfulViewDelivery.DestinationExperiencesByPathRequest} request
      * @param {DestinationClient.RequestOptions} requestOptions - Request-specific configuration.
@@ -582,25 +567,23 @@ export class DestinationClient {
      * @throws {@link ContentfulViewDelivery.InternalServerError}
      *
      * @example
-     *     await client.destination.resolveByPathWithOverrides("spaceId", "destinationId", {
+     *     await client.destination.resolveByPathWithOverrides("destinationId", {
      *         access_token: "access_token",
      *         locale: "locale",
      *         path: "path"
      *     })
      */
     public resolveByPathWithOverrides(
-        spaceId: string,
         destinationId: string,
         request: ContentfulViewDelivery.DestinationExperiencesByPathRequest,
         requestOptions?: DestinationClient.RequestOptions,
     ): core.HttpResponsePromise<ContentfulViewDelivery.DestinationExperienceResolutionResponse> {
         return core.HttpResponsePromise.fromPromise(
-            this.__resolveByPathWithOverrides(spaceId, destinationId, request, requestOptions),
+            this.__resolveByPathWithOverrides(destinationId, request, requestOptions),
         );
     }
 
     private async __resolveByPathWithOverrides(
-        spaceId: string,
         destinationId: string,
         request: ContentfulViewDelivery.DestinationExperiencesByPathRequest,
         requestOptions?: DestinationClient.RequestOptions,
@@ -625,7 +608,7 @@ export class DestinationClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.ContentfulViewDeliveryEnvironment.Default,
-                `spaces/${core.url.encodePathParam(spaceId)}/destinations/${core.url.encodePathParam(destinationId)}/experiences`,
+                `spaces/${core.url.encodePathParam(this._options.spaceId)}/destinations/${core.url.encodePathParam(destinationId)}/experiences`,
             ),
             method: "POST",
             headers: _headers,

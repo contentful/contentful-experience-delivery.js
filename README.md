@@ -14,6 +14,7 @@ and first-class IntelliSense.
 
 - [Installation](#installation)
 - [Reference](#reference)
+- [Available Methods](#available-methods)
 - [Usage](#usage)
 - [Available Methods](#available-methods)
 - [Authentication](#authentication)
@@ -46,21 +47,38 @@ npm i -s @contentful/experience-delivery
 
 A full reference for this library is available [here](https://github.com/contentful/contentful-experience-delivery.js/blob/HEAD/./reference.md).
 
+## Available Methods
+
+| Resource | Method | Description | Example params | Returns |
+|---|---|---|---|---|
+| `experience` | `get` | Fetches a fully hydrated, published Experience (Studio View) by id. | `"spaceId", "environmentId", "experienceId", { locale: "en-US", preview: "true" }` | `HydratedView \| HydratedExperienceView` |
+| `experience` | `getWithOverrides` | Same as `get`, but lets you pass personalization `parameters`/`extensions` in the body to preview an overridden variant without publishing it. | `"spaceId", "environmentId", "experienceId", { locale: "en-US", parameters: { utm_source: "newsletter" } }` | `HydratedView \| HydratedExperienceView` |
+| `destination` | `sitemap` | Lists the paths published under a Destination, paginated. | `"spaceId", "destinationId", { limit: 50, pageNext: "cursor" }` | `DestinationSitemap` |
+| `destination` | `resolveByNodeId` | Resolves the Experience(s) attached to a specific sitemap node id. | `"spaceId", "destinationId", "nodeId", { locale: "en-US" }` | `DestinationExperiencesResponse \| DestinationRedirectResponse` |
+| `destination` | `resolveByNodeIdWithOverrides` | Same as `resolveByNodeId`, with personalization `extensions` passed in the body. | `"spaceId", "destinationId", "nodeId", { locale: "en-US", extensions: {} }` | `DestinationExperiencesResponse \| DestinationRedirectResponse` |
+| `destination` | `resolveByPath` | Resolves the Experience(s) published at a given URL path on a Destination. | `"spaceId", "destinationId", { path: "/about", locale: "en-US" }` | `DestinationExperiencesResponse \| DestinationRedirectResponse` |
+| `destination` | `resolveByPathWithOverrides` | Same as `resolveByPath`, with personalization `extensions` passed in the body. | `"spaceId", "destinationId", { path: "/about", locale: "en-US", extensions: {} }` | `DestinationExperiencesResponse \| DestinationRedirectResponse` |
+| `release.experience` | `get` | Fetches an Experience as it existed in a Release (or at a point in time), for Release/timeline previews. | `"spaceId", "environmentId", "experienceId", { "release[lte]": "releaseId", locale: "en-US" }` | `HydratedView` |
+| `release.fragment` | `get` | Fetches a Fragment (Component instance) as it existed in a Release (or at a point in time). Preview only. | `"spaceId", "environmentId", "fragmentId", { "release[lte]": "releaseId", locale: "en-US" }` | `HydratedFragmentView` |
+
+All methods accept an optional trailing `requestOptions` argument (`headers`, `queryParams`, `timeoutInSeconds`, `maxRetries`, `abortSignal`) and return an `HttpResponsePromise` — `await` it directly for the typed data, or call `.withRawResponse()` to also get response headers (see [Access Raw Response Data](#access-raw-response-data)).
+
 ## Usage
 
-Instantiate the client with a Content Delivery API token and fetch a published
-Experience:
+Instantiate the client with a Content Delivery API token, a space, and an
+environment (both of which are then reused for every call), and fetch a
+published Experience:
 
 ```typescript
 import { ContentfulViewDeliveryClient } from "@contentful/experience-delivery";
 
 const client = new ContentfulViewDeliveryClient({
     token: process.env.CONTENTFUL_CDA_TOKEN!,
+    spaceId: "spaceId",
+    environmentId: "environmentId",
 });
 
 const experience = await client.experience.get(
-    "spaceId",
-    "environmentId",
     "experienceId",
     { locale: "en-US" },
 );
@@ -99,6 +117,8 @@ import { ContentfulViewDeliveryClient } from "@contentful/experience-delivery";
 
 const client = new ContentfulViewDeliveryClient({
     token: process.env.CONTENTFUL_CDA_TOKEN!,
+    spaceId: "spaceId",
+    environmentId: "environmentId",
 });
 ```
 
@@ -113,9 +133,11 @@ import { ContentfulViewDeliveryClient } from "@contentful/experience-delivery";
 const previewClient = new ContentfulViewDeliveryClient({
     token: process.env.CONTENTFUL_CPA_TOKEN!,
     baseUrl: "https://preview.xdn.contentful.com",
+    spaceId: "spaceId",
+    environmentId: "environmentId",
 });
 
-const draft = await previewClient.experience.get(spaceId, envId, experienceId, {
+const draft = await previewClient.experience.get(experienceId, {
     preview: "true",
     locale: "en-US",
 });
@@ -127,7 +149,7 @@ For environments where you can't send the `Authorization` header (e.g. some brow
 scenarios), the API also accepts an `access_token` query parameter:
 
 ```typescript
-await client.experience.get(spaceId, envId, experienceId, {
+await client.experience.get(experienceId, {
     locale: "en-US",
     access_token: process.env.CONTENTFUL_CDA_TOKEN!,
 });

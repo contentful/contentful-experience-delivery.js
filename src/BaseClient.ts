@@ -15,6 +15,8 @@ export type BaseClientOptions = {
     environment?: core.Supplier<environments.ContentfulViewDeliveryEnvironment | string>;
     /** Specify a custom URL to connect the client to. */
     baseUrl?: core.Supplier<string>;
+    spaceId: string;
+    environmentId: string;
     /** Override the x-contentful-enable-alpha-feature header */
     xContentfulEnableAlphaFeature?: "new-exo-entity-types";
     /** Additional headers to include in requests. */

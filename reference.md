@@ -1,6 +1,6 @@
 # Reference
 ## Experience
-<details><summary><code>client.experience.<a href="/src/api/resources/experience/client/Client.ts">get</a>(spaceId, environmentId, id, { ...params }) -> ContentfulViewDelivery.GetExperienceResponse</code></summary>
+<details><summary><code>client.experience.<a href="/src/api/resources/experience/client/Client.ts">get</a>(id, { ...params }) -> ContentfulViewDelivery.GetExperienceResponse</code></summary>
 <dl>
 <dd>
 
@@ -13,7 +13,7 @@
 <dd>
 
 ```typescript
-await client.experience.get("spaceId", "environmentId", "id", {
+await client.experience.get("id", {
     preview: "true",
     access_token: "access_token",
     "optimization-profile-id": "optimization-profile-id",
@@ -31,22 +31,6 @@ await client.experience.get("spaceId", "environmentId", "id", {
 
 <dl>
 <dd>
-
-<dl>
-<dd>
-
-**spaceId:** `string` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**environmentId:** `string` 
-    
-</dd>
-</dl>
 
 <dl>
 <dd>
@@ -79,7 +63,7 @@ await client.experience.get("spaceId", "environmentId", "id", {
 </dl>
 </details>
 
-<details><summary><code>client.experience.<a href="/src/api/resources/experience/client/Client.ts">getWithOverrides</a>(spaceId, environmentId, id, { ...params }) -> ContentfulViewDelivery.GetWithOverridesExperienceResponse</code></summary>
+<details><summary><code>client.experience.<a href="/src/api/resources/experience/client/Client.ts">getWithOverrides</a>(id, { ...params }) -> ContentfulViewDelivery.GetWithOverridesExperienceResponse</code></summary>
 <dl>
 <dd>
 
@@ -92,7 +76,7 @@ await client.experience.get("spaceId", "environmentId", "id", {
 <dd>
 
 ```typescript
-await client.experience.getWithOverrides("spaceId", "environmentId", "id", {
+await client.experience.getWithOverrides("id", {
     preview: "true",
     access_token: "access_token",
     "optimization-profile-id": "optimization-profile-id",
@@ -110,22 +94,6 @@ await client.experience.getWithOverrides("spaceId", "environmentId", "id", {
 
 <dl>
 <dd>
-
-<dl>
-<dd>
-
-**spaceId:** `string` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**environmentId:** `string` 
-    
-</dd>
-</dl>
 
 <dl>
 <dd>
@@ -159,7 +127,7 @@ await client.experience.getWithOverrides("spaceId", "environmentId", "id", {
 </details>
 
 ## Destination
-<details><summary><code>client.destination.<a href="/src/api/resources/destination/client/Client.ts">sitemap</a>(spaceId, destinationId, { ...params }) -> ContentfulViewDelivery.DestinationSitemap</code></summary>
+<details><summary><code>client.destination.<a href="/src/api/resources/destination/client/Client.ts">sitemap</a>(destinationId, { ...params }) -> ContentfulViewDelivery.DestinationSitemap</code></summary>
 <dl>
 <dd>
 
@@ -172,7 +140,7 @@ await client.experience.getWithOverrides("spaceId", "environmentId", "id", {
 <dd>
 
 ```typescript
-await client.destination.sitemap("spaceId", "destinationId", {
+await client.destination.sitemap("destinationId", {
     access_token: "access_token",
     pageNext: "pageNext",
     pagePrev: "pagePrev",
@@ -189,14 +157,6 @@ await client.destination.sitemap("spaceId", "destinationId", {
 
 <dl>
 <dd>
-
-<dl>
-<dd>
-
-**spaceId:** `string` 
-    
-</dd>
-</dl>
 
 <dl>
 <dd>
@@ -229,7 +189,7 @@ await client.destination.sitemap("spaceId", "destinationId", {
 </dl>
 </details>
 
-<details><summary><code>client.destination.<a href="/src/api/resources/destination/client/Client.ts">resolveByNodeId</a>(spaceId, destinationId, nodeId, { ...params }) -> ContentfulViewDelivery.DestinationExperienceResolutionResponse</code></summary>
+<details><summary><code>client.destination.<a href="/src/api/resources/destination/client/Client.ts">resolveByNodeId</a>(destinationId, nodeId, { ...params }) -> ContentfulViewDelivery.DestinationExperienceResolutionResponse</code></summary>
 <dl>
 <dd>
 
@@ -242,7 +202,7 @@ await client.destination.sitemap("spaceId", "destinationId", {
 <dd>
 
 ```typescript
-await client.destination.resolveByNodeId("spaceId", "destinationId", "nodeId", {
+await client.destination.resolveByNodeId("destinationId", "nodeId", {
     access_token: "access_token",
     locale: "locale"
 });
@@ -257,14 +217,6 @@ await client.destination.resolveByNodeId("spaceId", "destinationId", "nodeId", {
 
 <dl>
 <dd>
-
-<dl>
-<dd>
-
-**spaceId:** `string` 
-    
-</dd>
-</dl>
 
 <dl>
 <dd>
@@ -305,7 +257,7 @@ await client.destination.resolveByNodeId("spaceId", "destinationId", "nodeId", {
 </dl>
 </details>
 
-<details><summary><code>client.destination.<a href="/src/api/resources/destination/client/Client.ts">resolveByNodeIdWithOverrides</a>(spaceId, destinationId, nodeId, { ...params }) -> ContentfulViewDelivery.DestinationExperienceResolutionResponse</code></summary>
+<details><summary><code>client.destination.<a href="/src/api/resources/destination/client/Client.ts">resolveByNodeIdWithOverrides</a>(destinationId, nodeId, { ...params }) -> ContentfulViewDelivery.DestinationExperienceResolutionResponse</code></summary>
 <dl>
 <dd>
 
@@ -318,7 +270,7 @@ await client.destination.resolveByNodeId("spaceId", "destinationId", "nodeId", {
 <dd>
 
 ```typescript
-await client.destination.resolveByNodeIdWithOverrides("spaceId", "destinationId", "nodeId", {
+await client.destination.resolveByNodeIdWithOverrides("destinationId", "nodeId", {
     access_token: "access_token",
     locale: "locale"
 });
@@ -333,14 +285,6 @@ await client.destination.resolveByNodeIdWithOverrides("spaceId", "destinationId"
 
 <dl>
 <dd>
-
-<dl>
-<dd>
-
-**spaceId:** `string` 
-    
-</dd>
-</dl>
 
 <dl>
 <dd>
@@ -381,7 +325,7 @@ await client.destination.resolveByNodeIdWithOverrides("spaceId", "destinationId"
 </dl>
 </details>
 
-<details><summary><code>client.destination.<a href="/src/api/resources/destination/client/Client.ts">resolveByPath</a>(spaceId, destinationId, { ...params }) -> ContentfulViewDelivery.DestinationExperienceResolutionResponse</code></summary>
+<details><summary><code>client.destination.<a href="/src/api/resources/destination/client/Client.ts">resolveByPath</a>(destinationId, { ...params }) -> ContentfulViewDelivery.DestinationExperienceResolutionResponse</code></summary>
 <dl>
 <dd>
 
@@ -394,7 +338,7 @@ await client.destination.resolveByNodeIdWithOverrides("spaceId", "destinationId"
 <dd>
 
 ```typescript
-await client.destination.resolveByPath("spaceId", "destinationId", {
+await client.destination.resolveByPath("destinationId", {
     access_token: "access_token",
     locale: "locale",
     path: "path"
@@ -410,14 +354,6 @@ await client.destination.resolveByPath("spaceId", "destinationId", {
 
 <dl>
 <dd>
-
-<dl>
-<dd>
-
-**spaceId:** `string` 
-    
-</dd>
-</dl>
 
 <dl>
 <dd>
@@ -450,7 +386,7 @@ await client.destination.resolveByPath("spaceId", "destinationId", {
 </dl>
 </details>
 
-<details><summary><code>client.destination.<a href="/src/api/resources/destination/client/Client.ts">resolveByPathWithOverrides</a>(spaceId, destinationId, { ...params }) -> ContentfulViewDelivery.DestinationExperienceResolutionResponse</code></summary>
+<details><summary><code>client.destination.<a href="/src/api/resources/destination/client/Client.ts">resolveByPathWithOverrides</a>(destinationId, { ...params }) -> ContentfulViewDelivery.DestinationExperienceResolutionResponse</code></summary>
 <dl>
 <dd>
 
@@ -463,7 +399,7 @@ await client.destination.resolveByPath("spaceId", "destinationId", {
 <dd>
 
 ```typescript
-await client.destination.resolveByPathWithOverrides("spaceId", "destinationId", {
+await client.destination.resolveByPathWithOverrides("destinationId", {
     access_token: "access_token",
     locale: "locale",
     path: "path"
@@ -479,14 +415,6 @@ await client.destination.resolveByPathWithOverrides("spaceId", "destinationId", 
 
 <dl>
 <dd>
-
-<dl>
-<dd>
-
-**spaceId:** `string` 
-    
-</dd>
-</dl>
 
 <dl>
 <dd>
@@ -520,7 +448,7 @@ await client.destination.resolveByPathWithOverrides("spaceId", "destinationId", 
 </details>
 
 ## Release Experience
-<details><summary><code>client.release.experience.<a href="/src/api/resources/release/resources/experience/client/Client.ts">get</a>(spaceId, environmentId, id, { ...params }) -> ContentfulViewDelivery.HydratedView</code></summary>
+<details><summary><code>client.release.experience.<a href="/src/api/resources/release/resources/experience/client/Client.ts">get</a>(id, { ...params }) -> ContentfulViewDelivery.HydratedView</code></summary>
 <dl>
 <dd>
 
@@ -533,7 +461,7 @@ await client.destination.resolveByPathWithOverrides("spaceId", "destinationId", 
 <dd>
 
 ```typescript
-await client.release.experience.get("spaceId", "environmentId", "id", {
+await client.release.experience.get("id", {
     access_token: "access_token",
     "release[lte]": "release[lte]",
     "timestamp[lte]": "timestamp[lte]",
@@ -550,22 +478,6 @@ await client.release.experience.get("spaceId", "environmentId", "id", {
 
 <dl>
 <dd>
-
-<dl>
-<dd>
-
-**spaceId:** `string` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**environmentId:** `string` 
-    
-</dd>
-</dl>
 
 <dl>
 <dd>
@@ -599,7 +511,7 @@ await client.release.experience.get("spaceId", "environmentId", "id", {
 </details>
 
 ## Release Fragment
-<details><summary><code>client.release.fragment.<a href="/src/api/resources/release/resources/fragment/client/Client.ts">get</a>(spaceId, environmentId, id, { ...params }) -> ContentfulViewDelivery.HydratedFragmentView</code></summary>
+<details><summary><code>client.release.fragment.<a href="/src/api/resources/release/resources/fragment/client/Client.ts">get</a>(id, { ...params }) -> ContentfulViewDelivery.HydratedFragmentView</code></summary>
 <dl>
 <dd>
 
@@ -612,7 +524,7 @@ await client.release.experience.get("spaceId", "environmentId", "id", {
 <dd>
 
 ```typescript
-await client.release.fragment.get("spaceId", "environmentId", "id", {
+await client.release.fragment.get("id", {
     access_token: "access_token",
     "release[lte]": "release[lte]",
     "timestamp[lte]": "timestamp[lte]",
@@ -629,22 +541,6 @@ await client.release.fragment.get("spaceId", "environmentId", "id", {
 
 <dl>
 <dd>
-
-<dl>
-<dd>
-
-**spaceId:** `string` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**environmentId:** `string` 
-    
-</dd>
-</dl>
 
 <dl>
 <dd>
