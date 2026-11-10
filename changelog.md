@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.0.0-dev.13] - 2026-11-10
+### Breaking Changes
+- **`PersonalizationPageEvent`, `PersonalizationTrackEvent`, `PersonalizationIdentifyEvent`, `PersonalizationScreenEvent`, `PersonalizationComponentEvent`** — `originalTimestamp` and `sentAt` are now required; supply these fields at all construction sites.
+- **`Channel` const-enum on personalization event namespaces** — removed in favour of a plain string-union `("mobile" | "server" | "web") | "client"`; replace `Channel.Web` / `Channel.Mobile` references with the corresponding string literals.
+- **`Context.campaign` across all personalization event types** — promoted from optional to required; ensure every `Context` object includes a `campaign` value.
+- **`PersonalizationScreenEvent`** — `properties` changed from required `Properties` to optional `Record`, the `Properties` and `Context.Page` interfaces were removed, and a new required `name: string` field was added; update construction sites accordingly.
+- **`DestinationClient` and `ExperienceClient` methods** — the leading `spaceId` (and where applicable `environmentId`) parameters have been removed from `sitemap`, `resolveByNodeId`, `resolveByNodeIdWithOverrides`, `resolveByPath`, `resolveByPathWithOverrides`, `get`, and `getWithOverrides`; drop those arguments from all call sites and pass `spaceId` / `environmentId` via `BaseClientOptions` instead (both fields are now required on the options object).
+
+### Added
+- **`GetWithOverridesExperienceRequest.Extensions.preflight`** — new optional `boolean` field on the overrides extensions object.
+- **New recursive JSON-value schema types** — several new schema types (e.g. `GetSpacesSpaceIdEnvironmentsEnvironmentIdExperiencesId0200Schema1`–`3` and related variants) are now exported from the types barrel.
+
 ## [1.0.0-dev.12] - 2026-11-03
 ### Breaking Changes
 - **`DestinationClient.resolveByPath`** — the request parameter type has changed from `DestinationExperiencesByPathRequest` to the new `ResolveByPathDestinationRequest`. Update call sites to use `ResolveByPathDestinationRequest`; if you need override behaviour, use the new `resolveByPathWithOverrides` method instead.
