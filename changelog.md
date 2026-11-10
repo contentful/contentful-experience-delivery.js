@@ -12,6 +12,10 @@
 - **`GetWithOverridesExperienceRequest.Extensions.preflight`** — new optional `boolean` field on the overrides extensions object.
 - **New recursive JSON-value schema types** — several new schema types (e.g. `GetSpacesSpaceIdEnvironmentsEnvironmentIdExperiencesId0200Schema1`–`3` and related variants) are now exported from the types barrel.
 
+### Migration guide
+See full migration guide in `./docs/migration-guides/1.0.0-dev.13`
+
+
 ## [1.0.0-dev.12] - 2026-11-03
 ### Breaking Changes
 - **`DestinationClient.resolveByPath`** — the request parameter type has changed from `DestinationExperiencesByPathRequest` to the new `ResolveByPathDestinationRequest`. Update call sites to use `ResolveByPathDestinationRequest`; if you need override behaviour, use the new `resolveByPathWithOverrides` method instead.
