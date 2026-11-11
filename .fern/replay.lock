@@ -60,7 +60,13 @@ generations:
     cli_version: unknown
     generator_versions:
       fernapi/fern-typescript-node-sdk: 3.70.6
-current_generation: fd854138a7e999e1670bac5890ac0dd08c9655a0
+  - commit_sha: 6de106eb09afe2f4fbec204e8b8c35668c21a25b
+    tree_hash: a7b557295630c7ca75b805a535fc36977bd2edfb
+    timestamp: 2026-11-11T19:43:28.045Z
+    cli_version: unknown
+    generator_versions:
+      fernapi/fern-typescript-node-sdk: 3.70.6
+current_generation: 6de106eb09afe2f4fbec204e8b8c35668c21a25b
 patches:
   - id: patch-b7675864
     content_hash: sha256:833282b15d8dae8957e5e91e4d5c5dad944d8e73078844f8a9bd62aa73459de8
@@ -2371,7 +2377,7 @@ patches:
     original_commit: e3d78ca2eb3de216b0ab8f755b8f4398ea53f131
     original_message: "chore: set up Renovate for dependency updates [MEC-3447] (#13)"
     original_author: contentful-renovate-rollout[bot] <299147280+contentful-renovate-rollout[bot]@users.noreply.github.com>
-    base_generation: fd854138a7e999e1670bac5890ac0dd08c9655a0
+    base_generation: 6de106eb09afe2f4fbec204e8b8c35668c21a25b
     files:
       - renovate.json
     patch_content: |
@@ -7591,7 +7597,7 @@ patches:
     original_commit: f0268aee6d28865335df63b93846d17245291d8a
     original_message: "chore(deps): update actions/checkout action to v7 (#19)"
     original_author: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>
-    base_generation: fd854138a7e999e1670bac5890ac0dd08c9655a0
+    base_generation: 6de106eb09afe2f4fbec204e8b8c35668c21a25b
     files:
       - .github/workflows/ci.yml
     patch_content: |
@@ -13404,7 +13410,7 @@ patches:
     original_commit: 345371a6db9ca1f7162989bb1d59488909461b00
     original_message: "chore(deps): update pnpm/action-setup action to v6 (#27)"
     original_author: renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>
-    base_generation: fd854138a7e999e1670bac5890ac0dd08c9655a0
+    base_generation: 6de106eb09afe2f4fbec204e8b8c35668c21a25b
     files:
       - .github/workflows/ci.yml
     patch_content: |
@@ -41329,6 +41335,7 @@ patches:
               ansi-styles: 6.2.3
               string-width: 5.1.2
               strip-ansi: 7.2.0
+    status: unresolved
   - id: patch-9f93782e
     content_hash: sha256:48b87807bd5f198b59391221a55bde073802ded73933a8c14d4c7ae1d4956684
     original_commit: 9f93782effdebcfd814313616f9ff1d0e4acf93f
