@@ -1,5 +1,7 @@
 # Changelog
 
+## [1.0.0-dev.14] - 2026-11-11
+
 ## [1.0.0-dev.13] - 2026-11-10
 ### Breaking Changes
 - **`PersonalizationPageEvent`, `PersonalizationTrackEvent`, `PersonalizationIdentifyEvent`, `PersonalizationScreenEvent`, `PersonalizationComponentEvent`** — `originalTimestamp` and `sentAt` are now required; supply these fields at all construction sites.
