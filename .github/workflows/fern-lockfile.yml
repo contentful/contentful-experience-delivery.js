@@ -1,0 +1,78 @@
+name: fern-lockfile
+
+# Fern builds pnpm-lock.yaml from its default dependencies before our customizations (Renovate's pnpm and devDependency
+# bumps) are re-applied, so `pnpm install --frozen-lockfile` fails in ci on its PRs. This regenerates the lockfile on
+# the Fern branch and pushes it back. Remove once Fern ships a lockfile that matches package.json.
+#
+# Pushes made with GITHUB_TOKEN do not trigger other workflows, which also means this workflow cannot re-trigger itself.
+# For the same reason ci and integration are dispatched explicitly after the push.
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref }}
+  cancel-in-progress: false
+
+jobs:
+  lockfile:
+    # Only Fern's branches in this repo. Forks get a read-only token, so they are skipped.
+    if: >-
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      startsWith(github.head_ref, 'fern-bot/')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      actions: write
+
+    steps:
+      - name: Checkout Fern branch
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          ref: ${{ github.head_ref }}
+          persist-credentials: false
+
+      - name: Set up node
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6
+
+      # Resolves the lockfile only: nothing is installed and no lifecycle scripts run on bot-authored dependencies.
+      - name: Regenerate lockfile
+        run: pnpm install --lockfile-only --no-frozen-lockfile --ignore-scripts
+
+      - name: Check for changes
+        id: diff
+        run: |
+          if git diff --quiet -- pnpm-lock.yaml; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Commit and push lockfile
+        if: steps.diff.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BRANCH: ${{ github.head_ref }}
+          REPO: ${{ github.repository }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add pnpm-lock.yaml
+          git commit -m "chore: sync pnpm-lock.yaml with package.json"
+          git push "https://x-access-token:${GH_TOKEN}@github.com/${REPO}.git" "HEAD:refs/heads/${BRANCH}"
+
+      # The push above does not trigger workflows, so run the checks against the new commit.
+      - name: Run checks on the new commit
+        if: steps.diff.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BRANCH: ${{ github.head_ref }}
+        run: |
+          gh workflow run ci.yml --ref "$BRANCH"
+          gh workflow run integration.yml --ref "$BRANCH"
