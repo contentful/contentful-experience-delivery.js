@@ -25,3 +25,4 @@ changelog.md
 tests/integration
 vitest.integration.config.mts
 .github/workflows/integration.yml
+.github/workflows/fern-lockfile.yml

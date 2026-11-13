@@ -1,6 +1,9 @@
 name: ci
 
-on: [push]
+on:
+  push:
+  # Dispatched by fern-lockfile, whose GITHUB_TOKEN push does not trigger the push event.
+  workflow_dispatch:
 
 permissions:
   contents: read
