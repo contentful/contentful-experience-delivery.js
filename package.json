@@ -1,6 +1,6 @@
 {
     "name": "@contentful/experience-delivery",
-    "version": "1.0.0-dev.13",
+    "version": "1.0.0-dev.14",
     "private": false,
     "repository": {
         "type": "git",
@@ -105,8 +105,8 @@
         "ts-loader": "^9.5.4",
         "vitest": "^5.0.0",
         "@types/node": "^20.0.0",
-        "typescript": "^7.0.2",
-        "@biomejs/biome": "2.6.6",
+        "typescript": "~6.0.0",
+        "@biomejs/biome": "2.6.5",
         "license-checker-rseidelsohn": "^5.0.0"
     },
     "browser": {
