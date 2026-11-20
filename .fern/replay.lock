@@ -79,7 +79,7 @@ patches:
       @@ -1,6 +1,6 @@
        {
            "name": "@contentful/experience-delivery",
-      -    "version": "0.0.0-fern-placeholder",
+      -    "version": "2.0.0",
       +    "version": "1.0.0-dev.11",
            "private": false,
            "repository": {
@@ -2433,7 +2433,7 @@ patches:
       @@ -1,6 +1,6 @@
        {
            "name": "@contentful/experience-delivery",
-      -    "version": "0.0.0-fern-placeholder",
+      -    "version": "2.0.0",
       +    "version": "1.0.0-dev.12",
            "private": false,
            "repository": {
@@ -5119,7 +5119,7 @@ patches:
       @@ -1,6 +1,6 @@
        {
            "name": "@contentful/experience-delivery",
-      -    "version": "0.0.0-fern-placeholder",
+      -    "version": "2.0.0",
       +    "version": "1.0.0-dev.12",
            "private": false,
            "repository": {
@@ -5299,7 +5299,7 @@ patches:
       @@ -1,6 +1,6 @@
        {
            "name": "@contentful/experience-delivery",
-      -    "version": "0.0.0-fern-placeholder",
+      -    "version": "2.0.0",
       +    "version": "1.0.0-dev.11",
            "private": false,
            "repository": {
@@ -7712,7 +7712,7 @@ patches:
       @@ -1,6 +1,6 @@
        {
            "name": "@contentful/experience-delivery",
-      -    "version": "0.0.0-fern-placeholder",
+      -    "version": "2.0.0",
       +    "version": "1.0.0-dev.11",
            "private": false,
            "repository": {
@@ -10017,7 +10017,7 @@ patches:
        {
            "name": "@contentful/experience-delivery",
       -    "version": "1.0.0-dev.9",
-      +    "version": "0.0.0-fern-placeholder.8",
+      +    "version": "2.0.0.8",
            "private": false,
            "repository": {
                "type": "git",
@@ -10027,12 +10027,12 @@ patches:
       +++ b/src/version.ts
       @@ -1 +1 @@
       -export const SDK_VERSION = "1.0.0-dev.9";
-      +export const SDK_VERSION = "0.0.0-fern-placeholder.8";
+      +export const SDK_VERSION = "2.0.0.8";
     theirs_snapshot:
       package.json: |
         {
             "name": "@contentful/experience-delivery",
-            "version": "0.0.0-fern-placeholder.8",
+            "version": "2.0.0.8",
             "private": false,
             "repository": {
                 "type": "git",
@@ -10212,7 +10212,7 @@ patches:
             "license": "MIT"
         }
       src/version.ts: |
-        export const SDK_VERSION = "0.0.0-fern-placeholder.8";
+        export const SDK_VERSION = "2.0.0.8";
     status: unresolved
   - id: patch-fcf0d7bd
     content_hash: sha256:6517d924a9069e853a3c9729ff111d16f92c0e19707c0d8457e7adda2477a9ea
@@ -10513,7 +10513,7 @@ patches:
       package.json: |
         {
             "name": "@contentful/experience-delivery",
-            "version": "0.0.0-fern-placeholder.8",
+            "version": "2.0.0.8",
             "private": false,
             "repository": {
                 "type": "git",
@@ -13553,7 +13553,7 @@ patches:
       package.json: |
         {
             "name": "@contentful/experience-delivery",
-            "version": "0.0.0-fern-placeholder",
+            "version": "2.0.0",
             "private": false,
             "repository": {
                 "type": "git",
@@ -16129,7 +16129,7 @@ patches:
       package.json: |
         {
             "name": "@contentful/experience-delivery",
-            "version": "0.0.0-fern-placeholder.9",
+            "version": "2.0.0.9",
             "private": false,
             "repository": {
                 "type": "git",
@@ -18956,7 +18956,7 @@ patches:
       package.json: |
         {
             "name": "@contentful/experience-delivery",
-            "version": "0.0.0-fern-placeholder",
+            "version": "2.0.0",
             "private": false,
             "repository": {
                 "type": "git",
@@ -21362,7 +21362,7 @@ patches:
       package.json: |
         {
             "name": "@contentful/experience-delivery",
-            "version": "0.0.0-fern-placeholder.9",
+            "version": "2.0.0.9",
             "private": false,
             "repository": {
                 "type": "git",
@@ -27554,7 +27554,7 @@ patches:
       package.json: |
         {
             "name": "@contentful/experience-delivery",
-            "version": "0.0.0-fern-placeholder",
+            "version": "2.0.0",
             "private": false,
             "repository": {
                 "type": "git",
@@ -38912,7 +38912,7 @@ patches:
       package.json: |
         {
             "name": "@contentful/experience-delivery",
-            "version": "0.0.0-fern-placeholder",
+            "version": "2.0.0",
             "private": false,
             "repository": {
                 "type": "git",

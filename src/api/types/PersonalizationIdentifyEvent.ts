@@ -13,7 +13,7 @@ export interface PersonalizationIdentifyEvent {
     userId: string;
     traits: Record<
         string,
-        ContentfulViewDelivery.PostSpacesSpaceIdDestinationsDestinationIdNodesNodeIdExperiences3BodySchema3
+        ContentfulViewDelivery.PostSpacesSpaceIdEnvironmentsEnvironmentIdDestinationsDestinationIdNodesNodeIdExperiences8BodySchema3
     >;
 }
 

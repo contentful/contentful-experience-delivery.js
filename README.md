@@ -1,6 +1,6 @@
 # Contentful Experiences Delivery and Preview Client TypeScript Library
 
-[![fern shield](https://img.shields.io/badge/%F0%9F%8C%BF-Built%20with%20Fern-brightgreen)](https://buildwithfern.com?utm_source=github&utm_medium=github&utm_campaign=readme&utm_source=https%3A%2F%2Fgithub.com%2Fcontentful%2Fcontentful-experience-delivery.js)
+[![fern shield](https://img.shields.io/badge/%F0%9F%8C%BF-Built%20with%20Fern-brightgreen)](https://buildwithfern.com?utm_source=github&utm_medium=github&utm_campaign=readme&utm_source=Contentful%2FTypeScript)
 [![npm shield](https://img.shields.io/npm/v/@contentful/experience-delivery)](https://www.npmjs.com/package/@contentful/experience-delivery)
 
 > ⚠️ **Dev build.** Published to npm as a pre-release (`dev` tag). APIs are unstable and will change.
@@ -14,9 +14,7 @@ and first-class IntelliSense.
 
 - [Installation](#installation)
 - [Reference](#reference)
-- [Available Methods](#available-methods)
 - [Usage](#usage)
-- [Available Methods](#available-methods)
 - [Authentication](#authentication)
 - [Environments](#environments)
 - [Request and Response Types](#request-and-response-types)
@@ -39,29 +37,9 @@ and first-class IntelliSense.
 npm i -s @contentful/experience-delivery
 ```
 
-> **Note**: This package is not yet published as a stable release on the public npm
-> registry. Until then, see [BUILDING.md](./BUILDING.md) for how to build and
-> consume it from source.
-
 ## Reference
 
-A full reference for this library is available [here](https://github.com/contentful/contentful-experience-delivery.js/blob/HEAD/./reference.md).
-
-## Available Methods
-
-| Resource | Method | Description | Example params | Returns |
-|---|---|---|---|---|
-| `experience` | `get` | Fetches a fully hydrated, published Experience (Studio View) by id. | `"spaceId", "environmentId", "experienceId", { locale: "en-US", preview: "true" }` | `HydratedView \| HydratedExperienceView` |
-| `experience` | `getWithOverrides` | Same as `get`, but lets you pass personalization `parameters`/`extensions` in the body to preview an overridden variant without publishing it. | `"spaceId", "environmentId", "experienceId", { locale: "en-US", parameters: { utm_source: "newsletter" } }` | `HydratedView \| HydratedExperienceView` |
-| `destination` | `sitemap` | Lists the paths published under a Destination, paginated. | `"spaceId", "destinationId", { limit: 50, pageNext: "cursor" }` | `DestinationSitemap` |
-| `destination` | `resolveByNodeId` | Resolves the Experience(s) attached to a specific sitemap node id. | `"spaceId", "destinationId", "nodeId", { locale: "en-US" }` | `DestinationExperiencesResponse \| DestinationRedirectResponse` |
-| `destination` | `resolveByNodeIdWithOverrides` | Same as `resolveByNodeId`, with personalization `extensions` passed in the body. | `"spaceId", "destinationId", "nodeId", { locale: "en-US", extensions: {} }` | `DestinationExperiencesResponse \| DestinationRedirectResponse` |
-| `destination` | `resolveByPath` | Resolves the Experience(s) published at a given URL path on a Destination. | `"spaceId", "destinationId", { path: "/about", locale: "en-US" }` | `DestinationExperiencesResponse \| DestinationRedirectResponse` |
-| `destination` | `resolveByPathWithOverrides` | Same as `resolveByPath`, with personalization `extensions` passed in the body. | `"spaceId", "destinationId", { path: "/about", locale: "en-US", extensions: {} }` | `DestinationExperiencesResponse \| DestinationRedirectResponse` |
-| `release.experience` | `get` | Fetches an Experience as it existed in a Release (or at a point in time), for Release/timeline previews. | `"spaceId", "environmentId", "experienceId", { "release[lte]": "releaseId", locale: "en-US" }` | `HydratedView` |
-| `release.fragment` | `get` | Fetches a Fragment (Component instance) as it existed in a Release (or at a point in time). Preview only. | `"spaceId", "environmentId", "fragmentId", { "release[lte]": "releaseId", locale: "en-US" }` | `HydratedFragmentView` |
-
-All methods accept an optional trailing `requestOptions` argument (`headers`, `queryParams`, `timeoutInSeconds`, `maxRetries`, `abortSignal`) and return an `HttpResponsePromise` — `await` it directly for the typed data, or call `.withRawResponse()` to also get response headers (see [Access Raw Response Data](#access-raw-response-data)).
+A full reference for this library is available [here](./reference.md).
 
 ## Usage
 
@@ -87,21 +65,6 @@ const experience = await client.experience.get(
 See [Authentication](#authentication) for preview tokens and the
 `access_token` query-parameter alternative.
 
-## Available Methods
-
-| Resource | Method | Description | Example params | Returns |
-|---|---|---|---|---|
-| `experience` | `get` | Fetches a fully hydrated, published Experience (Studio View) by id. | `"spaceId", "environmentId", "experienceId", { locale: "en-US", preview: "true" }` | `HydratedView \| HydratedExperienceView` |
-| `experience` | `getWithOverrides` | Same as `get`, but lets you pass personalization `parameters`/`extensions` in the body to preview an overridden variant without publishing it. | `"spaceId", "environmentId", "experienceId", { locale: "en-US", parameters: { utm_source: "newsletter" } }` | `HydratedView \| HydratedExperienceView` |
-| `destination` | `sitemap` | Lists the paths published under a Destination, paginated. | `"spaceId", "destinationId", { limit: 50, pageNext: "cursor" }` | `DestinationSitemap` |
-| `destination` | `resolveByNodeId` | Resolves the Experience(s) attached to a specific sitemap node id. | `"spaceId", "destinationId", "nodeId", { locale: "en-US" }` | `DestinationExperiencesResponse \| DestinationRedirectResponse` |
-| `destination` | `resolveByNodeIdWithOverrides` | Same as `resolveByNodeId`, with personalization `extensions` passed in the body. | `"spaceId", "destinationId", "nodeId", { locale: "en-US", extensions: {} }` | `DestinationExperiencesResponse \| DestinationRedirectResponse` |
-| `destination` | `resolveByPath` | Resolves the Experience(s) published at a given URL path on a Destination. | `"spaceId", "destinationId", { path: "/about", locale: "en-US" }` | `DestinationExperiencesResponse \| DestinationRedirectResponse` |
-| `destination` | `resolveByPathWithOverrides` | Same as `resolveByPath`, with personalization `extensions` passed in the body. | `"spaceId", "destinationId", { path: "/about", locale: "en-US", extensions: {} }` | `DestinationExperiencesResponse \| DestinationRedirectResponse` |
-| `release.experience` | `get` | Fetches an Experience as it existed in a Release (or at a point in time), for Release/timeline previews. | `"spaceId", "environmentId", "experienceId", { "release[lte]": "releaseId", locale: "en-US" }` | `HydratedView` |
-| `release.fragment` | `get` | Fetches a Fragment (Component instance) as it existed in a Release (or at a point in time). Preview only. | `"spaceId", "environmentId", "fragmentId", { "release[lte]": "releaseId", locale: "en-US" }` | `HydratedFragmentView` |
-
-All methods accept an optional trailing `requestOptions` argument (`headers`, `queryParams`, `timeoutInSeconds`, `maxRetries`, `abortSignal`) and return an `HttpResponsePromise` — `await` it directly for the typed data, or call `.withRawResponse()` to also get response headers (see [Access Raw Response Data](#access-raw-response-data)).
 
 ## Authentication
 
@@ -398,7 +361,7 @@ The SDK works in the following runtimes:
 
 
 
-- Node.js 22+
+- Node.js 18+
 - Vercel
 - Cloudflare Workers
 - Deno v1.25+

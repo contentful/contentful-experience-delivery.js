@@ -15,7 +15,7 @@ export interface PersonalizationScreenEvent {
     properties?:
         | Record<
               string,
-              ContentfulViewDelivery.PostSpacesSpaceIdDestinationsDestinationIdNodesNodeIdExperiences3BodySchema2
+              ContentfulViewDelivery.PostSpacesSpaceIdEnvironmentsEnvironmentIdDestinationsDestinationIdNodesNodeIdExperiences8BodySchema2
           >
         | undefined;
 }
