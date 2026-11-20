@@ -5,11 +5,13 @@
  *     {
  *         access_token: "access_token",
  *         locale: "locale",
+ *         preview: true,
  *         path: "path"
  *     }
  */
 export interface ResolveByPathDestinationRequest {
     access_token?: string;
     locale?: string;
+    preview?: boolean;
     path: string;
 }

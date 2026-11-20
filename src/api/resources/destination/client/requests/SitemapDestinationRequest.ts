@@ -6,7 +6,8 @@
  *         access_token: "access_token",
  *         pageNext: "pageNext",
  *         pagePrev: "pagePrev",
- *         limit: 1.1
+ *         limit: 1.1,
+ *         preview: true
  *     }
  */
 export interface SitemapDestinationRequest {
@@ -14,4 +15,5 @@ export interface SitemapDestinationRequest {
     pageNext?: string;
     pagePrev?: string;
     limit?: number;
+    preview?: boolean;
 }

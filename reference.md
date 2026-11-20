@@ -144,7 +144,8 @@ await client.destination.sitemap("destinationId", {
     access_token: "access_token",
     pageNext: "pageNext",
     pagePrev: "pagePrev",
-    limit: 1.1
+    limit: 1.1,
+    preview: true
 });
 
 ```
@@ -204,7 +205,8 @@ await client.destination.sitemap("destinationId", {
 ```typescript
 await client.destination.resolveByNodeId("destinationId", "nodeId", {
     access_token: "access_token",
-    locale: "locale"
+    locale: "locale",
+    preview: true
 });
 
 ```
@@ -272,7 +274,8 @@ await client.destination.resolveByNodeId("destinationId", "nodeId", {
 ```typescript
 await client.destination.resolveByNodeIdWithOverrides("destinationId", "nodeId", {
     access_token: "access_token",
-    locale: "locale"
+    locale: "locale",
+    preview: true
 });
 
 ```
@@ -341,6 +344,7 @@ await client.destination.resolveByNodeIdWithOverrides("destinationId", "nodeId",
 await client.destination.resolveByPath("destinationId", {
     access_token: "access_token",
     locale: "locale",
+    preview: true,
     path: "path"
 });
 
@@ -402,6 +406,7 @@ await client.destination.resolveByPath("destinationId", {
 await client.destination.resolveByPathWithOverrides("destinationId", {
     access_token: "access_token",
     locale: "locale",
+    preview: true,
     path: "path"
 });
 
@@ -428,6 +433,371 @@ await client.destination.resolveByPathWithOverrides("destinationId", {
 <dd>
 
 **request:** `ContentfulViewDelivery.DestinationExperiencesByPathRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `DestinationClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.destination.<a href="/src/api/resources/destination/client/Client.ts">operation1</a>(environmentId, destinationId, { ...params }) -> ContentfulViewDelivery.Operation1Response</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.destination.operation1("environmentId", "destinationId", {
+    access_token: "access_token",
+    pageNext: "pageNext",
+    pagePrev: "pagePrev",
+    limit: 1.1,
+    preview: true
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**environmentId:** `string` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**destinationId:** `string` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `ContentfulViewDelivery.Operation1Request` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `DestinationClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.destination.<a href="/src/api/resources/destination/client/Client.ts">operation2</a>(environmentId, destinationId, nodeId, { ...params }) -> ContentfulViewDelivery.Operation2Response</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.destination.operation2("environmentId", "destinationId", "nodeId", {
+    access_token: "access_token",
+    locale: "locale",
+    preview: true
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**environmentId:** `string` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**destinationId:** `string` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**nodeId:** `string` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `ContentfulViewDelivery.Operation2Request` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `DestinationClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.destination.<a href="/src/api/resources/destination/client/Client.ts">operation3</a>(environmentId, destinationId, nodeId, { ...params }) -> ContentfulViewDelivery.Operation3Response</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.destination.operation3("environmentId", "destinationId", "nodeId", {
+    access_token: "access_token",
+    locale: "locale",
+    preview: true
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**environmentId:** `string` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**destinationId:** `string` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**nodeId:** `string` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `ContentfulViewDelivery.Operation3Request` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `DestinationClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.destination.<a href="/src/api/resources/destination/client/Client.ts">operation4</a>(environmentId, destinationId, { ...params }) -> ContentfulViewDelivery.Operation4Response</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.destination.operation4("environmentId", "destinationId", {
+    access_token: "access_token",
+    locale: "locale",
+    preview: true,
+    path: "path"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**environmentId:** `string` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**destinationId:** `string` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `ContentfulViewDelivery.Operation4Request` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `DestinationClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.destination.<a href="/src/api/resources/destination/client/Client.ts">operation5</a>(environmentId, destinationId, { ...params }) -> ContentfulViewDelivery.Operation5Response</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.destination.operation5("environmentId", "destinationId", {
+    access_token: "access_token",
+    locale: "locale",
+    preview: true,
+    path: "path"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**environmentId:** `string` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**destinationId:** `string` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `ContentfulViewDelivery.Operation5Request` 
     
 </dd>
 </dl>

@@ -6,11 +6,13 @@ import type * as ContentfulViewDelivery from "../../../../index.js";
  * @example
  *     {
  *         access_token: "access_token",
- *         locale: "locale"
+ *         locale: "locale",
+ *         preview: true
  *     }
  */
 export interface DestinationExperiencesByNodeRequest {
     access_token?: string;
     locale?: string;
+    preview?: boolean;
     extensions?: ContentfulViewDelivery.DestinationExperiencesExtensions;
 }

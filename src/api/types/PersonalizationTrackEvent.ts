@@ -14,7 +14,7 @@ export interface PersonalizationTrackEvent {
     event: string;
     properties: Record<
         string,
-        ContentfulViewDelivery.PostSpacesSpaceIdDestinationsDestinationIdNodesNodeIdExperiences3BodySchema2
+        ContentfulViewDelivery.PostSpacesSpaceIdEnvironmentsEnvironmentIdDestinationsDestinationIdNodesNodeIdExperiences8BodySchema2
     >;
 }
 
