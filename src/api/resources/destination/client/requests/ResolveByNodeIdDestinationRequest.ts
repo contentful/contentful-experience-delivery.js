@@ -4,10 +4,12 @@
  * @example
  *     {
  *         access_token: "access_token",
- *         locale: "locale"
+ *         locale: "locale",
+ *         preview: true
  *     }
  */
 export interface ResolveByNodeIdDestinationRequest {
     access_token?: string;
     locale?: string;
+    preview?: boolean;
 }

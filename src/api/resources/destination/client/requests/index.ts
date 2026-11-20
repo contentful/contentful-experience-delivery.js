@@ -1,5 +1,10 @@
 export type { DestinationExperiencesByNodeRequest } from "./DestinationExperiencesByNodeRequest.js";
 export type { DestinationExperiencesByPathRequest } from "./DestinationExperiencesByPathRequest.js";
+export type { Operation1Request } from "./Operation1Request.js";
+export type { Operation2Request } from "./Operation2Request.js";
+export type { Operation3Request } from "./Operation3Request.js";
+export type { Operation4Request } from "./Operation4Request.js";
+export type { Operation5Request } from "./Operation5Request.js";
 export type { ResolveByNodeIdDestinationRequest } from "./ResolveByNodeIdDestinationRequest.js";
 export type { ResolveByPathDestinationRequest } from "./ResolveByPathDestinationRequest.js";
 export type { SitemapDestinationRequest } from "./SitemapDestinationRequest.js";

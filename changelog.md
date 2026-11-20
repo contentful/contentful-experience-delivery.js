@@ -1,3 +1,14 @@
+## 2.0.0 - 2026-11-20
+### Breaking Changes
+* **`PostSpacesSpaceIdDestinationsDestinationIdNodesNodeIdExperiences3BodySchema0`–`3`** — these four exported types have been removed and replaced by `PostSpacesSpaceIdEnvironmentsEnvironmentIdDestinationsDestinationIdNodesNodeIdExperiences8BodySchema0`–`3`; update any direct imports or type references to use the new names.
+* **`PersonalizationIdentifyEvent.traits`**, **`PersonalizationTrackEvent.properties`**, and **`PersonalizationScreenEvent.properties`** — the value type of these record fields now references the renamed `*Experiences8BodySchema*` types; recompile and update any explicit type annotations at call sites.
+### Added
+* **`preview?: boolean`** — new optional preview flag added to `ResolveByNodeIdDestinationRequest`, `DestinationExperiencesByNodeRequest`, `SitemapDestinationRequest`, `ResolveByPathDestinationRequest`, and `DestinationExperiencesByPathRequest`; pass `true` to fetch preview content.
+* **`DestinationClient.operation1`–`operation5`** — five new environment-scoped destination methods covering sitemap (GET), node experiences (GET/POST), and path experiences (GET/POST).
+* **`Operation1Request`–`Operation5Request` and `Operation1Response`–`Operation5Response`** — ten new exported request interfaces and response types for the new environment-scoped destination operations.
+### Changed
+* **Node.js engine requirement** — minimum supported Node.js version lowered from `>=22` to `>=18`, broadening runtime compatibility.
+
 # Changelog
 
 ## [1.0.0-dev.13] - 2026-11-10
