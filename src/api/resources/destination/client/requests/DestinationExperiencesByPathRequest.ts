@@ -7,12 +7,14 @@ import type * as ContentfulViewDelivery from "../../../../index.js";
  *     {
  *         access_token: "access_token",
  *         locale: "locale",
+ *         preview: true,
  *         path: "path"
  *     }
  */
 export interface DestinationExperiencesByPathRequest {
     access_token?: string;
     locale?: string;
+    preview?: boolean;
     path: string;
     extensions?: ContentfulViewDelivery.DestinationExperiencesExtensions;
 }
